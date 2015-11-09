@@ -149,12 +149,36 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Almacen.h" />
+    <ClInclude Include="Factura.h" />
+    <ClInclude Include="Inventario.h" />
+    <ClInclude Include="LstAlmacenes.h" />
+    <ClInclude Include="LstFacturas.h" />
+    <ClInclude Include="LstInventario.h" />
+    <ClInclude Include="LstProductos.h" />
+    <ClInclude Include="NAlamacen.h" />
+    <ClInclude Include="NFactura.h" />
+    <ClInclude Include="NInventario.h" />
+    <ClInclude Include="NProducto.h" />
+    <ClInclude Include="Producto.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Almacen.cpp" />
+    <ClCompile Include="Factura.cpp" />
+    <ClCompile Include="Inventario.cpp" />
+    <ClCompile Include="LstAlmacenes.cpp" />
+    <ClCompile Include="LstFacturas.cpp" />
+    <ClCompile Include="LstInventario.cpp" />
+    <ClCompile Include="LstProductos.cpp" />
+    <ClCompile Include="NAlmacen.cpp" />
+    <ClCompile Include="NFactura.cpp" />
+    <ClCompile Include="NInventario.cpp" />
+    <ClCompile Include="NProducto.cpp" />
+    <ClCompile Include="Producto.cpp" />
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="TechShoes.cpp" />
+    <ClCompile Include="Tester.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
