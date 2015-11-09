@@ -80,8 +80,9 @@ void LstInventario::agregaNInventarioDespuesDe(NInventario * _ref, NInventario *
 	_nuevo->setSgte(_ref->getSgte());
 	_nuevo->setAnte(_ref);
 
-	_ref->setSgte(_nuevo);
 	_ref->getSgte()->setAnte(_nuevo);
+	_ref->setSgte(_nuevo);
+
 }
 
 //Operraciones de Listas
