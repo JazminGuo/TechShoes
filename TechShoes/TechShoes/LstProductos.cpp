@@ -35,14 +35,21 @@ void LstProductos::setSize(int _size)
 //Miscelaneos Privados
 NProducto * LstProductos::dirNodo(int _id)
 {
-	NProducto * aux = getCab();
-
-	do
+	if (vacia())
 	{
-		aux = aux->getSgte();
-	} while ((aux != getCab()) && (aux->getProducto()->getId() != _id));
+		return NULL;
+	}
+	else
+	{
+		NProducto * aux = getCab();
 
-	return aux;
+		do
+		{
+			aux = aux->getSgte();
+		} while ((aux != getCab()) && (aux->getProducto()->getId() != _id));
+
+		return aux;
+	}
 }
 
 NProducto * LstProductos::dirUltimo()
@@ -94,6 +101,7 @@ bool LstProductos::agregaAsc(Producto * _producto)
 		setCab(new NProducto(_producto));
 		getCab()->setSgte(getCab());
 		getCab()->setAnte(getCab());
+		
 		agregado = true;
 	}
 	else
@@ -105,8 +113,7 @@ bool LstProductos::agregaAsc(Producto * _producto)
 		if ((id < prim->getProducto()->getId()) || (id > ult->getProducto()->getId()))
 		{
 			agregaNProductoDespuesDe(ult, new NProducto(_producto));
-			setSize(getSize() + 1);
-
+			
 			if (id < prim->getProducto()->getId())
 			{
 				setCab(prim->getAnte());
@@ -128,7 +135,7 @@ bool LstProductos::agregaAsc(Producto * _producto)
 				if (id < aux->getSgte()->getProducto()->getId())
 				{
 					agregaNProductoDespuesDe(aux, new NProducto(_producto));
-					setSize(getSize() + 1);
+					
 					agregado = true;
 				}
 				else
@@ -138,7 +145,11 @@ bool LstProductos::agregaAsc(Producto * _producto)
 			} while ((aux != getCab()) && !exist);
 		}
 	}
-	return true;
+	if (agregado)
+	{
+		setSize(getSize() + 1);
+	}
+	return agregado;
 }
 
 //Eliminar
@@ -146,7 +157,7 @@ bool LstProductos::eliminar(int _id)
 {
 	NProducto * aux = dirNodo(_id);
 
-	if (!vacia())
+	if ( aux != NULL)
 	{
 		if (getSize() == 1)
 		{
@@ -162,6 +173,7 @@ bool LstProductos::eliminar(int _id)
 				setCab(aux->getSgte());
 			}
 		}
+
 		delete aux;
 		setSize(getSize() - 1);
 		return true;
@@ -182,14 +194,10 @@ Producto * LstProductos::obtenerProducto(int _id)
 {
 	NProducto * aux = dirNodo(_id);
 
-	if (aux != NULL)
+	if ((aux != NULL) && (aux->getProducto()->getId() == _id))
 	{
 		return aux->getProducto();
-	}
-	else
-	{
-		return NULL;
-	}
+	}		
 }
 
 bool LstProductos::modificarProducto(int _id, Producto * _producto)
@@ -198,7 +206,7 @@ bool LstProductos::modificarProducto(int _id, Producto * _producto)
 	{
 		NProducto * aux = dirNodo(_id);
 
-		if (aux != NULL)
+		if ((aux != NULL) && (aux->getProducto()->getId() == _id))
 		{
 			aux->getProducto()->setId(_producto->getId());
 			aux->getProducto()->setDescripcion(_producto->getDescripcion());

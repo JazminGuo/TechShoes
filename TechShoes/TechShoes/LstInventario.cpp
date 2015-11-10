@@ -37,14 +37,22 @@ void LstInventario::setSize(int _size)
 //Miscelaneos Privados
 NInventario * LstInventario::dirNodo(int _codArticulo)
 {
-	NInventario * aux = getCab();
 
-	do
+	if (vacia())
 	{
-		aux = aux->getSgte();
-	} while ((aux != getCab()) && (aux->getInventario()->getCodArticulo() != _codArticulo));
+		return NULL;
+	}
+	else
+	{
+		NInventario * aux = getCab();
 
-	return aux;
+		do
+		{
+			aux = aux->getSgte();
+		} while ((aux != getCab()) && (aux->getInventario()->getCodArticulo() != _codArticulo));
+
+		return aux;
+	}
 }
 
 NInventario * LstInventario::dirUltimo()
@@ -82,7 +90,6 @@ void LstInventario::agregaNInventarioDespuesDe(NInventario * _ref, NInventario *
 
 	_ref->getSgte()->setAnte(_nuevo);
 	_ref->setSgte(_nuevo);
-
 }
 
 //Operraciones de Listas
@@ -108,7 +115,7 @@ bool LstInventario::agregaAsc(Inventario * _inventario)
 		if ((codArticulo < prim->getInventario()->getCodArticulo()) || (codArticulo > ult->getInventario()->getCodArticulo()))
 		{
 			agregaNInventarioDespuesDe(ult, new NInventario(_inventario));
-			setSize(getSize() + 1);
+			
 
 			if (codArticulo < prim->getInventario()->getCodArticulo())
 			{
@@ -131,7 +138,6 @@ bool LstInventario::agregaAsc(Inventario * _inventario)
 				if (codArticulo < aux->getSgte()->getInventario()->getCodArticulo())
 				{
 					agregaNInventarioDespuesDe(aux, new NInventario(_inventario));
-					setSize(getSize() + 1);
 					agregado = true;
 				}
 				else
@@ -141,7 +147,11 @@ bool LstInventario::agregaAsc(Inventario * _inventario)
 			} while ((aux != getCab()) && !exist);
 		}
 	}
-	return true;
+	if (agregado)
+	{
+		setSize(getSize() + 1);
+	}
+	return agregado;
 }
 
 //Eliminar
@@ -149,7 +159,7 @@ bool LstInventario::eliminar(int _codArticulo)
 {
 	NInventario * aux = dirNodo(_codArticulo);
 
-	if (!vacia())
+	if (aux != NULL)
 	{
 		if (getSize() == 1)
 		{
@@ -185,13 +195,9 @@ Inventario * LstInventario::obtenerInventario(int _codArticulo)
 {
 	NInventario * aux = dirNodo(_codArticulo);
 
-	if (aux != NULL)
+	if ((aux != NULL) && (aux->getInventario()->getCodArticulo() == _codArticulo))
 	{
 		return aux->getInventario();
-	}
-	else
-	{
-		return NULL;
 	}
 }
 

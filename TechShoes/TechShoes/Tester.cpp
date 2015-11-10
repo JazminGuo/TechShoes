@@ -134,7 +134,7 @@ void productoMenu()
 			cin >> id;
 			Producto * producto = lista->obtenerProducto(id);
 
-			if (producto != NULL)
+			if ((producto != NULL) && (producto->getId() == id))
 			{
 				cout << "============================================" << endl;
 				cout << "Id: " << producto->getId() << endl;
@@ -167,6 +167,7 @@ void productoMenu()
 
 				if (producto == NULL)
 				{
+					cout << "El producto no existe" << endl;
 					cout << "Digite (1) para intentar eliminar de nuevo o (0) para regresar al menu anterior" << endl;
 					cin >> dlt;
 					system("cls");
