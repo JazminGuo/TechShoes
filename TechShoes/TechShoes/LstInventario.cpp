@@ -37,7 +37,6 @@ void LstInventario::setSize(int _size)
 //Miscelaneos Privados
 NInventario * LstInventario::dirNodo(int _codArticulo)
 {
-
 	if (vacia())
 	{
 		return NULL;
@@ -48,10 +47,16 @@ NInventario * LstInventario::dirNodo(int _codArticulo)
 
 		do
 		{
-			aux = aux->getSgte();
-		} while ((aux != getCab()) && (aux->getInventario()->getCodArticulo() != _codArticulo));
-
-		return aux;
+			if (aux->getInventario()->getCodArticulo() == _codArticulo)
+			{
+				return aux;
+			}
+			else
+			{
+				aux = aux->getSgte();
+			}
+		} while (aux != getCab());
+		return NULL;
 	}
 }
 
