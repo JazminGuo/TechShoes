@@ -131,7 +131,7 @@ bool LstFacturas::agregaAsc(Factura * _factura)
 			else
 			{
 				NFactura * nuevo = new NFactura(_factura);
-				if (((aux->getSgte() != NULL) && (id > aux->getSgte()->getFactura()->getId())) || (aux->getSgte() == NULL))
+				if (((aux->getSgte() != NULL) && (aux->getSgte()->getFactura()->getId() > id)) || (aux->getSgte() == NULL))
 				{
 					agregaNFacturaDespuesDe(aux, nuevo);
 					setSize(getSize() + 1);
