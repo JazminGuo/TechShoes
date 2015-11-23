@@ -384,6 +384,7 @@ void facturaMenu()
 
 				if (factura == NULL)
 				{
+					cout << "La factura no existe" << endl;
 					cout << "Digite (1) para intentar eliminar de nuevo o (0) para regresar al menu anterior" << endl;
 					cin >> dlt;
 					system("cls");
@@ -587,6 +588,7 @@ void almacenMenu()
 
 				if (almacen == NULL)
 				{
+					cout << "El almacen no existe" << endl;
 					cout << "Digite (1) para intentar eliminar de nuevo o (0) para regresar al menu anterior" << endl;
 					cin >> dlt;
 					system("cls");
@@ -797,6 +799,7 @@ void inventarioMenu()
 
 				if (articulo == NULL)
 				{
+					cout << "El articulo no existe" << endl;
 					cout << "Digite (1) para intentar eliminar de nuevo o (0) para regresar al menu anterior" << endl;
 					cin >> dlt;
 					system("cls");

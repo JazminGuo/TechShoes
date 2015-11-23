@@ -95,8 +95,8 @@ NFactura * LstFacturas::dirAnterior(int _id)
 void LstFacturas::agregaNodoAntesDe(NFactura * _ref, NFactura * _nuevo)
 {
 	NFactura * ant = dirAnterior(_ref->getFactura()->getId());
-		ant->setSgte(_nuevo);
-		_nuevo->setSgte(_ref);
+	ant->setSgte(_nuevo);
+	_nuevo->setSgte(_ref);
 }
 
 void LstFacturas::agregaNFacturaDespuesDe(NFactura * _ref, NFactura * _nuevo)
@@ -110,9 +110,11 @@ void LstFacturas::agregaNFacturaDespuesDe(NFactura * _ref, NFactura * _nuevo)
 bool LstFacturas::agregaAsc(Factura * _factura)
 {
 	int id = _factura->getId();
-	if (vacia())
+
+	if ((vacia()) || (id < getCab()->getFactura()->getId()))
 	{
 		NFactura * nuevo = new NFactura(_factura);
+		nuevo->setSgte(getCab());
 		setCab(nuevo);
 		setSize(getSize() + 1);
 		return true;
@@ -129,7 +131,7 @@ bool LstFacturas::agregaAsc(Factura * _factura)
 			else
 			{
 				NFactura * nuevo = new NFactura(_factura);
-				if ((aux->getSgte() != NULL) && (id > aux->getFactura()->getId()) || (aux->getSgte() == NULL))
+				if (((aux->getSgte() != NULL) && (aux->getSgte()->getFactura()->getId() > id)) || (aux->getSgte() == NULL))
 				{
 					agregaNFacturaDespuesDe(aux, nuevo);
 					setSize(getSize() + 1);

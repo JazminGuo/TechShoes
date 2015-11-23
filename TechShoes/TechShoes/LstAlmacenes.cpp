@@ -134,7 +134,7 @@ bool LstAlmacenes::agregaAsc(Almacen * _almacen)
 			else
 			{
 				NAlmacen * nuevo = new NAlmacen(_almacen);
-				if ((aux->getSgte() != NULL) && (id > aux->getAlmacen()->getId()) || (aux->getSgte() == NULL))
+				if (((aux->getSgte() != NULL) && (aux->getSgte()->getAlmacen()->getId() > id)) || (aux->getSgte() == NULL))
 				{
 					agregaNAlmacenDespuesDe(aux, nuevo);
 					setSize(getSize() + 1);

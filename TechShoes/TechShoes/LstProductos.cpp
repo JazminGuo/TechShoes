@@ -45,10 +45,16 @@ NProducto * LstProductos::dirNodo(int _id)
 
 		do
 		{
-			aux = aux->getSgte();
-		} while ((aux != getCab()) && (aux->getProducto()->getId() != _id));
-
-		return aux;
+			if (aux->getProducto()->getId() == _id)
+			{
+				return aux;
+			}
+			else
+			{
+				aux = aux->getSgte();
+			}
+		} while (aux != getCab());
+		return NULL;
 	}
 }
 
@@ -202,11 +208,15 @@ Producto * LstProductos::obtenerProducto(int _id)
 
 bool LstProductos::modificarProducto(int _id, Producto * _producto)
 {
-	if (!vacia())
+	if (vacia())
+	{
+		return false;
+	}
+	else
 	{
 		NProducto * aux = dirNodo(_id);
 
-		if ((aux != NULL) && (aux->getProducto()->getId() == _id))
+		if (aux != NULL)
 		{
 			aux->getProducto()->setId(_producto->getId());
 			aux->getProducto()->setDescripcion(_producto->getDescripcion());
@@ -218,10 +228,6 @@ bool LstProductos::modificarProducto(int _id, Producto * _producto)
 		{
 			return false;
 		}
-	}
-	else
-	{
-		return false;
 	}
 }
 
