@@ -1,9 +1,72 @@
-﻿Build started 23/11/2015 01:39:58 p.m..
-     1>Project "C:\Users\Admin\Documents\GitHub\TechShoes\TechShoes\TechShoes\TechShoes.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         TechShoes.vcxproj -> C:\Users\Admin\Documents\GitHub\TechShoes\TechShoes\Debug\TechShoes.exe
-     1>Done Building Project "C:\Users\Admin\Documents\GitHub\TechShoes\TechShoes\TechShoes\TechShoes.vcxproj" (Build target(s)).
+﻿Build started 12/11/2015 2:40:43 PM.
+     1>Project "C:\Users\Yohel\Documents\GitHub\TechShoes\TechShoes\TechShoes\TechShoes.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Almacen.cpp Entrada.cpp Factura.cpp Inventario.cpp LineaFactura.cpp LineaProducto.cpp LstAlmacenes.cpp LstEntradas.cpp LstFacturas.cpp LstInventario.cpp LstLineaFacturas.cpp LstLineaProductos.cpp LstProductos.cpp LstSubLineaProductos.cpp NAlmacen.cpp NEntrada.cpp NFactura.cpp NInventario.cpp NLineaFactura.cpp NLineaProducto.cpp NProducto.cpp NSubLineaProducto.cpp Producto.cpp SubLineaProducto.cpp Tester.cpp stdafx.cpp
+         stdafx.cpp
+         Tester.cpp
+         SubLineaProducto.cpp
+         Producto.cpp
+         NSubLineaProducto.cpp
+         NProducto.cpp
+         NLineaProducto.cpp
+         NLineaFactura.cpp
+         NInventario.cpp
+         NFactura.cpp
+         NEntrada.cpp
+         NAlmacen.cpp
+         LstSubLineaProductos.cpp
+         LstProductos.cpp
+         LstLineaProductos.cpp
+         LstLineaFacturas.cpp
+         LstInventario.cpp
+         LstFacturas.cpp
+         LstEntradas.cpp
+         LstAlmacenes.cpp
+         Generating Code...
+     1>c:\users\yohel\documents\github\techshoes\techshoes\techshoes\lstalmacenes.cpp(150): warning C4715: 'LstAlmacenes::agregaAsc': not all control paths return a value
+     1>c:\users\yohel\documents\github\techshoes\techshoes\techshoes\lstfacturas.cpp(183): warning C4715: 'LstFacturas::eliminar': not all control paths return a value
+     1>c:\users\yohel\documents\github\techshoes\techshoes\techshoes\lstfacturas.cpp(147): warning C4715: 'LstFacturas::agregaAsc': not all control paths return a value
+     1>c:\users\yohel\documents\github\techshoes\techshoes\techshoes\lstinventario.cpp(207): warning C4715: 'LstInventario::obtenerInventario': not all control paths return a value
+     1>c:\users\yohel\documents\github\techshoes\techshoes\techshoes\lstproductos.cpp(207): warning C4715: 'LstProductos::obtenerProducto': not all control paths return a value
+         Compiling...
+         LineaProducto.cpp
+         LineaFactura.cpp
+         Inventario.cpp
+         Factura.cpp
+         Entrada.cpp
+         Almacen.cpp
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Yohel\Documents\GitHub\TechShoes\TechShoes\Debug\TechShoes.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Yohel\Documents\GitHub\TechShoes\TechShoes\Debug\TechShoes.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Yohel\Documents\GitHub\TechShoes\TechShoes\Debug\TechShoes.lib" /MACHINE:X86 Debug\Almacen.obj
+         Debug\Entrada.obj
+         Debug\Factura.obj
+         Debug\Inventario.obj
+         Debug\LineaFactura.obj
+         Debug\LineaProducto.obj
+         Debug\LstAlmacenes.obj
+         Debug\LstEntradas.obj
+         Debug\LstFacturas.obj
+         Debug\LstInventario.obj
+         Debug\LstLineaFacturas.obj
+         Debug\LstLineaProductos.obj
+         Debug\LstProductos.obj
+         Debug\LstSubLineaProductos.obj
+         Debug\NAlmacen.obj
+         Debug\NEntrada.obj
+         Debug\NFactura.obj
+         Debug\NInventario.obj
+         Debug\NLineaFactura.obj
+         Debug\NLineaProducto.obj
+         Debug\NProducto.obj
+         Debug\NSubLineaProducto.obj
+         Debug\Producto.obj
+         Debug\stdafx.obj
+         Debug\SubLineaProducto.obj
+         Debug\Tester.obj
+         LINK : C:\Users\Yohel\Documents\GitHub\TechShoes\TechShoes\Debug\TechShoes.exe not found or not built by the last incremental link; performing full link
+         TechShoes.vcxproj -> C:\Users\Yohel\Documents\GitHub\TechShoes\TechShoes\Debug\TechShoes.exe
+     1>Done Building Project "C:\Users\Yohel\Documents\GitHub\TechShoes\TechShoes\TechShoes\TechShoes.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.39
+Time Elapsed 00:00:44.11
