@@ -5,6 +5,7 @@ class NLineaProducto
 {
 private:
 	LineaProducto *lineaProducto;    // Info
+	LstSubLineaProductos * lstSubLineaProductos;
 	NLineaProducto *sgte;
 	NLineaProducto *ante;
 
@@ -16,6 +17,9 @@ public:
 
 	LineaProducto *getLineaProducto();
 	void setLineaProducto(LineaProducto *);
+
+	LstSubLineaProductos * getLstSubLineaProductos();
+	void setLstSubLineaProductos(LstSubLineaProductos *);
 
 	NLineaProducto *getSgte();
 	void setSgte(NLineaProducto *);

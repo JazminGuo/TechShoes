@@ -5,6 +5,7 @@ class NSubLineaProducto
 {
 private:
 	SubLineaProducto *subLineaProducto;
+	LstProductos * lstProductos;
 	NSubLineaProducto *sgte;
 	NSubLineaProducto *ante;
 public:
@@ -15,6 +16,9 @@ public:
 	
 	SubLineaProducto *getSubLineaProducto();
 	void setSubLineaProducto(SubLineaProducto *);
+
+	LstProductos * getLstProductos();
+	void setLstProductos(LstProductos *);
 
 	NSubLineaProducto *getSgte();
 	void setSgte(NSubLineaProducto *);

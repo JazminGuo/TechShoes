@@ -5,6 +5,7 @@
 NLineaProducto::NLineaProducto()
 {
 	setLineaProducto(new LineaProducto());
+	setLstSubLineaProductos(new LstSubLineaProductos());
 	setSgte(NULL);
 	setAnte(NULL);
 }
@@ -17,6 +18,7 @@ NLineaProducto::~NLineaProducto()
 NLineaProducto::NLineaProducto(LineaProducto *_lineaProducto)
 {
 	setLineaProducto(_lineaProducto);
+	setLstSubLineaProductos(new LstSubLineaProductos());
 	setSgte(NULL);
 	setAnte(NULL);
 }
@@ -28,6 +30,16 @@ LineaProducto *NLineaProducto::getLineaProducto()
 void NLineaProducto::setLineaProducto(LineaProducto *_infoLineaProducto)
 {
 	this->lineaProducto = _infoLineaProducto;
+}
+
+LstSubLineaProductos * NLineaProducto::getLstSubLineaProductos()
+{
+	return this->lstSubLineaProductos;
+}
+
+void NLineaProducto::setLstSubLineaProductos(LstSubLineaProductos * _lstSubLineaProductos)
+{
+	this->lstSubLineaProductos = _lstSubLineaProductos;
 }
 
 NLineaProducto *NLineaProducto::getSgte()
