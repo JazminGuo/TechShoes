@@ -3,7 +3,7 @@
 class Producto
 {
 private:
-	int id;
+	int idProducto;
 	char descripcion[30];
 	double talla;
 	double precio;
@@ -16,8 +16,8 @@ public:
 
 	Producto(int, char *, double, double);
 
-	int getId();
-	void setId(int);
+	int getIdProducto();
+	void setIdProducto(int);
 
 	char * getDescripcion();
 	void setDescripcion(char *);

@@ -43,5 +43,6 @@ Temporary Items
 .apdisk
 
 TechShoes/TechShoes/Debug/*
-TechShoes/TechShoes/.vs/TechShoes/v14/*
+TechShoes/.vs/TechShoes/v14/*
 TechShoes/TechShoes.opensdf
+TechShoes/TechShoes.sdf

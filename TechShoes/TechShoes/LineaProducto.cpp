@@ -4,7 +4,7 @@
 
 LineaProducto::LineaProducto()
 {
-	setIdProducto(0);
+	setIdLineaProducto(0);
 	setDescripcion("");
 }
 
@@ -15,17 +15,17 @@ LineaProducto::~LineaProducto()
 
 LineaProducto::LineaProducto(int _idProducto, char *_descripcion)
 {
-	setIdProducto(_idProducto);
+	setIdLineaProducto(_idProducto);
 	setDescripcion(_descripcion);
 }
 
-int LineaProducto ::getIdProducto()
+int LineaProducto ::getIdLineaProducto()
 {
-	return this->idProducto;
+	return this->idLineaProducto;
 }
-void LineaProducto::setIdProducto(int _idProducto)
+void LineaProducto::setIdLineaProducto(int _idProducto)
 {
-	this->idProducto = _idProducto;
+	this->idLineaProducto = _idProducto;
 }
 
 char *LineaProducto::getDescripcion()

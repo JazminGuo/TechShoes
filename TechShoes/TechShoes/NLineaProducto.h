@@ -1,5 +1,6 @@
 #pragma once
 #include "LineaProducto.h"
+#include "LstSubLineaProductos.h"
 class NLineaProducto
 {
 private:
