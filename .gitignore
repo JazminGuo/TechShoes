@@ -42,6 +42,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-TechShoes/Debug/
-TechShoes/.vs/
+TechShoes/Debug/*
+TechShoes/.vs/*
 TechShoes/TechShoes.opensdf
