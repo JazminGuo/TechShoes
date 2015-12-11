@@ -77,7 +77,7 @@ void productoMenu()
 				else
 				{
 					cout << "============================================" << endl;
-					cout << "Id: " << producto->getId() << endl;
+					cout << "Id: " << producto->getIdProducto() << endl;
 					cout << "Descripcion: " << producto->getDescripcion() << endl;
 					cout << "Talla: " << producto->getTalla() << endl;
 					cout << "Precio: " << producto->getPrecio() << endl;
@@ -114,7 +114,7 @@ void productoMenu()
 						lista->modificarProducto(id, producto);
 
 						cout << "============================================" << endl;
-						cout << "Id: " << producto->getId() << endl;
+						cout << "Id: " << producto->getIdProducto() << endl;
 						cout << "Descripcion: " << producto->getDescripcion() << endl;
 						cout << "Talla: " << producto->getTalla() << endl;
 						cout << "Precio: " << producto->getPrecio() << endl;
@@ -139,10 +139,10 @@ void productoMenu()
 			cin >> id;
 			Producto * producto = lista->obtenerProducto(id);
 
-			if ((producto != NULL) && (producto->getId() == id))
+			if ((producto != NULL) && (producto->getIdProducto() == id))
 			{
 				cout << "============================================" << endl;
-				cout << "Id: " << producto->getId() << endl;
+				cout << "Id: " << producto->getIdProducto() << endl;
 				cout << "Descripcion: " << producto->getDescripcion() << endl;
 				cout << "Talla: " << producto->getTalla() << endl;
 				cout << "Precio: " << producto->getPrecio() << endl;
@@ -180,7 +180,7 @@ void productoMenu()
 				else
 				{
 					cout << "============================================" << endl;
-					cout << "Id: " << producto->getId() << endl;
+					cout << "Id: " << producto->getIdProducto() << endl;
 					cout << "Descripcion: " << producto->getDescripcion() << endl;
 					cout << "Talla: " << producto->getTalla() << endl;
 					cout << "Precio: " << producto->getPrecio() << endl;
@@ -964,7 +964,7 @@ void menuLineaProducto()
 			{
 				//cout << "                                          " << endl;
 				cout << "------------------------------" << endl;
-				cout << "ID: " << aux->getIdProducto() << endl;
+				cout << "ID: " << aux->getIdLineaProducto() << endl;
 				cout << "Descripcion: " << aux->getDescripcion() << endl;
 				cout << "------------------------------" << endl;
 			}
@@ -1458,6 +1458,108 @@ void listasMenu()
 	} while (opc != 0);
 }
 
+
+/*----------------------------------------------------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------ MENU INDEPEDIENTE -------------------------------------------------- */
+/*----------------------------------------------------------------------------------------------------------------------------------*/
+
+// MENU PARA MUNDO A
+void menuAlmacen_Inventario()
+{
+
+}
+void menuAlmacen_Entrada()
+{
+
+}
+void menuAlmacen_Factura()
+{
+
+}
+
+// MENU PARA MUNDO B
+void menuLineaProducto_SubLinea()
+{
+
+}
+void menuLSubLinea_Producto()
+{
+
+}
+
+// Aqui van todos lo de Almacen
+void menuMundoA()
+{
+	int opcion = 0;
+
+	do
+	{
+		system("cls");
+		cout << "================ *** MENU PRINCIPAL *** ================" << endl << endl;
+		cout << "(1) OPERACION ALMACENES" << endl;
+		cout << "(2) OPERACION ALAMENCES CON INVENTARIOS" << endl;
+		cout << "(3) OPERACION ALAMENCES CON ENTRADAS" << endl;
+		cout << "(4) OPERACION ALAMENCES CON FACTURAS" << endl;
+		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
+
+		switch (opcion)
+		{
+		case 1:
+		}
+
+	} while (opcion != 0);
+}
+// Aqui van todos lo de Linea Producto
+void menuMundoB()
+{
+	int opcion = 0;
+
+	do
+	{
+		system("cls");
+		cout << "================ *** MENU PRINCIPAL *** ================" << endl << endl;
+		cout << "(1) OPERACION LINEA PRODUCTO" << endl;
+		cout << "(2) OPERACION LINEA PRODUCTO CON SUBLINEA PRODUCTO" << endl;
+		cout << "(3) OPERACION SUBLINEA PRODUCTO CON PRODUCTO" << endl;
+		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
+
+		switch (opcion)
+		{
+		case 1:
+		}
+
+	} while (opcion != 0);
+}
+// Aqui van Mundo A y Mundo B
+void menuPrincipalAB()
+{
+	int opcion = 0;
+
+	do
+	{
+		system("cls");
+		cout << "================ *** MENU PRINCIPAL *** ================" << endl << endl;
+		cout << "(1) OPERACION MUNDO A (ALMACENES, FACTURAS, ENTRADAS, INVENTARIOS)" << endl;
+		cout << "(2) OPERACION MUNDO B (LINEA PRODUCTO, SUBLINEA, PRODUCTO)" << endl;
+		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
+
+		switch (opcion)
+		{
+		case 1:
+		{
+			menuMundoA();
+			break;
+		}
+		case 2:
+		{
+			menuMundoB();
+			break;
+		}
+		}
+		system("pause");
+	} while (opcion != 0);
+
+}
 
 int main()
 {
