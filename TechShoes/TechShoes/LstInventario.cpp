@@ -204,6 +204,7 @@ Inventario * LstInventario::obtenerInventario(int _codArticulo)
 	{
 		return aux->getInventario();
 	}
+	return NULL;
 }
 
 bool LstInventario::modificarInventario(int _codArticulo, Inventario * _inventario)

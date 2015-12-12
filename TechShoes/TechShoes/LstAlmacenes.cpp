@@ -147,6 +147,7 @@ bool LstAlmacenes::agregaAsc(Almacen * _almacen)
 			}
 		}
 	}
+	return true;
 }
 
 //Eliminar

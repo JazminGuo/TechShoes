@@ -144,6 +144,7 @@ bool LstFacturas::agregaAsc(Factura * _factura)
 			}
 		}
 	}
+	return true;
 }
 
 //Eliminar
@@ -180,6 +181,7 @@ bool LstFacturas::eliminar(int _idFactura)
 			}
 		}
 	}
+	return true;
 }
 
 //Miscelaneos

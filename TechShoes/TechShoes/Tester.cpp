@@ -294,7 +294,7 @@ void facturaMenu()
 				else
 				{
 					cout << "============================================" << endl;
-					cout << "Id: " << factura->getId() << endl;
+					cout << "Id: " << factura->getIdFactura() << endl;
 					cout << "Fecha: " << factura->getFecha() << endl;
 					cout << "Cliente: " << factura->getCliente() << endl;
 					cout << "============================================" << endl;
@@ -328,7 +328,7 @@ void facturaMenu()
 						lista->modificarFactura(id, factura);
 
 						cout << "============================================" << endl;
-						cout << "Id: " << factura->getId() << endl;
+						cout << "Id: " << factura->getIdFactura() << endl;
 						cout << "Fecha: " << factura->getFecha() << endl;
 						cout << "Cliente: " << factura->getCliente() << endl;
 						cout << "============================================" << endl;
@@ -355,7 +355,7 @@ void facturaMenu()
 			if (factura != NULL)
 			{
 				cout << "============================================" << endl;
-				cout << "Id: " << factura->getId() << endl;
+				cout << "Id: " << factura->getIdFactura() << endl;
 				cout << "Fecha: " << factura->getFecha() << endl;
 				cout << "Cliente: " << factura->getCliente() << endl;
 				cout << "============================================" << endl;
@@ -392,7 +392,7 @@ void facturaMenu()
 				else
 				{
 					cout << "============================================" << endl;
-					cout << "Id: " << factura->getId() << endl;
+					cout << "Id: " << factura->getIdFactura() << endl;
 					cout << "Fecha: " << factura->getFecha() << endl;
 					cout << "Cliente: " << factura->getCliente() << endl;
 					cout << "============================================" << endl;
@@ -503,7 +503,7 @@ void almacenMenu()
 				else
 				{
 					cout << "============================================" << endl;
-					cout << "Id: " << almacen->getId() << endl;
+					cout << "Id: " << almacen->getIdAlmacen() << endl;
 					cout << "Ubicacion: " << almacen->getUbicacion() << endl;
 					cout << "============================================" << endl;
 					cout << endl;
@@ -534,7 +534,7 @@ void almacenMenu()
 						lista->modificarAlmacen(id, almacen);
 
 						cout << "============================================" << endl;
-						cout << "Id: " << almacen->getId() << endl;
+						cout << "Id: " << almacen->getIdAlmacen() << endl;
 						cout << "Ubicacion: " << almacen->getUbicacion() << endl;
 						cout << "============================================" << endl;
 						cout << endl;
@@ -560,7 +560,7 @@ void almacenMenu()
 			if (almacen != NULL)
 			{
 				cout << "============================================" << endl;
-				cout << "Id: " << almacen->getId() << endl;
+				cout << "Id: " << almacen->getIdAlmacen() << endl;
 				cout << "Ubicacion: " << almacen->getUbicacion() << endl;
 				cout << "============================================" << endl;
 				system("pause");
@@ -596,7 +596,7 @@ void almacenMenu()
 				else
 				{
 					cout << "============================================" << endl;
-					cout << "Id: " << almacen->getId() << endl;
+					cout << "Id: " << almacen->getIdAlmacen() << endl;
 					cout << "Ubicacion: " << almacen->getUbicacion() << endl;
 					cout << "============================================" << endl;
 					cout << endl;
@@ -1504,7 +1504,6 @@ void menuMundoA()
 
 		switch (opcion)
 		{
-		case 1:
 		}
 
 	} while (opcion != 0);
@@ -1525,7 +1524,6 @@ void menuMundoB()
 
 		switch (opcion)
 		{
-		case 1:
 		}
 
 	} while (opcion != 0);

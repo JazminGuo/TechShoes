@@ -204,6 +204,7 @@ Producto * LstProductos::obtenerProducto(int _idProducto)
 	{
 		return aux->getProducto();
 	}		
+	return NULL;
 }
 
 bool LstProductos::modificarProducto(int _idProducto, Producto * _producto)
