@@ -3,7 +3,7 @@
 class Almacen
 {
 private:
-	int id;
+	int idAlmacen;
 	char ubicacion[30];
 public:
 	Almacen();
@@ -11,8 +11,8 @@ public:
 
 	Almacen(int, char *);
 
-	int getId();
-	void setId(int);
+	int getIdAlmacen();
+	void setIdAlmacen(int);
 
 	char * getUbicacion();
 	void setUbicaion(char *);

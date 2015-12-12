@@ -33,7 +33,7 @@ void LstProductos::setSize(int _size)
 }
 
 //Miscelaneos Privados
-NProducto * LstProductos::dirNodo(int _id)
+NProducto * LstProductos::dirNodo(int _idProducto)
 {
 	if (vacia())
 	{
@@ -45,7 +45,7 @@ NProducto * LstProductos::dirNodo(int _id)
 
 		do
 		{
-			if (aux->getProducto()->getId() == _id)
+			if (aux->getProducto()->getIdProducto() == _idProducto)
 			{
 				return aux;
 			}
@@ -70,9 +70,9 @@ NProducto * LstProductos::dirUltimo()
 	}
 }
 
-NProducto * LstProductos::dirAnterior(int _id)
+NProducto * LstProductos::dirAnterior(int _idProducto)
 {
-	NProducto * aux = dirNodo(_id);
+	NProducto * aux = dirNodo(_idProducto);
 	
 	return aux->getAnte();
 }
@@ -112,15 +112,15 @@ bool LstProductos::agregaAsc(Producto * _producto)
 	}
 	else
 	{
-		int id = _producto->getId();
+		int id = _producto->getIdProducto();
 		NProducto * prim = getCab();
 		NProducto * ult = getCab()->getAnte();
 
-		if ((id < prim->getProducto()->getId()) || (id > ult->getProducto()->getId()))
+		if ((id < prim->getProducto()->getIdProducto()) || (id > ult->getProducto()->getIdProducto()))
 		{
 			agregaNProductoDespuesDe(ult, new NProducto(_producto));
 			
-			if (id < prim->getProducto()->getId())
+			if (id < prim->getProducto()->getIdProducto())
 			{
 				setCab(prim->getAnte());
 			}
@@ -133,12 +133,12 @@ bool LstProductos::agregaAsc(Producto * _producto)
 			do
 			{
 
-				if (id == aux->getProducto()->getId())
+				if (id == aux->getProducto()->getIdProducto())
 				{
 					exist = true;
 				}
 
-				if (id < aux->getSgte()->getProducto()->getId())
+				if (id < aux->getSgte()->getProducto()->getIdProducto())
 				{
 					agregaNProductoDespuesDe(aux, new NProducto(_producto));
 					
@@ -159,9 +159,9 @@ bool LstProductos::agregaAsc(Producto * _producto)
 }
 
 //Eliminar
-bool LstProductos::eliminar(int _id)
+bool LstProductos::eliminar(int _idProducto)
 {
-	NProducto * aux = dirNodo(_id);
+	NProducto * aux = dirNodo(_idProducto);
 
 	if ( aux != NULL)
 	{
@@ -196,17 +196,17 @@ bool LstProductos::vacia()
 	return getCab() == NULL;
 }
 
-Producto * LstProductos::obtenerProducto(int _id)
+Producto * LstProductos::obtenerProducto(int _idProducto)
 {
-	NProducto * aux = dirNodo(_id);
+	NProducto * aux = dirNodo(_idProducto);
 
-	if ((aux != NULL) && (aux->getProducto()->getId() == _id))
+	if ((aux != NULL) && (aux->getProducto()->getIdProducto() == _idProducto))
 	{
 		return aux->getProducto();
 	}		
 }
 
-bool LstProductos::modificarProducto(int _id, Producto * _producto)
+bool LstProductos::modificarProducto(int _idProducto, Producto * _producto)
 {
 	if (vacia())
 	{
@@ -214,11 +214,11 @@ bool LstProductos::modificarProducto(int _id, Producto * _producto)
 	}
 	else
 	{
-		NProducto * aux = dirNodo(_id);
+		NProducto * aux = dirNodo(_idProducto);
 
 		if (aux != NULL)
 		{
-			aux->getProducto()->setId(_producto->getId());
+			aux->getProducto()->setIdProducto(_producto->getIdProducto());
 			aux->getProducto()->setDescripcion(_producto->getDescripcion());
 			aux->getProducto()->setTalla(_producto->getTalla());
 			aux->getProducto()->setPrecio(_producto->getPrecio());
@@ -245,7 +245,7 @@ void LstProductos::desplegarLista()
 		do
 		{
 			cout << "Producto #" << i << ": " << endl;
-			cout << "Id: " << aux->getProducto()->getId() << endl;
+			cout << "Id: " << aux->getProducto()->getIdProducto() << endl;
 			cout << "Descripcion: " << aux->getProducto()->getDescripcion() << endl;
 			cout << "Talla: " << aux->getProducto()->getTalla() << endl;
 			cout << "Precio: " << aux->getProducto()->getPrecio() << endl;

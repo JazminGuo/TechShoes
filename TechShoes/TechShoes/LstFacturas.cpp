@@ -35,11 +35,11 @@ void LstFacturas::setSize(int _size)
 }
 
 //Miscelaneos Privados
-NFactura * LstFacturas::dirNodo(int _id)
+NFactura * LstFacturas::dirNodo(int _idFactura)
 {
 	NFactura * aux = getCab();
 
-	while ((aux != NULL) && (aux->getFactura()->getId() != _id))
+	while ((aux != NULL) && (aux->getFactura()->getIdFactura() != _idFactura))
 	{
 		aux = aux->getSgte();
 	}
@@ -64,7 +64,7 @@ NFactura * LstFacturas::dirUltimo()
 	}
 }
 
-NFactura * LstFacturas::dirAnterior(int _id)
+NFactura * LstFacturas::dirAnterior(int _idFactura)
 {
 	NFactura * aux = getCab();
 	NFactura * ant = NULL;
@@ -76,13 +76,13 @@ NFactura * LstFacturas::dirAnterior(int _id)
 	else 
 	{
 
-		if (getCab()->getFactura()->getId() == _id)
+		if (getCab()->getFactura()->getIdFactura() == _idFactura)
 		{
 			ant = NULL;
 		}
 		else
 		{
-			while ((aux->getSgte() != NULL) && (aux->getFactura()->getId() != _id))
+			while ((aux->getSgte() != NULL) && (aux->getFactura()->getIdFactura() != _idFactura))
 			{
 				ant = aux;
 				aux = aux->getSgte();
@@ -94,7 +94,7 @@ NFactura * LstFacturas::dirAnterior(int _id)
 
 void LstFacturas::agregaNodoAntesDe(NFactura * _ref, NFactura * _nuevo)
 {
-	NFactura * ant = dirAnterior(_ref->getFactura()->getId());
+	NFactura * ant = dirAnterior(_ref->getFactura()->getIdFactura());
 	ant->setSgte(_nuevo);
 	_nuevo->setSgte(_ref);
 }
@@ -109,9 +109,9 @@ void LstFacturas::agregaNFacturaDespuesDe(NFactura * _ref, NFactura * _nuevo)
 //Agregar
 bool LstFacturas::agregaAsc(Factura * _factura)
 {
-	int id = _factura->getId();
+	int id = _factura->getIdFactura();
 
-	if ((vacia()) || (id < getCab()->getFactura()->getId()))
+	if ((vacia()) || (id < getCab()->getFactura()->getIdFactura()))
 	{
 		NFactura * nuevo = new NFactura(_factura);
 		nuevo->setSgte(getCab());
@@ -124,14 +124,14 @@ bool LstFacturas::agregaAsc(Factura * _factura)
 		NFactura * aux = getCab();
 		while (aux != NULL)
 		{
-			if (aux->getFactura()->getId() == id)
+			if (aux->getFactura()->getIdFactura() == id)
 			{
 				return false;
 			}
 			else
 			{
 				NFactura * nuevo = new NFactura(_factura);
-				if (((aux->getSgte() != NULL) && (aux->getSgte()->getFactura()->getId() > id)) || (aux->getSgte() == NULL))
+				if (((aux->getSgte() != NULL) && (aux->getSgte()->getFactura()->getIdFactura() > id)) || (aux->getSgte() == NULL))
 				{
 					agregaNFacturaDespuesDe(aux, nuevo);
 					setSize(getSize() + 1);
@@ -147,7 +147,7 @@ bool LstFacturas::agregaAsc(Factura * _factura)
 }
 
 //Eliminar
-bool LstFacturas::eliminar(int _id)
+bool LstFacturas::eliminar(int _idFactura)
 {
 	NFactura * aux;
 	if (vacia())
@@ -156,7 +156,7 @@ bool LstFacturas::eliminar(int _id)
 	}
 	else
 	{
-		if (getCab()->getFactura()->getId() == _id)
+		if (getCab()->getFactura()->getIdFactura() == _idFactura)
 		{
 			aux = getCab();
 			setCab(aux->getSgte());
@@ -166,7 +166,7 @@ bool LstFacturas::eliminar(int _id)
 		}
 		else
 		{
-			NFactura * ant = dirAnterior(_id);
+			NFactura * ant = dirAnterior(_idFactura);
 			if (ant != NULL)
 			{
 				aux = ant->getSgte();
@@ -188,9 +188,9 @@ bool LstFacturas::vacia()
 	return getCab() == NULL;
 }
 
-Factura * LstFacturas::obtenerFactura(int _id)
+Factura * LstFacturas::obtenerFactura(int _idFactura)
 {
-	NFactura * aux = dirNodo(_id);
+	NFactura * aux = dirNodo(_idFactura);
 
 	if (aux != NULL)
 	{
@@ -212,7 +212,7 @@ bool LstFacturas::modificarFactura(int _id, Factura * _factura)
 	}
 	else
 	{
-		aux->getFactura()->setId(_factura->getId());
+		aux->getFactura()->setIdFactura(_factura->getIdFactura());
 		aux->getFactura()->setFecha(_factura->getFecha());
 		aux->getFactura()->setCliente(_factura->getCliente());
 		return true;
@@ -234,7 +234,7 @@ void LstFacturas::desplegarLista()
 		while (aux != NULL)
 		{
 			cout << "Factura #" << i << ": " << endl;
-			cout << "Id: " << aux->getFactura()->getId() << endl;
+			cout << "Id: " << aux->getFactura()->getIdFactura() << endl;
 			cout << "Fecha: " << aux->getFactura()->getFecha() << endl;
 			cout << "Cliente: " << aux->getFactura()->getCliente() << endl;
 			cout << "============================================" << endl;

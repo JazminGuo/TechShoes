@@ -37,7 +37,7 @@ bool LstLineaProductos::vacia()
 }
 
 // Métodos Privados
-NLineaProducto *LstLineaProductos::dirNodo(int _idProducto)
+NLineaProducto *LstLineaProductos::dirNodo(int _idLineaProducto)
 {
 	NLineaProducto *aux = getCab();
 
@@ -47,7 +47,7 @@ NLineaProducto *LstLineaProductos::dirNodo(int _idProducto)
 	{
 		do
 		{
-			if (_idProducto == aux->getLineaProducto()->getIdProducto())
+			if (_idLineaProducto == aux->getLineaProducto()->getIdLineaProducto())
 			{
 				return aux;
 			}
@@ -57,11 +57,11 @@ NLineaProducto *LstLineaProductos::dirNodo(int _idProducto)
 	}
 	return NULL;
 }
-NLineaProducto *LstLineaProductos::dirAnterior(int _idProducto)
+NLineaProducto *LstLineaProductos::dirAnterior(int _idLineaProducto)
 {
 	return NULL;
 }
-NLineaProducto *LstLineaProductos::dirUltimo(int _idProducto)
+NLineaProducto *LstLineaProductos::dirUltimo(int _idLineaProducto)
 {
 	NLineaProducto *aux = getCab();
 	do
@@ -106,15 +106,15 @@ bool LstLineaProductos::agregar(LineaProducto *_lineaProducto)
 	}
 	else
 	{
-		int id = _lineaProducto->getIdProducto();
+		int id = _lineaProducto->getIdLineaProducto();
 		NLineaProducto *primero = getCab();
 		NLineaProducto *ultimo = getCab()->getAnte();
 
-		if (id < primero->getLineaProducto()->getIdProducto() || id > ultimo->getLineaProducto()->getIdProducto())
+		if (id < primero->getLineaProducto()->getIdLineaProducto() || id > ultimo->getLineaProducto()->getIdLineaProducto())
 		{
-			if (id < primero->getLineaProducto()->getIdProducto())
+			if (id < primero->getLineaProducto()->getIdLineaProducto())
 				agregarNodoAntesDe(nuevo, primero);
-			if (id > ultimo->getLineaProducto()->getIdProducto())
+			if (id > ultimo->getLineaProducto()->getIdLineaProducto())
 				agregarNodoDespuesDe(nuevo, ultimo);
 		}
 		else
@@ -123,13 +123,13 @@ bool LstLineaProductos::agregar(LineaProducto *_lineaProducto)
 
 			do
 			{
-				if (id == aux->getLineaProducto()->getIdProducto())
+				if (id == aux->getLineaProducto()->getIdLineaProducto())
 				{
 					//cout << "Ya existe el id " << id << " en registro!" << endl;
 					return false;
 				}
 
-				if (id < aux->getSgte()->getLineaProducto()->getIdProducto())
+				if (id < aux->getSgte()->getLineaProducto()->getIdLineaProducto())
 				{
 					agregarNodoAntesDe(nuevo, aux->getSgte());
 					return true;
@@ -144,13 +144,13 @@ bool LstLineaProductos::agregar(LineaProducto *_lineaProducto)
 	} // end Principal else
 	return true;
 }  // end método agregar ascendente!
-bool LstLineaProductos::modificar(int _idProducto, LineaProducto *_lineaProducto)
+bool LstLineaProductos::modificar(int _idLineaProducto, LineaProducto *_lineaProducto)
 {
 	if (vacia())
 		return false;
 	else
 	{
-		NLineaProducto *aux = dirNodo(_idProducto);
+		NLineaProducto *aux = dirNodo(_idLineaProducto);
 		if (aux != NULL)
 		{
 			aux->setLineaProducto(_lineaProducto);
@@ -162,13 +162,13 @@ bool LstLineaProductos::modificar(int _idProducto, LineaProducto *_lineaProducto
 	}
 	return true;
 }
-bool LstLineaProductos::eliminar(int _idProdcuto)
+bool LstLineaProductos::eliminar(int _idLineaProducto)
 {
 	if (vacia())
 		return false;
 	else
 	{
-		NLineaProducto *aux = dirNodo(_idProdcuto);
+		NLineaProducto *aux = dirNodo(_idLineaProducto);
 		if (aux != NULL)
 		{
 			if (getSize() == 1)
@@ -236,9 +236,9 @@ bool LstLineaProductos::eliminarTodos()
 	}
 	return true;
 }
-LineaProducto *LstLineaProductos::buscar(int _idProducto)
+LineaProducto *LstLineaProductos::buscar(int _idLineaProducto)
 {
-	NLineaProducto *aux = dirNodo(_idProducto);
+	NLineaProducto *aux = dirNodo(_idLineaProducto);
 	if (aux == NULL)
 		return NULL;
 	else
@@ -257,7 +257,7 @@ void LstLineaProductos::desplegar()
 		cout << "-----------------------------------" << endl;
 		do
 		{
-			cout << "ID: " << aux->getLineaProducto()->getIdProducto() << endl;
+			cout << "ID: " << aux->getLineaProducto()->getIdLineaProducto() << endl;
 			cout << "Descripcion: " << aux->getLineaProducto()->getDescripcion() << endl;
 			cout << "-----------------------------------"<< endl;
 

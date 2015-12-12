@@ -33,11 +33,11 @@ void LstAlmacenes::setSize(int _size)
 }
 
 //Miscelaneos Privados
-NAlmacen * LstAlmacenes::dirNodo(int _id)
+NAlmacen * LstAlmacenes::dirNodo(int _idAlmacen)
 {
 	NAlmacen * aux = getCab();
 
-	while ((aux != NULL) && (aux->getAlmacen()->getId() != _id))
+	while ((aux != NULL) && (aux->getAlmacen()->getIdAlmacen() != _idAlmacen))
 	{
 		aux = aux->getSgte();
 	}
@@ -61,9 +61,9 @@ NAlmacen * LstAlmacenes::dirUltimo()
 	}
 }
 
-NAlmacen * LstAlmacenes::dirAnterior(int _id)
+NAlmacen * LstAlmacenes::dirAnterior(int _idAlmacen)
 {
-	NAlmacen * aux = dirNodo(_id);
+	NAlmacen * aux = dirNodo(_idAlmacen);
 	if (aux != NULL)
 	{
 		return aux->getAnte();
@@ -114,7 +114,7 @@ void LstAlmacenes::agregaNAlmacenDespuesDe(NAlmacen * _ref, NAlmacen * _nuevo)
 //Agregar
 bool LstAlmacenes::agregaAsc(Almacen * _almacen)
 {
-	int id = _almacen->getId();
+	int id = _almacen->getIdAlmacen();
 	if (vacia())
 	{
 		NAlmacen * nuevo = new NAlmacen(_almacen);
@@ -127,14 +127,14 @@ bool LstAlmacenes::agregaAsc(Almacen * _almacen)
 		NAlmacen * aux = getCab();
 		while (aux != NULL)
 		{
-			if (aux->getAlmacen()->getId() == id)
+			if (aux->getAlmacen()->getIdAlmacen() == id)
 			{
 				return false;
 			}
 			else
 			{
 				NAlmacen * nuevo = new NAlmacen(_almacen);
-				if (((aux->getSgte() != NULL) && (aux->getSgte()->getAlmacen()->getId() > id)) || (aux->getSgte() == NULL))
+				if (((aux->getSgte() != NULL) && (aux->getSgte()->getAlmacen()->getIdAlmacen() > id)) || (aux->getSgte() == NULL))
 				{
 					agregaNAlmacenDespuesDe(aux, nuevo);
 					setSize(getSize() + 1);
@@ -150,9 +150,9 @@ bool LstAlmacenes::agregaAsc(Almacen * _almacen)
 }
 
 //Eliminar
-bool LstAlmacenes::eliminar(int _id)
+bool LstAlmacenes::eliminar(int _idAlmacen)
 {
-	NAlmacen * aux = dirNodo(_id);
+	NAlmacen * aux = dirNodo(_idAlmacen);
 	if (aux == NULL)
 	{
 		return false;
@@ -209,7 +209,7 @@ bool LstAlmacenes::modificarAlmacen(int _id, Almacen * _almacen)
 	}
 	else
 	{
-		aux->getAlmacen()->setId(_almacen->getId());
+		aux->getAlmacen()->setIdAlmacen(_almacen->getIdAlmacen());
 		aux->getAlmacen()->setUbicaion(_almacen->getUbicacion());
 		return true;
 	}
@@ -230,7 +230,7 @@ void LstAlmacenes::desplegarLista()
 		while (aux != NULL)
 		{
 			cout << "Almacen #" << i << ": " << endl;
-			cout << "Id: " << aux->getAlmacen()->getId() << endl;
+			cout << "Id: " << aux->getAlmacen()->getIdAlmacen() << endl;
 			cout << "Ubicacion: " << aux->getAlmacen()->getUbicacion() << endl;
 			cout << "============================================" << endl;
 

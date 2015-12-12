@@ -3,7 +3,7 @@
 
 Almacen::Almacen()
 {
-	setId(0);
+	setIdAlmacen(0);
 	setUbicaion("---");
 }
 
@@ -14,18 +14,18 @@ Almacen::~Almacen()
 
 Almacen::Almacen(int _id, char * _ubicacion)
 {
-	setId(_id);
+	setIdAlmacen(_id);
 	setUbicaion(_ubicacion);
 }
 
-int Almacen::getId()
+int Almacen::getIdAlmacen()
 {
-	return this->id;
+	return this->idAlmacen;
 }
 
-void Almacen::setId(int _id)
+void Almacen::setIdAlmacen(int _idAlmacen)
 {
-	this->id = _id;
+	this->idAlmacen = _idAlmacen;
 }
 
 char * Almacen::getUbicacion()

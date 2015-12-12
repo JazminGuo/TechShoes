@@ -17,9 +17,9 @@ Producto::~Producto()
 {
 }
 
-Producto::Producto(int _id, char * _descripcion, double _talla, double _precio)
+Producto::Producto(int _idProducto, char * _descripcion, double _talla, double _precio)
 {
-	setIdProducto(_id);
+	setIdProducto(_idProducto);
 	setDescripcion(_descripcion);
 	setTalla(_talla);
 	setPrecio(_precio);

@@ -4,7 +4,7 @@
 class Factura
 {
 private:
-	int id;
+	int idFactura;
 	char fecha[30];
 	char cliente[30];
 
@@ -14,8 +14,8 @@ public:
 
 	Factura(int, char *, char *);
 
-	int getId();
-	void setId(int);
+	int getIdFactura();
+	void setIdFactura(int);
 
 	char * getFecha();
 	void setFecha(char *);

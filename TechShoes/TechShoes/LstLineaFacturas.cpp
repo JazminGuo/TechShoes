@@ -37,21 +37,21 @@ bool LstLineaFacturas::vacia()
 }
 
 // Métodos Privados
-NLineaFactura *LstLineaFacturas::dirNodo(int _idFactura)
+NLineaFactura *LstLineaFacturas::dirNodo(int _idLineaFactura)
 {
 	NLineaFactura *aux = getCab();
 	while (aux != NULL)
 	{
-		if (_idFactura == aux->getLineaFactura()->getIdLineaFactura())
+		if (_idLineaFactura == aux->getLineaFactura()->getIdLineaFactura())
 			return aux;
 		else
 			aux = aux->getSgte();
 	}
 	return NULL;
 }
-NLineaFactura *LstLineaFacturas::dirAnterior(int _idFactura)
+NLineaFactura *LstLineaFacturas::dirAnterior(int _idLineaFactura)
 {
-	NLineaFactura *aux = dirNodo(_idFactura);
+	NLineaFactura *aux = dirNodo(_idLineaFactura);
 	if (aux != NULL)
 	{
 		if (aux == getCab())
@@ -62,7 +62,7 @@ NLineaFactura *LstLineaFacturas::dirAnterior(int _idFactura)
 	else
 		return NULL;
 }
-NLineaFactura *LstLineaFacturas::dirUltimo(int _idFactura)
+NLineaFactura *LstLineaFacturas::dirUltimo(int _idLineaFactura)
 {
 	NLineaFactura *aux = getCab();
 	while (aux != NULL)

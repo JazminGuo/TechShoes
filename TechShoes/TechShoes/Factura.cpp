@@ -4,7 +4,7 @@
 
 Factura::Factura()
 {
-	setId(0);
+	setIdFactura(0);
 	setFecha("--/--/--");
 	setCliente("----");
 }
@@ -14,21 +14,21 @@ Factura::~Factura()
 {
 }
 
-Factura::Factura(int _id, char * _fecha, char * _cliente)
+Factura::Factura(int _idFactura, char * _fecha, char * _cliente)
 {
-	setId(_id);
+	setIdFactura(_idFactura);
 	setFecha(_fecha);
 	setCliente(_cliente);
 }
 
-int Factura::getId()
+int Factura::getIdFactura()
 {
-	return this->id;
+	return this->idFactura;
 }
 
-void Factura::setId(int _id)
+void Factura::setIdFactura(int _idFactura)
 {
-	this->id = _id;
+	this->idFactura = _idFactura;
 }
 
 char * Factura::getFecha()
