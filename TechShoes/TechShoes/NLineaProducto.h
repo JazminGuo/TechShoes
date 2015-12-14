@@ -4,7 +4,7 @@
 class NLineaProducto
 {
 private:
-	LineaProducto *lineaProducto;    // Info
+	LineaProducto * lineaProducto;    // Info
 	LstSubLineaProductos * lstSubLineaProductos;
 	NLineaProducto *sgte;
 	NLineaProducto *ante;
