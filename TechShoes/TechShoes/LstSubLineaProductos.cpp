@@ -243,6 +243,7 @@ SubLineaProducto *LstSubLineaProductos::buscar(int _idSubLinea)
 		return NULL;
 	return NULL;
 }
+
 void LstSubLineaProductos::desplegar()
 {
 	NSubLineaProducto *aux = getCab();
@@ -263,4 +264,70 @@ void LstSubLineaProductos::desplegar()
 			aux = aux->getSgte();
 	    }
     }	
+}
+
+// * Metodos de Listas de Listas *//
+int LstSubLineaProductos::agregarProducto(int _idSubLinea, Producto * _Producto)
+{
+	/*Este metodo agrega a _subLineaProducto en la Linea _idLineaProducto.
+	El metodo devuelve:
+	1. Si el se inserto correctamente.
+	2. No se inserto por que el curso no existe
+	3.No se inserto por que el estudiante ya existe
+	*/
+
+	NSubLineaProducto * aux = dirNodo(_idSubLinea);
+
+	if (aux == NULL)
+	{
+		return 2;
+	}
+	else
+	{
+		if (aux->getLstProductos()->agregar(_Producto))
+		{
+			return 1;
+		}
+		else
+		{
+			return 3;
+		}
+	}
+}
+
+int LstSubLineaProductos::elimniarProducto(int _idSubLinea, int _idProducto)
+{
+	NSubLineaProducto * aux = dirNodo(_idSubLinea);
+
+	if (aux == NULL)
+	{
+		return 2;
+	}
+	else
+	{
+		if (aux->getLstProductos()->eliminar(_idProducto))
+		{
+			return 1;
+		}
+		else
+		{
+			return 3;
+		}
+	}
+}
+
+void LstSubLineaProductos::productosDeSubLinea(int _idSubLineaProducto)
+{
+	NSubLineaProducto * aux = dirNodo(_idSubLineaProducto);
+
+	cout << "=======================================================" << endl;
+	cout << "Curso: " << aux->getSubLineaProducto()->getIdSubLinea << endl;
+	cout << "Curso: " << aux->getSubLineaProducto->getDescripcion() << endl;
+
+	aux->getLstProductos()->desplegarLista();
+}
+
+void LstSubLineaProductos::desplegarSubLineas_Productos()
+{
+
 }

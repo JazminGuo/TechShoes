@@ -31,5 +31,11 @@ public:
 	bool eliminarTodos();
 	LineaProducto *buscar(int);
 	void desplegar();
+
+	// * Metodos de Listas de Listas *//
+	int agregarSubLinea(int, SubLineaProducto *);
+	int elimniarSubLinea(int, int);
+	void subLineasDeLinea(int);
+	void desplegarLineas_SubLineas();
 };
 

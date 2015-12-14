@@ -2158,6 +2158,11 @@ void menuPrincipalAB(LstAlmacenes * listaAlmacenes, LstInventario * listaInventa
 
 }
 
+void MenuLineas()
+{
+
+}
+
 int main()
 {
 	//listasMenu();

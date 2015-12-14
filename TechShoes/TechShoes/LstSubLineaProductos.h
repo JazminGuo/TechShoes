@@ -33,5 +33,11 @@ public:
 	SubLineaProducto *buscar(int);
 	void desplegar();
 
+	// * Metodos de Listas de Listas *//
+	int agregarProducto(int, Producto *);
+	int elimniarProducto(int, int);
+	void productosDeSubLinea(int);
+	void desplegarSubLineas_Productos();
+
 };
 

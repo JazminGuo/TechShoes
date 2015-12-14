@@ -97,7 +97,7 @@ void LstProductos::agregaNProductoDespuesDe(NProducto * _ref, NProducto * _nuevo
 
 //Operraciones de Listas
 //Agregar
-bool LstProductos::agregaAsc(Producto * _producto)
+bool LstProductos::agregar(Producto * _producto)
 {
 	// Devuleve true si se puede insertar
 	//Devuelve false si no se inserto el estudiante ya esta en la lista

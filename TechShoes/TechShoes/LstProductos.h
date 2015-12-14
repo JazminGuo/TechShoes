@@ -26,7 +26,7 @@ public:
 
 	//Operraciones de Listas
 	//Agregar
-	bool agregaAsc(Producto *);
+	bool agregar(Producto *);
 
 	//Eliminar
 	bool eliminar(int);
