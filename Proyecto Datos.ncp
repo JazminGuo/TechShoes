@@ -9,7 +9,7 @@
         <Access>Public</Access>
         <Location left="2187" top="2581" />
         <Size width="548" height="332" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">int id</Member>
         <Member type="Field">char[ ] descripcion</Member>
         <Member type="Field">double talla</Member>
@@ -32,7 +32,7 @@
         <Access>Public</Access>
         <Location left="2869" top="2581" />
         <Size width="437" height="293" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">Producto producto</Member>
         <Member type="Field">NodoProducto sgte</Member>
         <Member type="Field">NodoProducto ante</Member>
@@ -52,7 +52,7 @@
         <Access>Public</Access>
         <Location left="3430" top="2581" />
         <Size width="447" height="400" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">NodoProducto cab</Member>
         <Member type="Field">int size</Member>
         <Member type="Constructor">public LstProductos()</Member>
@@ -79,7 +79,7 @@
         <Access>Public</Access>
         <Location left="10" top="719" />
         <Size width="293" height="299" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">int id</Member>
         <Member type="Field">char[ ] fecha</Member>
         <Member type="Field">char[ ] cliente</Member>
@@ -99,7 +99,7 @@
         <Access>Public</Access>
         <Location left="514" top="719" />
         <Size width="396" height="332" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">Producto producto</Member>
         <Member type="Field">NodoFactura sgte</Member>
         <Member type="Field">NodoFactura ante</Member>
@@ -122,7 +122,7 @@
         <Access>Public</Access>
         <Location left="999" top="719" />
         <Size width="514" height="451" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">NodoFactura cab</Member>
         <Member type="Field">int size</Member>
         <Member type="Constructor">public LstFacturas()</Member>
@@ -152,7 +152,7 @@
         <Access>Public</Access>
         <Location left="2324" top="145" />
         <Size width="246" height="256" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">int id</Member>
         <Member type="Field">char [ ] ubicacion</Member>
         <Member type="Constructor">public Almacen()</Member>
@@ -234,7 +234,7 @@
         <Access>Public</Access>
         <Location left="3754" top="734" />
         <Size width="364" height="281" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">int codAlmacen</Member>
         <Member type="Field">int codArticulo</Member>
         <Member type="Field">int existencia</Member>
@@ -254,7 +254,7 @@
         <Access>Public</Access>
         <Location left="4282" top="734" />
         <Size width="315" height="332" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">Inventario inventario</Member>
         <Member type="Field">NodoInventario sgte</Member>
         <Member type="Field">NodoInventario ante</Member>
@@ -277,7 +277,7 @@
         <Access>Public</Access>
         <Location left="4812" top="734" />
         <Size width="451" height="451" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">NodoInventario cab</Member>
         <Member type="Field">int size</Member>
         <Member type="Constructor">public LstInventarios()</Member>
@@ -307,7 +307,7 @@
         <Access>Public</Access>
         <Location left="2074" top="1581" />
         <Size width="282" height="247" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">int idProducto</Member>
         <Member type="Field">char descripcion</Member>
         <Member type="Constructor">public LineaProducto()</Member>
@@ -325,7 +325,7 @@
         <Access>Public</Access>
         <Location left="2517" top="1581" />
         <Size width="446" height="281" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">LineaProdcuto lineaProdcuto</Member>
         <Member type="Field">nodoLineaProdcuto sgte</Member>
         <Member type="Field">LstSubLineaProductos listaSubLineaProductos</Member>
@@ -345,7 +345,7 @@
         <Access>Public</Access>
         <Location left="3078" top="1581" />
         <Size width="554" height="417" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">NodoLineaProducto cab</Member>
         <Member type="Field">int size</Member>
         <Member type="Constructor">public LstLineaProductos()</Member>
@@ -373,7 +373,7 @@
         <Access>Public</Access>
         <Location left="2065" top="2102" />
         <Size width="368" height="281" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">int idSubLinea</Member>
         <Member type="Field">char descripcion</Member>
         <Member type="Field">int idLinea</Member>
@@ -393,7 +393,7 @@
         <Access>Public</Access>
         <Location left="2553" top="2102" />
         <Size width="372" height="332" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">SubLineaProducto subLineaProducto</Member>
         <Member type="Field">NodoSubLineaProducot sgte</Member>
         <Member type="Field">NodoSubLineaProducto ante</Member>
@@ -416,7 +416,7 @@
         <Access>Public</Access>
         <Location left="3089" top="2102" />
         <Size width="592" height="400" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">NodoSubLineaProducto cab</Member>
         <Member type="Field">int size</Member>
         <Member type="Constructor">public LstSubLineaProductos()</Member>
@@ -443,7 +443,7 @@
         <Access>Public</Access>
         <Location left="10" top="1338" />
         <Size width="291" height="281" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">int numero</Member>
         <Member type="Field">char codigoProducto</Member>
         <Member type="Field">int cantidadVendida</Member>
@@ -513,7 +513,7 @@
         <Access>Public</Access>
         <Location left="1747" top="696" />
         <Size width="286" height="216" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">int idProducto</Member>
         <Member type="Field">int cantidadProducto</Member>
         <Member type="Constructor">public Entrada()</Member>
@@ -529,7 +529,7 @@
         <Access>Public</Access>
         <Location left="2161" top="670" />
         <Size width="360" height="315" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">Entrada entrada</Member>
         <Member type="Field">NodoEntrada sgte</Member>
         <Member type="Field">NodoEntrada ante</Member>
@@ -551,7 +551,7 @@
         <Access>Public</Access>
         <Location left="2749" top="740" />
         <Size width="458" height="400" />
-        <Collapsed>True</Collapsed>
+        <Collapsed>False</Collapsed>
         <Member type="Field">NodoEntrada cab</Member>
         <Member type="Field">int size</Member>
         <Member type="Constructor">public LstEntradas()</Member>
