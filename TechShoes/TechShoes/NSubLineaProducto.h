@@ -4,10 +4,10 @@
 class NSubLineaProducto
 {
 private:
-	SubLineaProducto *subLineaProducto;
+	SubLineaProducto * subLineaProducto;
 	LstProductos * lstProductos;
-	NSubLineaProducto *sgte;
-	NSubLineaProducto *ante;
+	NSubLineaProducto * sgte;
+	NSubLineaProducto * ante;
 public:
 	NSubLineaProducto();
 	~NSubLineaProducto();
