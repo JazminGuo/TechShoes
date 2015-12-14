@@ -36,5 +36,22 @@ public:
 	Almacen * obtenerAlmacen(int);
 	bool modificarAlmacen(int, Almacen *);
 	void desplegarLista();
+
+	/*------------------------------------ MULTILISTA: Lista de Listas ----------------------------------*/
+
+	// Operaciones Almacen Con Inventarios
+	int agregarUnInventarioEnUnAlmacen(int, Inventario *);
+	void desplegarTodosInventariosDeUnAlmacen(int);
+	void desplegarTodosInventariosDeTodosAlmacenes();
+
+	// Operaciones Almacen Con Entradas
+	int agregarUnaEntradaEnUnAlmacen(int, Entrada *);
+	int anularUnaEntradaDeUnAlmacen(int, int);
+	void desplegarTodosEntradasDeUnAlmacen(int);
+
+	// Operaciones Almacen Con Facturas
+	int agregarUnaFacturaEnUnAlmacen(int, Factura *);
+	int anularUnaFacturaDeUnAlmacen(int, int);
+	void desplegarTodosFacturasDeUnAlmacen(int);
 };
 

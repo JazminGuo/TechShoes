@@ -243,3 +243,140 @@ void LstAlmacenes::desplegarLista()
 	system("pause");
 	system("cls");
 }
+
+
+/*------------------------------------ MULTILISTA: Lista de Listas ----------------------------------*/
+
+// Operaciones Almacen Con Inventarios
+int LstAlmacenes::agregarUnInventarioEnUnAlmacen(int _idAlmacen, Inventario *_inventario)
+{
+	/*	    1. Se inserto exitosamente
+	2. No se inserto porque el Almacen no existe
+	3. No se insertó porque el Inventario ya existe, ya fue matriculado
+	*/
+	NAlmacen *aux = dirNodo(_idAlmacen);
+
+	if (aux == NULL)
+		return 2;
+	else
+	{
+		if (aux->getListaInventarios()->agregaAsc(_inventario))
+			return 1;
+		else
+			return 3;
+
+	}
+	return 0;
+}
+void LstAlmacenes::desplegarTodosInventariosDeUnAlmacen(int _idAlmacen)
+{
+	NAlmacen *aux = dirNodo(_idAlmacen);
+	bool existe = false;
+	if (aux != NULL)
+	{
+		cout << endl;
+		cout << "***********************************************" << endl;
+		cout << "ID Almacen: " << aux->getAlmacen()->getIdAlmacen() << endl;
+		cout << "====================================" << endl;
+		cout << "Ubicacion: " << aux->getAlmacen()->getUbicacion() << endl;
+		cout << "====================================" << endl;
+		cout << "Inventarios en el Almacen: " << endl;
+		cout << "====================================" << endl;
+		aux->getListaInventarios()->desplegarLista();
+		cout << "*********************************************" << endl;
+	}
+	else
+		existe;
+}
+void LstAlmacenes::desplegarTodosInventariosDeTodosAlmacenes()
+{
+	NAlmacen *aux = getCab();
+	bool existe = false;
+	if (aux == NULL)
+		cout << "La Estructura de Almacen esta vacia!" << endl;
+	else
+	{
+
+		while (aux != NULL)
+		{
+			cout << endl;
+			//cout << "***********************************************" << endl;
+			cout << "ID Almacen: " << aux->getAlmacen()->getIdAlmacen() << endl;
+			cout << "====================================" << endl;
+			cout << "Ubicacion: " << aux->getAlmacen()->getUbicacion() << endl;
+			cout << "====================================" << endl;
+			cout << "Inventarios en el Almacen: " << endl;
+			cout << "====================================" << endl;
+			aux->getListaInventarios()->desplegarLista();
+			cout << "***********************************************************************" << endl;
+			aux = aux->getSgte();
+		}
+		system("pause");
+	}
+}
+
+//// Operaciones Almacen Con Entradas
+//int agregarUnaEntradaEnUnAlmacen(int _idAlmacen, Entrada *_entrada);
+//int anularUnaEntradaDeUnAlmacen(int _idAlmacen, int _idEntrada);
+//void desplegarTodosEntradasDeUnAlmacen();
+
+// Operaciones Almacen Con Facturas
+int LstAlmacenes::agregarUnaFacturaEnUnAlmacen(int _idAlmacen, Factura *_factura)
+{
+	/*	    1. Se inserto exitosamente
+	2. No se inserto porque el Almacen no existe
+	3. No se insertó porque el Inventario ya existe, ya fue matriculado
+	*/
+	NAlmacen *aux = dirNodo(_idAlmacen);
+
+	if (aux == NULL)
+		return 2;
+	else
+	{
+		if (aux->getListaFacturas()->agregaAsc(_factura))
+			return 1;
+		else
+			return 3;
+
+	}
+	return 0;
+}
+int LstAlmacenes::anularUnaFacturaDeUnAlmacen(int _idAlmacen, int _idFactura)
+{
+	/*	    1. Se eliminó exitosamente
+	2. No se eliminó porque el Almacen no existe
+	3. No se eliminó porque el Inventario NO existe
+	*/
+	NAlmacen *aux = dirNodo(_idAlmacen); // Buscando Alamacen
+
+	if (aux == NULL)
+		return 2;
+	else
+	{
+		if (aux->getListaFacturas()->eliminar(_idFactura))
+			return 1;
+
+		else
+			return 3;
+	}
+}
+void LstAlmacenes::desplegarTodosFacturasDeUnAlmacen(int _idAlmacen)
+{
+	NAlmacen *aux = dirNodo(_idAlmacen);
+	bool existe = false;
+	if (aux != NULL)
+	{
+		cout << endl;
+		cout << "***********************************************" << endl;
+		cout << "ID Almacen: " << aux->getAlmacen()->getIdAlmacen() << endl;
+		cout << "====================================" << endl;
+		cout << "Ubicacion: " << aux->getAlmacen()->getUbicacion() << endl;
+		cout << "====================================" << endl;
+		cout << "Facturas en el Almacen: " << endl;
+		cout << "====================================" << endl;
+		aux->getListaFacturas()->desplegarLista();
+		cout << "*********************************************" << endl;
+	}
+	else
+		existe;
+}
