@@ -253,6 +253,6 @@ void LstInventario::desplegarLista()
 		} while (aux != getCab());
 		cout << endl << "Fin de la Lista" << endl;
 	}
-	system("pause");
-	system("cls");
+	//system("pause");
+	//system("cls");
 }

@@ -311,7 +311,7 @@ void LstAlmacenes::desplegarTodosInventariosDeTodosAlmacenes()
 			cout << "***********************************************************************" << endl;
 			aux = aux->getSgte();
 		}
-		system("pause");
+		//system("pause");
 	}
 }
 

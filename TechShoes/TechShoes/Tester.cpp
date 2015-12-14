@@ -1865,17 +1865,17 @@ void menuAlmacen_Factura(LstAlmacenes * listaAlmacenes, LstFacturas * listaFactu
 			{
 			case 1:
 			{
-				cout << endl; cout << "Se Inserto el Nuevo Inventario en Almacen " << idAlmacenRef << " Correctamente!" << endl;
+				cout << endl; cout << "Se Inserto el Nuevo Factura en Almacen " << idAlmacenRef << " Correctamente!" << endl;
 				break;
 			}
 			case 2:
 			{
-				cout << endl; cout << "NO se Inserto el Nuevo Inventario,  porque NO EXISTE Almacen " << idAlmacenRef << " !" << endl;
+				cout << endl; cout << "NO se Inserto el Nuevo Factura,  porque NO EXISTE Almacen " << idAlmacenRef << " !" << endl;
 				break;
 			}
 			case 3:
 			{
-				cout << endl; cout << "NO se Inserto el Nuevo Inventario,  porque YA EXISTE !" << endl;
+				cout << endl; cout << "NO se Inserto el Nuevo Factura,  porque YA EXISTE !" << endl;
 				break;
 			}
 			}
