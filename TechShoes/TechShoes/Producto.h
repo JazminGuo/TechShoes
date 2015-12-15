@@ -7,14 +7,14 @@ private:
 	char descripcion[30];
 	double talla;
 	double precio;
-	//char linea[30];
-	//char subLinea[30];
+	int linea;
+	int subLinea;
 
 public:
 	Producto();
 	~Producto();
 
-	Producto(int, char *, double, double);
+	Producto(int, char *, double, double, int, int);
 
 	int getIdProducto();
 	void setIdProducto(int);
@@ -28,13 +28,10 @@ public:
 	double getPrecio();
 	void setPrecio(double);
 
+	int getLinea();
+	void setLinea(int);
 
-	/*
-	char * getLinea();
-	void setLinea(char *);
-
-	char * getSubLinea();
-	void setSubLinea(char *);
-	*/
+	int getSubLinea();
+	void setSubLinea(int);
 };
 

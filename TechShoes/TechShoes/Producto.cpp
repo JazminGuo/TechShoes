@@ -8,23 +8,22 @@ Producto::Producto()
 	setDescripcion("-----");
 	setTalla(0.0);
 	setPrecio(0.0);
-	//setLinea("-----");
-	//setSublinea("-----");
+	setLinea(0);
+	setSubLinea(0);
 }
-
 
 Producto::~Producto()
 {
 }
 
-Producto::Producto(int _idProducto, char * _descripcion, double _talla, double _precio)
+Producto::Producto(int _idProducto, char * _descripcion, double _talla, double _precio, int _linea, int _subLinea)
 {
 	setIdProducto(_idProducto);
 	setDescripcion(_descripcion);
 	setTalla(_talla);
 	setPrecio(_precio);
-	//setLinea(_linea);
-	//setSublinea(_subLinea);
+	setLinea(_linea);
+	setSubLinea(_subLinea);
 }
 
 int Producto::getIdProducto()
@@ -67,24 +66,23 @@ void Producto::setPrecio(double _precio)
 	this->precio = _precio;
 }
 
-/*
-char * Producto::getLinea()
+
+int Producto::getLinea()
 {
 	return this->linea;
 }
 
-void Producto::setLinea(char * _linea)
+void Producto::setLinea(int _linea)
 {
-	strcpy_s(this->linea, _linea);
+	this->linea = _linea;
 }
 
-char * Producto::getSubLinea()
+int Producto::getSubLinea()
 {
 	return this->subLinea;
 }
 
-void Producto::setSubLinea(char * _subLinea)
+void Producto::setSubLinea(int _subLinea)
 {
-	strcpy_s(this->subLinea, _subLinea);
+	this->subLinea = _subLinea;
 }
-*/

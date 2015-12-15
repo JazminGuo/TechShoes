@@ -33,7 +33,7 @@ public:
 
 	//Miscelaneos
 	bool vacia();
-	Producto * obtenerProducto(int);
+	Producto * buscar(int);
 	bool modificarProducto(int, Producto *);
 	void desplegarLista();
 };

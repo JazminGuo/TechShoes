@@ -196,7 +196,7 @@ bool LstProductos::vacia()
 	return getCab() == NULL;
 }
 
-Producto * LstProductos::obtenerProducto(int _idProducto)
+Producto * LstProductos::buscar(int _idProducto)
 {
 	NProducto * aux = dirNodo(_idProducto);
 

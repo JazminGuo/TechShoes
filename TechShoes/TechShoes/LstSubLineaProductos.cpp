@@ -158,7 +158,7 @@ bool LstSubLineaProductos::modificar(int _idSubLinea, SubLineaProducto *_subLine
 		return false;
 	else
 	{
-		NSubLineaProducto *aux = dirNodo(_idSubLinea);
+		NSubLineaProducto * aux = dirNodo(_idSubLinea);
 		if (aux != NULL)
 		{
 			aux->setSubLineaProducto(_subLineaProducto);
@@ -169,6 +169,7 @@ bool LstSubLineaProductos::modificar(int _idSubLinea, SubLineaProducto *_subLine
 	}
 	return true;
 }
+
 bool LstSubLineaProductos::eliminar(int _idSubLinea)
 {
 	NSubLineaProducto *aux1 = dirAnterior(_idSubLinea);
@@ -244,6 +245,8 @@ SubLineaProducto *LstSubLineaProductos::buscar(int _idSubLinea)
 	return NULL;
 }
 
+
+
 void LstSubLineaProductos::desplegar()
 {
 	NSubLineaProducto *aux = getCab();
@@ -316,18 +319,74 @@ int LstSubLineaProductos::elimniarProducto(int _idSubLinea, int _idProducto)
 	}
 }
 
-void LstSubLineaProductos::productosDeSubLinea(int _idSubLineaProducto)
+Producto * LstSubLineaProductos::buscarProducto(int _idSubLinea, int _idProducto)
+{
+	NSubLineaProducto * aux = dirNodo(_idSubLinea);
+
+	if (aux == NULL)
+	{
+		cout << "La Sublinea que esta bucando no existe" << endl;
+	}
+	else
+	{
+		Producto * _producto = aux->getLstProductos()->buscar(_idProducto);
+
+		if (_producto == NULL)
+		{
+			cout << "El Producto que esta buscando no existe" << endl;
+		}
+		else
+		{
+			cout << "======================Producto========================" << endl;
+			cout << "Id: " << _producto->getIdProducto() << endl;
+			cout << "Descripcion: " << _producto->getDescripcion() << endl;
+			cout << "Talla: " << _producto->getTalla() << endl;
+			cout << "Id: " << _producto->getPrecio() << endl;
+			cout << "Linea: " << _producto->getLinea() << endl;
+			cout << "Sublinea: " << _producto->getSubLinea() << endl;
+			cout << "======================================================" << endl;
+
+			return _producto;
+		}
+	}
+}
+
+void LstSubLineaProductos::desplegarProductosDeSubLinea(int _idSubLineaProducto)
 {
 	NSubLineaProducto * aux = dirNodo(_idSubLineaProducto);
 
 	cout << "=======================================================" << endl;
-	cout << "Curso: " << aux->getSubLineaProducto()->getIdSubLinea << endl;
-	cout << "Curso: " << aux->getSubLineaProducto->getDescripcion() << endl;
+	cout << "ID: " << aux->getSubLineaProducto()->getIdSubLinea() << endl;
+	cout << "Descripcion: " << aux->getSubLineaProducto()->getDescripcion() << endl;
 
 	aux->getLstProductos()->desplegarLista();
 }
 
-void LstSubLineaProductos::desplegarSubLineas_Productos()
+void LstSubLineaProductos::desplegarSubLineasConProductos()
 {
+	//Desplegar los datos de cada uno de los cursos y cada uno de sus estudiantes.
+	if (vacia())
+	{
+		cout << "La lista esta vacia" << endl;
+	}
+	else
+	{
+		NSubLineaProducto * aux = getCab();
+		int i = 1;
+		cout << "============================================" << endl;
+		while (aux != NULL)
+		{
+			cout << "Sublinea #" << i << ": " << endl;
+			cout << "ID: " << aux->getSubLineaProducto()->getIdSubLinea() << endl;
+			cout << "Descripcion: " << aux->getSubLineaProducto()->getDescripcion() << endl;
+			cout << "Linea: " << aux->getSubLineaProducto()->getIdLinea() << endl;
+			cout << "============================================" << endl;
+			aux->getLstProductos()->desplegarLista();
 
+			aux = aux->getSgte();
+			i++;
+		}
+		cout << endl << "Fin de la Lista" << endl;
+	}
+	system("pause");
 }

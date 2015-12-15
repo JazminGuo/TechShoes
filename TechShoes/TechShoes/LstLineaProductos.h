@@ -23,7 +23,6 @@ public:
 	void setSize(int);
 
 	// Métodos Publicos
-
 	bool vacia();
 	bool agregar(LineaProducto *);
 	bool modificar(int, LineaProducto *);
@@ -32,10 +31,18 @@ public:
 	LineaProducto *buscar(int);
 	void desplegar();
 
-	// * Metodos de Listas de Listas *//
+	// * Metodos de Listas de Listas  SubLinea*//
 	int agregarSubLinea(int, SubLineaProducto *);
 	int elimniarSubLinea(int, int);
-	void subLineasDeLinea(int);
-	void desplegarLineas_SubLineas();
+	SubLineaProducto * buscarSublinea(int, int);
+	void desplegarSubLineasDeLinea(int);
+	void desplegarLineasConSubLineas();
+
+	// * Metodos de Listas de Listas  Producto*//
+	int agregarProducto(int, int, Producto *);
+	int elimniarProducto(int, int, int);
+	Producto * buscarProducto(int, int, int);
+	void desplegarProductosDeSubLinea(int, int);
+	void desplegarSubLineasConProductos(int);
 };
 

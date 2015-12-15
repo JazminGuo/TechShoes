@@ -30,14 +30,14 @@ public:
 	bool modificar(int, SubLineaProducto *);
 	bool eliminar(int);
 	bool eliminarTodos();
-	SubLineaProducto *buscar(int);
+	SubLineaProducto * buscar(int);
 	void desplegar();
 
 	// * Metodos de Listas de Listas *//
 	int agregarProducto(int, Producto *);
 	int elimniarProducto(int, int);
-	void productosDeSubLinea(int);
-	void desplegarSubLineas_Productos();
-
+	Producto * buscarProducto(int, int);
+	void desplegarProductosDeSubLinea(int);
+	void desplegarSubLineasConProductos();
 };
 

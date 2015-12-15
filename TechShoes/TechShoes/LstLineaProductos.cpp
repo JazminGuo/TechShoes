@@ -144,6 +144,7 @@ bool LstLineaProductos::agregar(LineaProducto *_lineaProducto)
 	} // end Principal else
 	return true;
 }  // end método agregar ascendente!
+
 bool LstLineaProductos::modificar(int _idLineaProducto, LineaProducto *_lineaProducto)
 {
 	if (vacia())
@@ -162,6 +163,7 @@ bool LstLineaProductos::modificar(int _idLineaProducto, LineaProducto *_lineaPro
 	}
 	return true;
 }
+
 bool LstLineaProductos::eliminar(int _idLineaProducto)
 {
 	if (vacia())
@@ -316,18 +318,127 @@ int LstLineaProductos::elimniarSubLinea(int _idLineaProducto, int _idSubLineaPro
 	}
 }
 
-void LstLineaProductos::subLineasDeLinea(int _idLineaProducto)
+SubLineaProducto * LstLineaProductos::buscarSublinea(int _idLineaProducto, int _idSubLineaProducto)
+{
+	NLineaProducto * aux = dirNodo(_idLineaProducto);
+
+	if (aux == NULL)
+	{
+		cout << "La linea que esta bucando no existe" << endl;
+	}
+	else
+	{
+		SubLineaProducto * _subLinea = aux->getLstSubLineaProductos()->buscar(_idSubLineaProducto);
+
+		if (_subLinea == NULL)
+		{
+			cout << "La sublinea que esta buscando no existe" << endl;
+		}
+		else
+		{
+			cout << "======================SubLinea========================" << endl;
+			cout << "Id: " << _subLinea->getIdLinea() << endl;
+			cout << "Descripcion: " << _subLinea->getDescripcion() << endl;
+			cout << "Linea: " << _subLinea->getIdLinea() << endl;
+			cout << "======================================================" << endl;
+			return _subLinea;
+		}
+	}
+}
+
+void LstLineaProductos::desplegarSubLineasDeLinea(int _idLineaProducto)
 {
 	NLineaProducto * aux = dirNodo(_idLineaProducto);
 
 	cout << "=======================================================" << endl;
-	cout << "Curso: " << aux->getLineaProducto()->getIdLineaProducto << endl;
-	cout << "Curso: " << aux->getLineaProducto->getDescripcion() << endl;
+	cout << "ID: " << aux->getLineaProducto()->getIdLineaProducto() << endl;
+	cout << "Descripcion: " << aux->getLineaProducto()->getDescripcion() << endl;
 
 	aux->getLstSubLineaProductos()->desplegar();
 }
 
-void LstLineaProductos::desplegarLineas_SubLineas()
-{
 
+void LstLineaProductos::desplegarLineasConSubLineas()
+{
+	//Desplegar los datos de cada uno de los cursos y cada uno de sus estudiantes.
+	if (vacia())
+	{
+		cout << "La lista esta vacia" << endl;
+	}
+	else
+	{
+		NLineaProducto * aux = getCab();
+		int i = 1;
+		cout << "============================================" << endl;
+
+		do
+		{
+			cout << "Linea #" << i << ": " << endl;
+			cout << "ID: " << aux->getLineaProducto()->getIdLineaProducto() << endl;
+			cout << "Descripcion: " << aux->getLineaProducto()->getDescripcion() << endl;
+			cout << "============================================" << endl;
+			aux->getLstSubLineaProductos()->desplegar();
+
+			aux = aux->getSgte();
+			i++;
+		} while (aux != getCab());
+		cout << endl << "Fin de la Lista" << endl;
+	}
+	system("pause");
+}
+
+
+// * Metodos de Listas de Listas  Producto*//
+int LstLineaProductos::agregarProducto(int _idLinea, int _idSubLinea, Producto * _producto)
+{
+	NLineaProducto * aux = dirNodo(_idLinea);
+
+	if (aux == NULL)
+	{
+		return 4;
+	}
+	else
+	{
+		return aux->getLstSubLineaProductos()->agregarProducto(_idSubLinea, _producto);
+	}
+}
+
+int LstLineaProductos::elimniarProducto(int _idLinea, int _idSubLinea, int _idProducto)
+{
+	NLineaProducto * aux = dirNodo(_idLinea);
+
+	if (aux == NULL)
+	{
+		return 4;
+	}
+	else
+	{
+		return aux->getLstSubLineaProductos()->elimniarProducto(_idSubLinea, _idProducto);
+	}
+}
+
+Producto * LstLineaProductos::buscarProducto(int _idLinea, int _idSubLinea, int _idProducto)
+{
+	NLineaProducto * aux = dirNodo(_idLinea);
+
+	if (aux == NULL)
+	{
+		return NULL;
+	}
+	else
+	{
+		return aux->getLstSubLineaProductos()->buscarProducto(_idSubLinea, _idProducto);
+	}
+}
+
+void LstLineaProductos::desplegarProductosDeSubLinea(int _idLinea, int _idSubLinea)
+{
+	NLineaProducto * aux = dirNodo(_idLinea);
+	aux->getLstSubLineaProductos()->desplegarProductosDeSubLinea(_idSubLinea);
+}
+
+void LstLineaProductos::desplegarSubLineasConProductos(int _idLinea)
+{
+	NLineaProducto * aux = dirNodo(_idLinea);
+	aux->getLstSubLineaProductos()->desplegarSubLineasConProductos();
 }
