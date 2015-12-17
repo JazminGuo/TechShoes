@@ -1,5 +1,6 @@
 #pragma once
 #include "Inventario.h"
+#include "LstLineaProductos.h"
 
 class NInventario
 {

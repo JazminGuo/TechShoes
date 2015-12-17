@@ -259,6 +259,7 @@ void LstLineaProductos::desplegar()
 		cout << "-----------------------------------" << endl;
 		do
 		{
+
 			cout << "ID: " << aux->getLineaProducto()->getIdLineaProducto() << endl;
 			cout << "Descripcion: " << aux->getLineaProducto()->getDescripcion() << endl;
 			cout << "-----------------------------------"<< endl;

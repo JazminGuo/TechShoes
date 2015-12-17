@@ -256,3 +256,51 @@ void LstInventario::desplegarLista()
 	//system("pause");
 	//system("cls");
 }
+
+void LstInventario::agregarProductos(LstLineaProductos * lstLinea, int _idAlamacen)
+{
+	NLineaProducto * auxL = lstLinea->getCab();
+
+	if (auxL == NULL)
+	{
+		cout << "La Lista de Categorias esta vacia" << endl;
+	}
+	else
+	{
+		do
+		{
+			NSubLineaProducto * auxS = auxL->getLstSubLineaProductos()->getCab();
+			if (auxS == NULL)
+			{
+				cout << "La Lista de Subcategorias esta vacia" << endl;
+			}
+
+			else
+			{
+				while (auxS != NULL)
+				{
+					if (auxL->getLstSubLineaProductos()->vacia())
+					{
+						cout << "La lista esta vacia" << endl;
+					}
+					else
+					{
+						NProducto * auxP = auxS->getLstProductos()->getCab();
+						do
+						{
+							Inventario * articulo = new Inventario(auxP->getProducto()->getIdProducto(), _idAlamacen, 0);
+							agregaAsc(articulo);
+							auxP = auxP->getSgte();
+						} while (auxP != auxS->getLstProductos()->getCab());
+
+						auxS = auxS->getSgte();
+					}
+				}
+			}
+
+			auxL = auxL->getSgte();
+
+		} while (auxL != lstLinea->getCab());
+	}
+}
+

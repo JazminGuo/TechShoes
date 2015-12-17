@@ -36,5 +36,7 @@ public:
 	Inventario * obtenerInventario(int);
 	bool modificarInventario(int, Inventario *);
 	void desplegarLista();
+
+	void agregarProductos(LstLineaProductos *, int);
 };
 
