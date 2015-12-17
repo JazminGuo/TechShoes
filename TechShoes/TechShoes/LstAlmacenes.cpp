@@ -112,41 +112,88 @@ void LstAlmacenes::agregaNAlmacenDespuesDe(NAlmacen * _ref, NAlmacen * _nuevo)
 
 //Operraciones de Listas
 //Agregar
-bool LstAlmacenes::agregaAsc(Almacen * _almacen)
+bool LstAlmacenes::agregaAsc(int idAlmacen, Almacen * _almacen, LstLineaProductos *_listaLineaProductos)
 {
 	int id = _almacen->getIdAlmacen();
+
+	bool agregado = false;
+	//NProducto *auxProducto = _listaProductos->dirNodo(_idProducto);
+	NAlmacen *nuevoAlmacen = new NAlmacen(_almacen);
 	if (vacia())
 	{
-		NAlmacen * nuevo = new NAlmacen(_almacen);
-		setCab(nuevo);
+		nuevoAlmacen->setSgte(getCab());
+		setCab(nuevoAlmacen);
 		setSize(getSize() + 1);
-		return true;
+		agregado = true;
 	}
 	else
 	{
-		NAlmacen * aux = getCab();
-		while (aux != NULL)
+		NAlmacen *aux = getCab();
+		int idAlmacen = _almacen->getIdAlmacen();
+
+		while ((aux != NULL) && (aux->getSgte() != NULL))
 		{
-			if (aux->getAlmacen()->getIdAlmacen() == id)
+			if (idAlmacen == aux->getAlmacen()->getIdAlmacen())
+				agregado = false;
+
+			if (idAlmacen < aux->getAlmacen()->getIdAlmacen())
 			{
-				return false;
+				agregaNodoAntesDe(aux, nuevoAlmacen);
+				agregado = true;
+			}
+			else
+				aux = aux->getSgte();
+		}
+		if (aux->getSgte() == NULL)
+		{
+			if (idAlmacen == aux->getAlmacen()->getIdAlmacen())
+				agregado = false;
+
+			if (idAlmacen < aux->getAlmacen()->getIdAlmacen())
+			{
+				agregaNodoAntesDe(aux, nuevoAlmacen);
+				agregado = true;
 			}
 			else
 			{
-				NAlmacen * nuevo = new NAlmacen(_almacen);
-				if (((aux->getSgte() != NULL) && (aux->getSgte()->getAlmacen()->getIdAlmacen() > id)) || (aux->getSgte() == NULL))
-				{
-					agregaNAlmacenDespuesDe(aux, nuevo);
-					setSize(getSize() + 1);
-					return true;
-				}
-				else
-				{
-					aux = aux->getSgte();
-				}
+				agregaNAlmacenDespuesDe(aux, nuevoAlmacen);
+				agregado = true;
 			}
+
 		}
+
+
 	}
+	if (agregado == true)
+	{
+		NLineaProducto *auxLineaProducto = _listaLineaProductos->getCab();
+		do
+		{
+			NSubLineaProducto *auxSubLineaProducto = auxLineaProducto->getLstSubLineaProductos()->getCab();
+			while (auxSubLineaProducto != NULL)
+			{
+				NProducto *auxProducto = auxSubLineaProducto->getLstProductos()->getCab();
+				do
+				{
+					Producto *producto = auxProducto->getProducto();
+					NAlmacen *auxAlmacen = dirNodo(idAlmacen);
+					if (auxAlmacen != NULL)
+					{
+						auxAlmacen->getListaInventarios()->agregarUnProductoAlInventario(idAlmacen, producto);
+
+
+						auxProducto = auxProducto->getSgte();
+					}
+					else
+						return false;
+				} while (auxProducto != auxSubLineaProducto->getLstProductos()->getCab());
+
+				auxSubLineaProducto = auxSubLineaProducto->getSgte();
+			}
+		} while (auxLineaProducto != _listaLineaProductos->getCab());
+		auxLineaProducto = auxLineaProducto->getSgte();
+	}
+
 	return true;
 }
 
@@ -243,9 +290,39 @@ void LstAlmacenes::desplegarLista()
 	system("pause");
 	system("cls");
 }
-
+Almacen *LstAlmacenes::buscar(int _idAlmacen)
+{
+	NAlmacen *aux = dirNodo(_idAlmacen);
+	if (aux != NULL)
+	{
+		cout << endl;
+		cout << "-----------------------------------" << endl;
+		cout << "ID Almacen : " << aux->getAlmacen()->getIdAlmacen() << endl;
+		cout << "Ubicacion : " << aux->getAlmacen()->getUbicacion() << endl;
+		cout << "-----------------------------------" << endl;
+	}
+	else
+		cout << "La Estructura de Almacen estan vacia! " << endl;
+	return NULL;
+}
 
 /*------------------------------------ MULTILISTA: Lista de Listas ----------------------------------*/
+
+bool LstAlmacenes::actualizarInventariosDeUnAlmacen(int _idAlmacen, int _idProducto, Entrada *_entrada)
+{
+	NAlmacen *auxAlmacen = dirNodo(_idAlmacen);
+	if (auxAlmacen != NULL)
+	{
+		int cantidadEntrada = _entrada->getCantidadProducto();
+		if (auxAlmacen->getListaInventarios()->actualizarInventarios(_idProducto, cantidadEntrada))
+			return true;
+		else
+			return false;
+	}
+	else
+		return false;
+	return true;
+}
 
 // Operaciones Almacen Con Inventarios
 int LstAlmacenes::agregarUnInventarioEnUnAlmacen(int _idAlmacen, Inventario *_inventario)
@@ -314,11 +391,101 @@ void LstAlmacenes::desplegarTodosInventariosDeTodosAlmacenes()
 		//system("pause");
 	}
 }
+void LstAlmacenes::desplegarUnInventarioDeUnAlmacen(int _idAlmacen, int _idProducto)
+{
+	NAlmacen *aux = getCab();
+	if (aux != NULL)
+	{
+		cout << endl;
+		cout << "*********************************************************" << endl;
+		cout << "--------------------------------------" << endl;
+		buscar(_idAlmacen);
+		cout << "Entrada En el Almacen:" << endl;
+		cout << "--------------------------------------" << endl;
+		aux->getListaInventarios()->buscar(_idProducto);
+		cout << "--------------------------------------" << endl;
+		cout << "*********************************************************" << endl;
+	}
+}
 
-//// Operaciones Almacen Con Entradas
-//int agregarUnaEntradaEnUnAlmacen(int _idAlmacen, Entrada *_entrada);
-//int anularUnaEntradaDeUnAlmacen(int _idAlmacen, int _idEntrada);
-//void desplegarTodosEntradasDeUnAlmacen();
+
+
+// Operaciones Almacen Con Entradas
+int LstAlmacenes::agregarUnaEntradaEnUnAlmacen(int _idAlmacen, int _idProducto, Entrada *_entrada)
+{
+	/*
+	Agregar Una Entrada en Un Almacen Existente
+	1. Sí se agregó exitosamente.
+	2. No se agregó: El Entrada ya estaba registrada
+	3. No se agregó: El idProducto no existe en la lista de Prodcutos
+	4. No se agregó: El Almacen no existe
+	*/
+
+	NAlmacen *aux = dirNodo(_idAlmacen);
+
+	if (aux == NULL)
+		return 4;
+	else
+	{
+		if (aux->getListaEntradas()->agregarUnCantidadProductoEnUnaEntrada(_idProducto, _entrada) == 1)
+		{
+			if (actualizarInventariosDeUnAlmacen(_idAlmacen, _idProducto, _entrada))
+				return 1;
+		}
+		else
+			return aux->getListaEntradas()->agregarUnCantidadProductoEnUnaEntrada(_idProducto, _entrada);
+
+	}
+	return 0;
+}
+int LstAlmacenes::anularUnaEntradaDeUnAlmacen(int _idAlmacen, int _idProducto)
+{
+
+	/*
+	Anular Una Entrada de Un Almacen
+	1. Sí se elimino exitosamente.
+	2. No se elimino: La Entrada no existe en la lista de Entrada
+	3. No se elimino: El Almacen no existe
+	*/
+
+	NAlmacen *auxAlmacen = dirNodo(_idAlmacen);
+
+	if (auxAlmacen == NULL)
+		return 3;
+	else
+	{
+		if (auxAlmacen->getListaEntradas()->anularUnaEntrada(_idProducto) == 1)
+		{
+			Entrada *entrada = auxAlmacen->getListaEntradas()->obtenerEntrada(_idProducto);
+			entrada->setCantidadProducto(0);
+
+			if (actualizarInventariosDeUnAlmacen(_idAlmacen, _idProducto, entrada))
+				return 1;
+		}
+		else
+			return auxAlmacen->getListaEntradas()->anularUnaEntrada(_idProducto);
+
+	}
+	return 0;
+
+}
+void desplegarTodosEntradasDeUnAlmacen();
+void LstAlmacenes::desplegarUnaEntradaDeUnAlmacen(int _idAlmacen, int _idProducto)
+{
+	NAlmacen *aux = getCab();
+	if (aux != NULL)
+	{
+		cout << endl;
+		cout << "*********************************************************" << endl;
+		cout << "--------------------------------------" << endl;
+		buscar(_idAlmacen);
+		cout << "Entrada En el Almacen:" << endl;
+		cout << "--------------------------------------" << endl;
+		aux->getListaEntradas()->buscar(_idProducto);
+		cout << "--------------------------------------" << endl;
+		cout << "*********************************************************" << endl;
+	}
+}
 
 // Operaciones Almacen Con Facturas
 int LstAlmacenes::agregarUnaFacturaEnUnAlmacen(int _idAlmacen, Factura *_factura)

@@ -14,11 +14,11 @@ Inventario::~Inventario()
 {
 }
 
-Inventario::Inventario(int _codArticulo, int _codAlmacen, int _existencia)
+Inventario::Inventario(int _codArticulo, int _codAlmacen)
 {
 	setCodArticulo(_codArticulo);
 	setCodAlmacen(_codAlmacen);
-	setExistencia(_existencia);
+	
 }
 
 int Inventario::getCodArticulo()

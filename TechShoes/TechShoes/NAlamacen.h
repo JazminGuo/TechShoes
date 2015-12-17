@@ -3,6 +3,7 @@
 #include "LstInventario.h"
 #include "LstEntradas.h"
 #include "LstFacturas.h"
+#include "LstLineaProductos.h"
 
 class NAlmacen
 {

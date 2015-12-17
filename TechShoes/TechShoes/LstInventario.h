@@ -36,7 +36,14 @@ public:
 	Inventario * obtenerInventario(int);
 	bool modificarInventario(int, Inventario *);
 	void desplegarLista();
-
+	void buscar(int);
 	void agregarProductos(LstLineaProductos *, int);
+
+	/*------------------------------------------------ JAZMIN -----------------------------------------------------------*/
+	/*------------------------------ MULTILISTA: Lista de Listas Salteada --------------------------------------------*/
+	// Inventario hacer Un Salto Hacia Producto
+	bool agregarUnProductoAlInventario(int, Producto *);
+
+	bool actualizarInventarios(int, int);
 };
 

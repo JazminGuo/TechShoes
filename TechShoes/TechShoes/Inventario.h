@@ -12,7 +12,7 @@ public:
 	Inventario();
 	~Inventario();
 
-	Inventario(int, int, int);
+	Inventario(int, int);
 
 	int getCodArticulo();
 	void setCodArticulo(int);

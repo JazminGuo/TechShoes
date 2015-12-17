@@ -32,6 +32,12 @@ public:
 	bool eliminarTodos();
 	Entrada *buscar(int);
 	void desplegar();
+	Entrada *obtenerEntrada(int);
 
+	/*------------------------------ MULTILISTA: Lista de Listas Salteada --------------------------------------------*/
+
+	// Inventario hacer Un Salto Hacia Producto
+	int agregarUnCantidadProductoEnUnaEntrada(int, Entrada *);
+	int anularUnaEntrada(int);
 };
 

@@ -444,208 +444,208 @@ void facturaMenu()
 	} while (opc != 0);
 }
 
-void almacenMenu()
-{
-	int id = 0;
-	char ubicacion[30] = "---";
-	int opc = 0;
-
-	LstAlmacenes * lista = new LstAlmacenes();
-
-	do
-	{
-		cout << "================ *** Menu Almacen *** ================" << endl << endl;
-		cout << "(1) Agregar Almacen" << endl;
-		cout << "(2) Modificar Almacen" << endl;
-		cout << "(3) Buscar Almacen" << endl;
-		cout << "(4) Eliminar Almacen" << endl;
-		cout << "(5) Ver todos los Almacenes" << endl;
-		cout << "(0) Salir" << endl << endl;
-		cout << "======================================================" << endl << endl;
-		cout << "Opcion seleccionada: "; cin >> opc; cout << endl;
-
-		switch (opc)
-		{
-		case 1:
-		{
-			cout << "Digite el id del almacen." << endl;
-			cin >> id;
-			cout << "Digite la ubicacion del almacen." << endl;
-			cin >> ubicacion;
-
-
-			Almacen * almacen = new Almacen(id, ubicacion);
-
-			lista->agregaAsc(almacen);
-
-			lista->desplegarLista();
-			system("cls");
-		}
-		break;
-
-		case 2:
-		{
-			int dlt = 0;
-
-			do
-			{
-				cout << "Digite el id del almacen que desea modificar" << endl;
-				cin >> id;
-
-				Almacen * almacen = lista->obtenerAlmacen(id);
-
-				if (almacen == NULL)
-				{
-					cout << "El almacen no existe" << endl;
-					cout << "Digite (1) para intentar modificar de nuevo o (0) para regresar al menu anterior" << endl;
-					cin >> dlt;
-					system("cls");
-				}
-				else
-				{
-					cout << "============================================" << endl;
-					cout << "Id: " << almacen->getIdAlmacen() << endl;
-					cout << "Ubicacion: " << almacen->getUbicacion() << endl;
-					cout << "============================================" << endl;
-					cout << endl;
-					cout << "Esta seguro de que desea modificar esta almacen?" << endl;
-					cout << "Presione (1) para confirmar, (2) para cancelar o (0) para regresar al menu anterior" << endl;
-
-					cin >> dlt;
-
-					switch (dlt)
-					{
-					case 0:
-					{
-						dlt = 0;
-					}
-					break;
-
-					case 1:
-					{
-						cout << "Digite los nuevos parametros del almacen" << endl << endl;
-
-						cout << "Digite el id del almacen." << endl;
-						cin >> id;
-						cout << "Digite la ubicacion del almacen." << endl;
-						cin >> ubicacion;
-
-						Almacen * almacen = new Almacen(id, ubicacion);
-
-						lista->modificarAlmacen(id, almacen);
-
-						cout << "============================================" << endl;
-						cout << "Id: " << almacen->getIdAlmacen() << endl;
-						cout << "Ubicacion: " << almacen->getUbicacion() << endl;
-						cout << "============================================" << endl;
-						cout << endl;
-
-						cout << "El almacen se ha modificado corretamente" << endl;
-						dlt = 0;
-						system("pause");
-						system("cls");
-					}
-					break;
-					}
-				}
-			} while (dlt != 0);
-		}
-		break;
-
-		case 3:
-		{
-			cout << "Digite el id del almacen que desea buscar" << endl;
-			cin >> id;
-			Almacen * almacen = lista->obtenerAlmacen(id);
-
-			if (almacen != NULL)
-			{
-				cout << "============================================" << endl;
-				cout << "Id: " << almacen->getIdAlmacen() << endl;
-				cout << "Ubicacion: " << almacen->getUbicacion() << endl;
-				cout << "============================================" << endl;
-				system("pause");
-				system("cls");
-			}
-			else
-			{
-				cout << "El almacen no existe" << endl;
-				system("pause");
-				system("cls");
-			}
-		}
-		break;
-
-		case 4:
-		{
-			int dlt = 0;
-
-			do
-			{
-				cout << "Digite el id del almacen que desea eliminar" << endl;
-				cin >> id;
-
-				Almacen * almacen = lista->obtenerAlmacen(id);
-
-				if (almacen == NULL)
-				{
-					cout << "El almacen no existe" << endl;
-					cout << "Digite (1) para intentar eliminar de nuevo o (0) para regresar al menu anterior" << endl;
-					cin >> dlt;
-					system("cls");
-				}
-				else
-				{
-					cout << "============================================" << endl;
-					cout << "Id: " << almacen->getIdAlmacen() << endl;
-					cout << "Ubicacion: " << almacen->getUbicacion() << endl;
-					cout << "============================================" << endl;
-					cout << endl;
-					cout << "Esta seguro de que desea eliminar esta almacen?" << endl;
-					cout << "Presione (1) para confirmar, (2) para cancelar o (0) para regresar al menu anterior" << endl;
-
-					cin >> dlt;
-
-					switch (dlt)
-					{
-					case 0:
-					{
-						dlt = 0;
-					}
-					break;
-
-					case 1:
-					{
-						lista->eliminar(id);
-						cout << "El almacen se ha eliminado corretamente" << endl;
-						dlt = 0;
-						system("pause");
-						system("cls");
-					}
-					break;
-
-					case 2:
-					{
-						dlt = 1;
-						system("cls");
-					}
-					break;
-					}
-				}
-			} while (dlt != 0);
-		}
-		break;
-
-		case 5:
-		{
-			lista->desplegarLista();
-		}
-		break;
-
-		}
-		system("cls");
-	} while (opc != 0);
-}
+//void almacenMenu()
+//{
+//	int id = 0;
+//	char ubicacion[30] = "---";
+//	int opc = 0;
+//
+//	LstAlmacenes * lista = new LstAlmacenes();
+//
+//	do
+//	{
+//		cout << "================ *** Menu Almacen *** ================" << endl << endl;
+//		cout << "(1) Agregar Almacen" << endl;
+//		cout << "(2) Modificar Almacen" << endl;
+//		cout << "(3) Buscar Almacen" << endl;
+//		cout << "(4) Eliminar Almacen" << endl;
+//		cout << "(5) Ver todos los Almacenes" << endl;
+//		cout << "(0) Salir" << endl << endl;
+//		cout << "======================================================" << endl << endl;
+//		cout << "Opcion seleccionada: "; cin >> opc; cout << endl;
+//
+//		switch (opc)
+//		{
+//		case 1:
+//		{
+//			cout << "Digite el id del almacen." << endl;
+//			cin >> id;
+//			cout << "Digite la ubicacion del almacen." << endl;
+//			cin >> ubicacion;
+//
+//
+//			Almacen * almacen = new Almacen(id, ubicacion);
+//
+//			lista->agregaAsc(almacen);
+//
+//			lista->desplegarLista();
+//			system("cls");
+//		}
+//		break;
+//
+//		case 2:
+//		{
+//			int dlt = 0;
+//
+//			do
+//			{
+//				cout << "Digite el id del almacen que desea modificar" << endl;
+//				cin >> id;
+//
+//				Almacen * almacen = lista->obtenerAlmacen(id);
+//
+//				if (almacen == NULL)
+//				{
+//					cout << "El almacen no existe" << endl;
+//					cout << "Digite (1) para intentar modificar de nuevo o (0) para regresar al menu anterior" << endl;
+//					cin >> dlt;
+//					system("cls");
+//				}
+//				else
+//				{
+//					cout << "============================================" << endl;
+//					cout << "Id: " << almacen->getIdAlmacen() << endl;
+//					cout << "Ubicacion: " << almacen->getUbicacion() << endl;
+//					cout << "============================================" << endl;
+//					cout << endl;
+//					cout << "Esta seguro de que desea modificar esta almacen?" << endl;
+//					cout << "Presione (1) para confirmar, (2) para cancelar o (0) para regresar al menu anterior" << endl;
+//
+//					cin >> dlt;
+//
+//					switch (dlt)
+//					{
+//					case 0:
+//					{
+//						dlt = 0;
+//					}
+//					break;
+//
+//					case 1:
+//					{
+//						cout << "Digite los nuevos parametros del almacen" << endl << endl;
+//
+//						cout << "Digite el id del almacen." << endl;
+//						cin >> id;
+//						cout << "Digite la ubicacion del almacen." << endl;
+//						cin >> ubicacion;
+//
+//						Almacen * almacen = new Almacen(id, ubicacion);
+//
+//						lista->modificarAlmacen(id, almacen);
+//
+//						cout << "============================================" << endl;
+//						cout << "Id: " << almacen->getIdAlmacen() << endl;
+//						cout << "Ubicacion: " << almacen->getUbicacion() << endl;
+//						cout << "============================================" << endl;
+//						cout << endl;
+//
+//						cout << "El almacen se ha modificado corretamente" << endl;
+//						dlt = 0;
+//						system("pause");
+//						system("cls");
+//					}
+//					break;
+//					}
+//				}
+//			} while (dlt != 0);
+//		}
+//		break;
+//
+//		case 3:
+//		{
+//			cout << "Digite el id del almacen que desea buscar" << endl;
+//			cin >> id;
+//			Almacen * almacen = lista->obtenerAlmacen(id);
+//
+//			if (almacen != NULL)
+//			{
+//				cout << "============================================" << endl;
+//				cout << "Id: " << almacen->getIdAlmacen() << endl;
+//				cout << "Ubicacion: " << almacen->getUbicacion() << endl;
+//				cout << "============================================" << endl;
+//				system("pause");
+//				system("cls");
+//			}
+//			else
+//			{
+//				cout << "El almacen no existe" << endl;
+//				system("pause");
+//				system("cls");
+//			}
+//		}
+//		break;
+//
+//		case 4:
+//		{
+//			int dlt = 0;
+//
+//			do
+//			{
+//				cout << "Digite el id del almacen que desea eliminar" << endl;
+//				cin >> id;
+//
+//				Almacen * almacen = lista->obtenerAlmacen(id);
+//
+//				if (almacen == NULL)
+//				{
+//					cout << "El almacen no existe" << endl;
+//					cout << "Digite (1) para intentar eliminar de nuevo o (0) para regresar al menu anterior" << endl;
+//					cin >> dlt;
+//					system("cls");
+//				}
+//				else
+//				{
+//					cout << "============================================" << endl;
+//					cout << "Id: " << almacen->getIdAlmacen() << endl;
+//					cout << "Ubicacion: " << almacen->getUbicacion() << endl;
+//					cout << "============================================" << endl;
+//					cout << endl;
+//					cout << "Esta seguro de que desea eliminar esta almacen?" << endl;
+//					cout << "Presione (1) para confirmar, (2) para cancelar o (0) para regresar al menu anterior" << endl;
+//
+//					cin >> dlt;
+//
+//					switch (dlt)
+//					{
+//					case 0:
+//					{
+//						dlt = 0;
+//					}
+//					break;
+//
+//					case 1:
+//					{
+//						lista->eliminar(id);
+//						cout << "El almacen se ha eliminado corretamente" << endl;
+//						dlt = 0;
+//						system("pause");
+//						system("cls");
+//					}
+//					break;
+//
+//					case 2:
+//					{
+//						dlt = 1;
+//						system("cls");
+//					}
+//					break;
+//					}
+//				}
+//			} while (dlt != 0);
+//		}
+//		break;
+//
+//		case 5:
+//		{
+//			lista->desplegarLista();
+//		}
+//		break;
+//
+//		}
+//		system("cls");
+//	} while (opc != 0);
+//}
 
 void inventarioMenu()
 {
@@ -656,207 +656,207 @@ void inventarioMenu()
 
 	LstInventario * lista = new LstInventario();
 
-	do
-	{
-		cout << "================ *** Menu Inventarios *** ================" << endl << endl;
-		cout << "(1) Agregar al Inventario" << endl;
-		cout << "(2) Modificar el Inventario" << endl;
-		cout << "(3) Buscar en Inventario" << endl;
-		cout << "(4) Eliminar del Inventario" << endl;
-		cout << "(5) Ver todos los articulos del Inventario" << endl;
-		cout << "(0) Salir" << endl << endl;
-		cout << "========================================================" << endl << endl;
-		cout << "Opcion seleccionada: "; cin >> opc; cout << endl;
+	//do
+	//{
+	//	cout << "================ *** Menu Inventarios *** ================" << endl << endl;
+	//	cout << "(1) Agregar al Inventario" << endl;
+	//	cout << "(2) Modificar el Inventario" << endl;
+	//	cout << "(3) Buscar en Inventario" << endl;
+	//	cout << "(4) Eliminar del Inventario" << endl;
+	//	cout << "(5) Ver todos los articulos del Inventario" << endl;
+	//	cout << "(0) Salir" << endl << endl;
+	//	cout << "========================================================" << endl << endl;
+	//	cout << "Opcion seleccionada: "; cin >> opc; cout << endl;
 
-		switch (opc)
-		{
-		case 1:
-		{
-			cout << "Digite el codigo del articulo." << endl;
-			cin >> codArticulo;
-			cout << "Digite el codigo del almacen." << endl;
-			cin >> codAlmacen;
-			cout << "Digite cantidad del articulo." << endl;
-			cin >> existencia;
+	//	switch (opc)
+	//	{
+	//	case 1:
+	//	{
+	//		cout << "Digite el codigo del articulo." << endl;
+	//		cin >> codArticulo;
+	//		cout << "Digite el codigo del almacen." << endl;
+	//		cin >> codAlmacen;
+	//		//cout << "Digite cantidad del articulo." << endl;
+	//		//cin >> existencia;
 
-			Inventario * articulo = new Inventario(codArticulo, codAlmacen, existencia);
+	//		Inventario * articulo = new Inventario(codArticulo, codAlmacen);
 
-			lista->agregaAsc(articulo);
+	//		lista->agregaAsc(articulo);
 
-			lista->desplegarLista();
-			system("cls");
-		}
-		break;
+	//		lista->desplegarLista();
+	//		system("cls");
+	//	}
+	//	break;
 
-		case 2:
-		{
-			int dlt = 0;
+	//	case 2:
+	//	{
+	//		int dlt = 0;
 
-			do
-			{
-				cout << "Digite el codigo del articulo que desea modificar" << endl;
-				cin >> codArticulo;
+	//		do
+	//		{
+	//			cout << "Digite el codigo del articulo que desea modificar" << endl;
+	//			cin >> codArticulo;
 
-					Inventario * articulo = lista->obtenerInventario(codArticulo);
+	//				Inventario * articulo = lista->obtenerInventario(codArticulo);
 
-				if (articulo == NULL)
-				{
-					cout << "El articulo no existe" << endl;
-					cout << "Digite (1) para intentar modificar de nuevo o (0) para regresar al menu anterior" << endl;
-					cin >> dlt;
-					system("cls");
-				}
-				else
-				{
-					cout << "============================================" << endl;
-					cout << "Codigo de articulo: " << articulo->getCodArticulo() << endl;
-					cout << "Codigo de almacen: " << articulo->getCodAlmacen() << endl;
-					cout << "Existencia: " << articulo->getExistencia() << endl;
-					cout << "============================================" << endl;
-					cout << endl;
-					cout << "Esta seguro de que desea modificar este articulo?" << endl;
-					cout << "Presione (1) para confirmar, (2) para cancelar o (0) para regresar al menu anterior" << endl;
+	//			if (articulo == NULL)
+	//			{
+	//				cout << "El articulo no existe" << endl;
+	//				cout << "Digite (1) para intentar modificar de nuevo o (0) para regresar al menu anterior" << endl;
+	//				cin >> dlt;
+	//				system("cls");
+	//			}
+	//			else
+	//			{
+	//				cout << "============================================" << endl;
+	//				cout << "Codigo de articulo: " << articulo->getCodArticulo() << endl;
+	//				cout << "Codigo de almacen: " << articulo->getCodAlmacen() << endl;
+	//				cout << "Existencia: " << articulo->getExistencia() << endl;
+	//				cout << "============================================" << endl;
+	//				cout << endl;
+	//				cout << "Esta seguro de que desea modificar este articulo?" << endl;
+	//				cout << "Presione (1) para confirmar, (2) para cancelar o (0) para regresar al menu anterior" << endl;
 
-					cin >> dlt;
+	//				cin >> dlt;
 
-					switch (dlt)
-					{
-					case 0:
-					{
-						dlt = 0;
-					}
-					break;
+	//				switch (dlt)
+	//				{
+	//				case 0:
+	//				{
+	//					dlt = 0;
+	//				}
+	//				break;
 
-					case 1:
-					{
-						cout << "Digite los nuevos parametros del articulo" << endl << endl;
+	//				case 1:
+	//				{
+	//					cout << "Digite los nuevos parametros del articulo" << endl << endl;
 
-						cout << "Digite el codigo del articulo." << endl;
-						cin >> codArticulo;
-						cout << "Digite el codigo del almacen." << endl;
-						cin >> codAlmacen;
-						cout << "Digite la existencia del articulo." << endl;
-						cin >> existencia;
+	//					cout << "Digite el codigo del articulo." << endl;
+	//					cin >> codArticulo;
+	//					cout << "Digite el codigo del almacen." << endl;
+	//					cin >> codAlmacen;
+	//					//cout << "Digite la existencia del articulo." << endl;
+	//					//cin >> existencia;
 
 
-						Inventario * articulo = new Inventario(codArticulo, codAlmacen, existencia);
+	//					Inventario * articulo = new Inventario(codArticulo, codAlmacen);
 
-						lista->modificarInventario(codArticulo, articulo);
+	//					lista->modificarInventario(codArticulo, articulo);
 
-						cout << "============================================" << endl;
-						cout << "Codigo de articulo: " << articulo->getCodArticulo() << endl;
-						cout << "Codigo de almacen: " << articulo->getCodAlmacen() << endl;
-						cout << "Existencia: " << articulo->getExistencia() << endl;
-						cout << "============================================" << endl;
-						cout << endl;
+	//					cout << "============================================" << endl;
+	//					cout << "Codigo de articulo: " << articulo->getCodArticulo() << endl;
+	//					cout << "Codigo de almacen: " << articulo->getCodAlmacen() << endl;
+	//					cout << "Existencia: " << articulo->getExistencia() << endl;
+	//					cout << "============================================" << endl;
+	//					cout << endl;
 
-						cout << "El articulo se ha modificado corretamente" << endl;
-						dlt = 0;
-						system("pause");
-						system("cls");
-					}
-					break;
-					}
-				}
-			} while (dlt != 0);
-		}
-		break;
+	//					cout << "El articulo se ha modificado corretamente" << endl;
+	//					dlt = 0;
+	//					system("pause");
+	//					system("cls");
+	//				}
+	//				break;
+	//				}
+	//			}
+	//		} while (dlt != 0);
+	//	}
+	//	break;
 
-		case 3:
-		{
-			cout << "Digite el codigo del articulo que desea buscar" << endl;
-			cin >> codArticulo;
-			Inventario * articulo = lista->obtenerInventario(codArticulo);
+	//	case 3:
+	//	{
+	//		cout << "Digite el codigo del articulo que desea buscar" << endl;
+	//		cin >> codArticulo;
+	//		Inventario * articulo = lista->obtenerInventario(codArticulo);
 
-			if (articulo != NULL)
-			{
-				cout << "============================================" << endl;
-				cout << "Codigo de articulo: " << articulo->getCodArticulo() << endl;
-				cout << "Codigo de almacen: " << articulo->getCodAlmacen() << endl;
-				cout << "Existencia: " << articulo->getExistencia() << endl;
-				cout << "============================================" << endl;
-				system("pause");
-				system("cls");
-			}
-			else
-			{
-				cout << "El articulo no existe" << endl;
-				system("pause");
-				system("cls");
-			}
-		}
-		break;
+	//		if (articulo != NULL)
+	//		{
+	//			cout << "============================================" << endl;
+	//			cout << "Codigo de articulo: " << articulo->getCodArticulo() << endl;
+	//			cout << "Codigo de almacen: " << articulo->getCodAlmacen() << endl;
+	//			cout << "Existencia: " << articulo->getExistencia() << endl;
+	//			cout << "============================================" << endl;
+	//			system("pause");
+	//			system("cls");
+	//		}
+	//		else
+	//		{
+	//			cout << "El articulo no existe" << endl;
+	//			system("pause");
+	//			system("cls");
+	//		}
+	//	}
+	//	break;
 
-		case 4:
-		{
-			int dlt = 0;
+	//	case 4:
+	//	{
+	//		int dlt = 0;
 
-			do
-			{
-				cout << "Digite el codigo del articulo que desea eliminar" << endl;
-				cin >> codArticulo;
+	//		do
+	//		{
+	//			cout << "Digite el codigo del articulo que desea eliminar" << endl;
+	//			cin >> codArticulo;
 
-				Inventario * articulo = lista->obtenerInventario(codArticulo);
+	//			Inventario * articulo = lista->obtenerInventario(codArticulo);
 
-				if (articulo == NULL)
-				{
-					cout << "El articulo no existe" << endl;
-					cout << "Digite (1) para intentar eliminar de nuevo o (0) para regresar al menu anterior" << endl;
-					cin >> dlt;
-					system("cls");
-				}
-				else
-				{
-					cout << "============================================" << endl;
-					cout << "Codigo de articulo: " << articulo->getCodArticulo() << endl;
-					cout << "Codigo de almacen: " << articulo->getCodAlmacen() << endl;
-					cout << "Existencia: " << articulo->getExistencia() << endl;
-					cout << "============================================" << endl;
-					cout << endl;
-					cout << "Esta seguro de que desea eliminar este articulo?" << endl;
-					cout << "Presione (1) para confirmar, (2) para cancelar o (0) para regresar al menu anterior" << endl;
+	//			if (articulo == NULL)
+	//			{
+	//				cout << "El articulo no existe" << endl;
+	//				cout << "Digite (1) para intentar eliminar de nuevo o (0) para regresar al menu anterior" << endl;
+	//				cin >> dlt;
+	//				system("cls");
+	//			}
+	//			else
+	//			{
+	//				cout << "============================================" << endl;
+	//				cout << "Codigo de articulo: " << articulo->getCodArticulo() << endl;
+	//				cout << "Codigo de almacen: " << articulo->getCodAlmacen() << endl;
+	//				cout << "Existencia: " << articulo->getExistencia() << endl;
+	//				cout << "============================================" << endl;
+	//				cout << endl;
+	//				cout << "Esta seguro de que desea eliminar este articulo?" << endl;
+	//				cout << "Presione (1) para confirmar, (2) para cancelar o (0) para regresar al menu anterior" << endl;
 
-					cin >> dlt;
+	//				cin >> dlt;
 
-					switch (dlt)
-					{
-					case 0:
-					{
-						dlt = 0;
-					}
-					break;
+	//				switch (dlt)
+	//				{
+	//				case 0:
+	//				{
+	//					dlt = 0;
+	//				}
+	//				break;
 
-					case 1:
-					{
-						lista->eliminar(codArticulo);
-						cout << "El articulo se ha eliminado corretamente" << endl;
-						dlt = 0;
-						system("pause");
-						system("cls");
-					}
-					break;
+	//				case 1:
+	//				{
+	//					lista->eliminar(codArticulo);
+	//					cout << "El articulo se ha eliminado corretamente" << endl;
+	//					dlt = 0;
+	//					system("pause");
+	//					system("cls");
+	//				}
+	//				break;
 
-					case 2:
-					{
-						dlt = 1;
-						system("cls");
-					}
-					break;
-					}
-				}
-			} while (dlt != 0);
-		}
-		break;
+	//				case 2:
+	//				{
+	//					dlt = 1;
+	//					system("cls");
+	//				}
+	//				break;
+	//				}
+	//			}
+	//		} while (dlt != 0);
+	//	}
+	//	break;
 
-		case 5:
-		{
-			lista->desplegarLista();
-		}
-		break;
+	//	case 5:
+	//	{
+	//		lista->desplegarLista();
+	//	}
+	//	break;
 
-		}
-		system("cls");
-	} while (opc != 0);
+	//	}
+	//	system("cls");
+	//} while (opc != 0);
 }
 
 
@@ -1465,9 +1465,10 @@ void menuEntrada()
 /*----------------------------------------------------------------------------------------------------------------------------------*/
 
 // MENU PARA MUNDO A
-void menuAlmacen(LstAlmacenes * listaAlmacenes, LstInventario * listaInventarios, LstEntradas *listaEntradas, LstFacturas *listaFacturas)
+void menuAlmacen(LstAlmacenes * listaAlmacenes, LstLineaProductos *listaLineaProductos)
 {
-	int id = 0;
+	int idAlmacen = 0;
+	int idProducto = 0;
 	char ubicacion[30] = "---";
 	int opc = 0;
 
@@ -1478,10 +1479,9 @@ void menuAlmacen(LstAlmacenes * listaAlmacenes, LstInventario * listaInventarios
 		system("cls");
 		cout << "================ *** Menu Almacen *** ================" << endl << endl;
 		cout << "(1) Agregar Almacen" << endl;
-		cout << "(2) Modificar Almacen" << endl;
-		cout << "(3) Buscar Almacen" << endl;
-		cout << "(4) Eliminar Almacen" << endl;
-		cout << "(5) Ver todos los Almacenes" << endl;
+		cout << "(2) Buscar Almacen" << endl;
+		cout << "(3) Eliminar Almacen" << endl;
+		cout << "(4) Ver todos los Almacenes" << endl;
 		cout << "(0) Salir" << endl << endl;
 		cout << "======================================================" << endl << endl;
 		cout << "Opcion seleccionada: "; cin >> opc; cout << endl;
@@ -1491,123 +1491,64 @@ void menuAlmacen(LstAlmacenes * listaAlmacenes, LstInventario * listaInventarios
 		case 1:
 		{
 			cout << "Digite el id del almacen." << endl;
-			cin >> id;
+			cin >> idAlmacen;
+			/*cout << "Digite el id de Producto." << endl;
+														cin >> idProducto;*/
 			cout << "Digite la ubicacion del almacen." << endl;
 			cin >> ubicacion;
 
 
-			Almacen * almacen = new Almacen(id, ubicacion);
+			Almacen * almacen = new Almacen(idAlmacen, ubicacion);
+			LstProductos *listaProductos = new LstProductos();
 
-			listaAlmacenes->agregaAsc(almacen);
+			listaAlmacenes->agregaAsc(idAlmacen, almacen, listaLineaProductos);
 
 			listaAlmacenes->desplegarLista();
+			system("pause");
 			system("cls");
 		}
 		break;
 
 		case 2:
 		{
-			int dlt = 0;
+			cout << "Digite el id del almacen que desea buscar" << endl;
+			cin >> idAlmacen;
+			cout << "Digite el id del inventario que desea buscar" << endl;
+			cin >> idProducto;
 
-			do
+			listaAlmacenes->desplegarUnInventarioDeUnAlmacen(idAlmacen, idProducto);
+
+			//Almacen * almacen = listaAlmacenes->obtenerAlmacen(idAlmacen);
+
+			/*		if (almacen != NULL)
 			{
-				cout << "Digite el id del almacen que desea modificar" << endl;
-				cin >> id;
-
-				Almacen * almacen = listaAlmacenes->obtenerAlmacen(id);
-
-				if (almacen == NULL)
-				{
-					cout << "El almacen no existe" << endl;
-					cout << "Digite (1) para intentar modificar de nuevo o (0) para regresar al menu anterior" << endl;
-					cin >> dlt;
-					system("cls");
-				}
-				else
-				{
-					cout << "============================================" << endl;
-					cout << "Id: " << almacen->getIdAlmacen() << endl;
-					cout << "Ubicacion: " << almacen->getUbicacion() << endl;
-					cout << "============================================" << endl;
-					cout << endl;
-					cout << "Esta seguro de que desea modificar esta almacen?" << endl;
-					cout << "Presione (1) para confirmar, (2) para cancelar o (0) para regresar al menu anterior" << endl;
-
-					cin >> dlt;
-
-					switch (dlt)
-					{
-					case 0:
-					{
-						dlt = 0;
-					}
-					break;
-
-					case 1:
-					{
-						cout << "Digite los nuevos parametros del almacen" << endl << endl;
-
-						cout << "Digite el id del almacen." << endl;
-						cin >> id;
-						cout << "Digite la ubicacion del almacen." << endl;
-						cin >> ubicacion;
-
-						Almacen * almacen = new Almacen(id, ubicacion);
-
-						listaAlmacenes->modificarAlmacen(id, almacen);
-
-						cout << "============================================" << endl;
-						cout << "Id: " << almacen->getIdAlmacen() << endl;
-						cout << "Ubicacion: " << almacen->getUbicacion() << endl;
-						cout << "============================================" << endl;
-						cout << endl;
-
-						cout << "El almacen se ha modificado corretamente" << endl;
-						dlt = 0;
-						system("pause");
-						system("cls");
-					}
-					break;
-					}
-				}
-			} while (dlt != 0);
+			cout << "============================================" << endl;
+			cout << "Id: " << almacen->getIdAlmacen() << endl;
+			cout << "Ubicacion: " << almacen->getUbicacion() << endl;
+			cout << "============================================" << endl;
+			system("pause");
+			system("cls");
+			}
+			else
+			{
+			cout << "El almacen no existe" << endl;
+			system("pause");
+			system("cls");
+			}*/
+			system("pause");
 		}
 		break;
 
 		case 3:
-		{
-			cout << "Digite el id del almacen que desea buscar" << endl;
-			cin >> id;
-			Almacen * almacen = listaAlmacenes->obtenerAlmacen(id);
-
-			if (almacen != NULL)
-			{
-				cout << "============================================" << endl;
-				cout << "Id: " << almacen->getIdAlmacen() << endl;
-				cout << "Ubicacion: " << almacen->getUbicacion() << endl;
-				cout << "============================================" << endl;
-				system("pause");
-				system("cls");
-			}
-			else
-			{
-				cout << "El almacen no existe" << endl;
-				system("pause");
-				system("cls");
-			}
-		}
-		break;
-
-		case 4:
 		{
 			int dlt = 0;
 
 			do
 			{
 				cout << "Digite el id del almacen que desea eliminar" << endl;
-				cin >> id;
+				cin >> idAlmacen;
 
-				Almacen * almacen = listaAlmacenes->obtenerAlmacen(id);
+				Almacen * almacen = listaAlmacenes->obtenerAlmacen(idAlmacen);
 
 				if (almacen == NULL)
 				{
@@ -1638,7 +1579,7 @@ void menuAlmacen(LstAlmacenes * listaAlmacenes, LstInventario * listaInventarios
 
 					case 1:
 					{
-						listaAlmacenes->eliminar(id);
+						listaAlmacenes->eliminar(idAlmacen);
 						cout << "El almacen se ha eliminado corretamente" << endl;
 						dlt = 0;
 						system("pause");
@@ -1658,17 +1599,17 @@ void menuAlmacen(LstAlmacenes * listaAlmacenes, LstInventario * listaInventarios
 		}
 		break;
 
-		case 5:
+		case 4:
 		{
-			listaAlmacenes->desplegarLista();
+			listaAlmacenes->desplegarTodosInventariosDeTodosAlmacenes();
+			system("pause");
 		}
 		break;
-
 		}
 		system("cls");
 	} while (opc != 0);
 }
-void menuAlmacen_Inventario(LstAlmacenes * listaAlmacenes, LstInventario * listaInventarios)
+void menuAlmacen_Inventario(LstAlmacenes * listaAlmacenes)
 {
 	//LstAlmacenes *listaAlmacenes = new LstAlmacenes();
 	int opcion = 0;
@@ -1698,13 +1639,13 @@ void menuAlmacen_Inventario(LstAlmacenes * listaAlmacenes, LstInventario * lista
 			cout << "------- Agregar Un Inventario En Un Almacen --------" << endl << endl;
 			cout << "Digite el codigo del almacen: "; cin >> idAlmacenRef;
 			cout << "Digite el codigo del articulo: "; cin >> codArticulo;
-			cout << "Digite cantidad del articulo: "; cin >> existencia;
+			//cout << "Digite cantidad del articulo: "; cin >> existencia;
 
 
 			/*	1. Se inserto exitosamente
 			2. No se inserto porque el Almacen no existe
 			3. No se insertó porque el Inventario ya existe, ya fue registrado*/
-			Inventario * inventario = new Inventario(codArticulo, idAlmacenRef, existencia);
+			Inventario * inventario = new Inventario(codArticulo, idAlmacenRef);
 
 			switch (listaAlmacenes->agregarUnInventarioEnUnAlmacen(idAlmacenRef, inventario))
 			{
@@ -1748,82 +1689,112 @@ void menuAlmacen_Inventario(LstAlmacenes * listaAlmacenes, LstInventario * lista
 		}
 		}
 	} while (opcion != 0);
-}
-void menuAlmacen_Entrada(LstAlmacenes * listaAlmacenes, LstEntradas * listaEntradas)
+} // NO EXISTE //NO EXISTE
+void menuAlmacen_Entrada(LstAlmacenes * listaAlmacenes)
 {
 	int opcion = 0;
+
+	int idAlmacen;
+	int idArticulo;
+	int existencia;
 
 	do
 	{
 		system("cls");
 		cout << "================ *** Menu Almacen y Entrada *** ================" << endl << endl;
 		cout << "(1) Agregar Una Entrada En Un Almacen" << endl;
-		cout << "(2) Consultar Un Inventario de Un Almacen" << endl;
-		cout << "(3) Desplegar Todos Inventarios de Todos Almacenes" << endl;
+		cout << "(2) Anular Una Entrada de Un Almacen" << endl;
+		cout << "(3) Consultar Todos Inventarios de Un Almacen" << endl;
 		cout << "(0) Salir" << endl;
 		cout << "====================================================================" << endl << endl;
 		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
 		switch (opcion)
 		{
-			//case 1:
-			//{
-			//	system("cls");
-			//	cout << endl;
-			//	cout << "------- Agregar Un Inventario En Un Almacen --------" << endl << endl;
-			//	cout << "Digite el codigo del almacen: "; cin >> idAlmacenRef;
-			//	cout << "Digite el codigo del articulo: "; cin >> codArticulo;
-			//	cout << "Digite cantidad del articulo: "; cin >> existencia;
+		case 1:
+		{
+			system("cls");
+			cout << endl;
+			cout << "------- Agregando Una Entrada En Un Almacen --------" << endl << endl;
+			cout << "Digite el codigo del almacen: "; cin >> idAlmacen;
+			cout << "Digite el codigo del articulo: "; cin >> idArticulo;
+			cout << "Digite cantidad del articulo: "; cin >> existencia;
 
 
-			//	/*	1. Se inserto exitosamente
-			//	2. No se inserto porque el Almacen no existe
-			//	3. No se insertó porque el Inventario ya existe, ya fue registrado*/
-			//	Inventario * inventario = new Inventario(codArticulo, idAlmacenRef, existencia);
+			/*	1. Se inserto exitosamente
+			2. No se inserto porque el Almacen no existe
+			3. No se insertó porque el Inventario ya existe, ya fue registrado*/
+			Entrada * entrada = new Entrada(idArticulo, existencia);
 
-			//	switch (listaAlmacenes->agregarUnInventarioEnUnAlmacen(idAlmacenRef, inventario))
-			//	{
-			//	case 1:
-			//	{
-			//		cout << endl; cout << "Se Inserto el Nuevo Inventario en Almacen " << idAlmacenRef << " Correctamente!" << endl;
-			//		break;
-			//	}
-			//	case 2:
-			//	{
-			//		cout << endl; cout << "NO se Inserto el Nuevo Inventario,  porque NO EXISTE Almacen " << idAlmacenRef << " !" << endl;
-			//		break;
-			//	}
-			//	case 3:
-			//	{
-			//		cout << endl; cout << "NO se Inserto el Nuevo Inventario,  porque YA EXISTE !" << endl;
-			//		break;
-			//	}
-			//	}
-			//	system("pause");
-			//	break;
-			//}
-			//case 2:
-			//{
-			//	system("cls");
-			//	cout << endl;
-			//	cout << "------- Consultar Todos Inventarios de Un Almacen --------" << endl << endl;
-			//	cout << "Digite el ID Almacen Existente: "; cin >> idAlmacenRef;
-			//	listaAlmacenes->desplegarTodosInventariosDeUnAlmacen(idAlmacenRef);
-			//	system("pause");
-			//	break;
-			//}
-			//case 3:
-			//{
-			//	system("cls");
-			//	cout << endl;
-			//	cout << "------- Desplegando Todos Inventariso de Todos Almacenes --------" << endl << endl;
-			//	listaAlmacenes->desplegarTodosInventariosDeTodosAlmacenes();
-			//	system("pause");
-			//	break;
-			//}
+
+
+			switch (listaAlmacenes->agregarUnaEntradaEnUnAlmacen(idAlmacen, idArticulo, entrada))
+			{
+			case 1:
+			{
+				cout << endl; cout << "Se Agrego el Nuevo Entrada en Almacen " << idAlmacen << " Correctamente!" << endl;
+				break;
+			}
+			case 2:
+			{
+				cout << endl; cout << "NO se Agrego el Nuevo Entrada,  porque YA EXISTE !" << endl;
+				break;
+			}
+			case 3:
+			{
+				cout << endl; cout << "NO se Agrego porque NO EXISTE ID Ariticulo " << idArticulo << endl;
+				break;
+			}
+			case 4:
+			{
+				cout << endl; cout << "No se Agrego porque el Almacen " << idAlmacen << " NO EXISTE" << endl;
+			}
+			}
+			system("pause");
+			break;
+		}
+		case 2:
+		{
+			system("cls");
+			cout << endl;
+			cout << "------- Anulando Una Entrada de Un Almacen --------" << endl << endl;
+			cout << "Digite el ID Almacen Existente: "; cin >> idAlmacen;
+			cout << "Digite el ID Articulo Existente: "; cin >> idArticulo;
+			switch (listaAlmacenes->anularUnaEntradaDeUnAlmacen(idAlmacen, idArticulo))
+			{
+			case 1:
+			{
+				cout << endl; cout << "Se anulo la Entrada en Almace " << idAlmacen << " Correctamente!" << endl;
+				break;
+			}
+			case 2:
+			{
+				cout << endl; cout << "NO se anulo la Entrada,  porque NO EXISTE !" << endl;
+				break;
+			}
+			case 3:
+			{
+				cout << endl; cout << "NO SE ANULO porque NO EXISTE el Almacen " << idAlmacen << endl;
+				break;
+			}
+			}
+			system("pause");
+			break;
+		}
+		case 3:
+		{
+			system("cls");
+			cout << endl;
+			cout << "------- Desplegando Una Entrada de Un Almacen --------" << endl << endl;
+			cout << "Digite el ID Almacen Exsitente que desea Consultar: "; cin >> idAlmacen;
+			cout << "Digite el ID Articulo Existente que desea Consultar: "; cin >> idArticulo;
+			listaAlmacenes->desplegarUnaEntradaDeUnAlmacen(idAlmacen, idArticulo);
+			system("pause");
+			break;
+		}
 		}
 	} while (opcion != 0);
 }
-void menuAlmacen_Factura(LstAlmacenes * listaAlmacenes, LstFacturas * listaFacturas)
+void menuAlmacen_Factura(LstAlmacenes * listaAlmacenes)
 {
 	int opcion = 0;
 
@@ -1842,8 +1813,6 @@ void menuAlmacen_Factura(LstAlmacenes * listaAlmacenes, LstFacturas * listaFactu
 		cout << "(1) Agregar Una Factura En Un Almacen" << endl;
 		cout << "(2) Anular Una Factura de Un Almacen" << endl;
 		cout << "(3) Consultar Una Factura de Todos Almacenes" << endl;
-		//cout << endl;
-		//cout << "(4) Agregar Producto Inventarios de Todos Almacenes" << endl;
 		cout << "(0) Salir" << endl;
 		cout << "====================================================================" << endl << endl;
 		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
@@ -1923,7 +1892,65 @@ void menuAlmacen_Factura(LstAlmacenes * listaAlmacenes, LstFacturas * listaFactu
 
 	} while (opcion != 0);
 }
+void menuAlmacen_Factura_lineaFactura(LstAlmacenes * listaAlmacenes)
+{
+	int opcion = 0;
 
+	int idFactura;
+	int idProducto;
+	int cantidadVendida;
+
+	/*do
+	{
+
+
+	switch (opcion)
+	{
+
+	system("cls");
+	cout << "================ *** Menu Almacen e Factura_LineaFactura *** ================" << endl << endl;
+	cout << "(1) Agregar Una Linea de Factura En Una Factura" << endl;
+	cout << "(2) Anular Una Linea de Factura de Una Factura" << endl;
+	cout << "(3) Consultar Una Factura de Todos Almacenes" << endl;
+	cout << "(0) Salir" << endl;
+	cout << "=============================================================================" << endl << endl;
+	cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
+
+	case 1:
+	{
+	system("cls");
+	cout << endl;
+	cout << "------- Agregar Una Factura En Un Almacen --------" << endl << endl;
+	cout << "Digite el ID Factura Existente: "; cin >> idFactura;
+	cout << "Digite el ID Producto Existente: "; cin >> idProducto;
+	cout << "Digite la Cantidad de Producto que se vendio: "; cin >> cantidadVendida;
+
+	LineaFactura *lineaFactura = new LineaFactura(idFactura, idProducto, cantidadVendida);
+	switch (listaAlmacenes->agregarUnaFacturaEnUnAlmacen(idAlmacenRef, factura))
+	{
+	case 1:
+	{
+	cout << endl; cout << "Se Inserto el Nuevo Factura en Almacen " << idAlmacenRef << " Correctamente!" << endl;
+	break;
+	}
+	case 2:
+	{
+	cout << endl; cout << "NO se Inserto el Nuevo Factura,  porque NO EXISTE Almacen " << idAlmacenRef << " !" << endl;
+	break;
+	}
+	case 3:
+	{
+	cout << endl; cout << "NO se Inserto el Nuevo Factura,  porque YA EXISTE !" << endl;
+	break;
+	}
+	}
+	system("pause");
+	break;
+	}
+	}
+
+	} while (opcion != 0);*/
+}
 // MENU PARA MUNDO B
 void menuLinea(LstLineaProductos * _lstLinea)
 {
@@ -2388,7 +2415,7 @@ void menuProducto(LstLineaProductos * _lstLinea)
 }
 
 // Aqui van todos lo de Almacen
-void menuMundoA(LstAlmacenes * listaAlmacenes, LstInventario * listaInventarios, LstEntradas *listaEntradas, LstFacturas *listaFacturas)
+void menuMundoA(LstAlmacenes * listaAlmacenes, LstLineaProductos *listaLineaProductos)
 {
 	int opcion = 0;
 
@@ -2407,22 +2434,22 @@ void menuMundoA(LstAlmacenes * listaAlmacenes, LstInventario * listaInventarios,
 		{
 		case 1:
 		{
-			menuAlmacen(listaAlmacenes, listaInventarios, listaEntradas, listaFacturas);
+			menuAlmacen(listaAlmacenes, listaLineaProductos);
 			break;
 		}
 		case 2:
 		{
-			menuAlmacen_Inventario(listaAlmacenes, listaInventarios);
+			menuAlmacen_Inventario(listaAlmacenes);
 			break;
 		}
 		case 3:
 		{
-			menuAlmacen_Entrada(listaAlmacenes, listaEntradas);
+			menuAlmacen_Entrada(listaAlmacenes);
 			break;
 		}
 		case 4:
 		{
-			menuAlmacen_Factura(listaAlmacenes, listaFacturas);
+			menuAlmacen_Factura(listaAlmacenes);
 			break;
 		}
 		}
@@ -2487,7 +2514,7 @@ void menuPrincipalAB(LstAlmacenes * listaAlmacenes, LstLineaProductos *listaLine
 		{
 		case 1:
 		{
-			//menuMundoA(listaAlmacenes, listaInventarios, listaEntradas, listaFacturas);
+			menuMundoA(listaAlmacenes, listaLineaProductos);
 			break;
 		}
 		case 2:

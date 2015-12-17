@@ -7,7 +7,7 @@ private:
 	int size;
 
 	// Métodos Privados
-	NLineaProducto *dirNodo(int);
+	
 	NLineaProducto *dirAnterior(int);
 	NLineaProducto *dirUltimo(int);
 	void agregarNodoAntesDe(NLineaProducto *, NLineaProducto *);
@@ -23,6 +23,7 @@ public:
 	void setSize(int);
 
 	// Métodos Publicos
+	NLineaProducto *dirNodo(int);
 	bool vacia();
 	bool agregar(LineaProducto *);
 	bool modificar(int, LineaProducto *);

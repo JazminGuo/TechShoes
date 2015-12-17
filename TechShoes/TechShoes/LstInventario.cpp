@@ -257,6 +257,22 @@ void LstInventario::desplegarLista()
 	//system("cls");
 }
 
+void LstInventario::buscar(int _idProducto)
+{
+	NInventario *aux = dirNodo(_idProducto);
+	if (aux != NULL)
+	{
+		cout << endl;
+		cout << "-----------------------------------" << endl;
+		cout << "ID Almacen : " << aux->getInventario()->getCodAlmacen() << endl;
+		cout << "ID Producto : " << aux->getInventario()->getCodArticulo() << endl;
+		cout << "Cantidad de Prodcuto : " << aux->getInventario()->getExistencia() << endl;
+		cout << "-----------------------------------" << endl;
+	}
+	else
+		cout << "La Estructura de Inventarios estan vacia!" << endl;
+}
+
 void LstInventario::agregarProductos(LstLineaProductos * lstLinea, int _idAlamacen)
 {
 	NLineaProducto * auxL = lstLinea->getCab();
@@ -288,9 +304,9 @@ void LstInventario::agregarProductos(LstLineaProductos * lstLinea, int _idAlamac
 						NProducto * auxP = auxS->getLstProductos()->getCab();
 						do
 						{
-							Inventario * articulo = new Inventario(auxP->getProducto()->getIdProducto(), _idAlamacen, 0);
+							/*Inventario * articulo = new Inventario(auxP->getProducto()->getIdProducto(), _idAlamacen, 0);
 							agregaAsc(articulo);
-							auxP = auxP->getSgte();
+							auxP = auxP->getSgte();*/
 						} while (auxP != auxS->getLstProductos()->getCab());
 
 						auxS = auxS->getSgte();
@@ -304,3 +320,61 @@ void LstInventario::agregarProductos(LstLineaProductos * lstLinea, int _idAlamac
 	}
 }
 
+
+/*------------------------------------------------ JAZMIN -----------------------------------------------------------*/
+/*------------------------------ MULTILISTA: Lista de Listas Salteada --------------------------------------------*/
+
+// Inventario hacer Un Salto Hacia Producto
+bool LstInventario::agregarUnProductoAlInventario(int _idAlmacen, Producto *_producto)
+{
+	// Agregando Un Producto en la Lista de Inventario
+
+	/*
+	Devuelve:
+	1. Sí se agregó exitosamente
+	2. No se agregó: El Producto porque ya estaba registrado
+	3. No se agregó: El Producto no existe en la lista de Producto
+	*/
+	// Devuleve true si se puede insertar
+	// Devuelve false si no se inserto el estudiante ya esta en la lista
+
+	Inventario *_inventario = new Inventario();
+	bool agregado = false;
+	//NProducto *auxProducto = _listaLineaProductos->dirNodo(_idProducto);
+
+
+	_inventario->setCodAlmacen(_idAlmacen);
+	_inventario->setCodArticulo(_producto->getIdProducto());
+
+
+	if (vacia())
+	{
+		setCab(new NInventario(_inventario));
+		getCab()->setSgte(getCab());
+		getCab()->setAnte(getCab());
+		setSize(getSize() + 1);
+	}
+	else
+	{
+		NInventario *auxInventario = getCab();
+		NInventario *nuevoInventario = new NInventario(_inventario);
+		agregaNInventarioDespuesDe(auxInventario, nuevoInventario);
+		setSize(getSize() + 1);
+	}
+
+	return true;
+}
+bool LstInventario::actualizarInventarios(int _idProducto, int _cantidadEntrada)
+{
+	NInventario *auxInventario = dirNodo(_idProducto);
+	if (auxInventario != NULL)
+	{
+		int totalCantidad = 0;
+		totalCantidad += _cantidadEntrada;
+		auxInventario->getInventario()->setExistencia(totalCantidad);
+		return true;
+	}
+	else
+		return false;
+	return true;
+}

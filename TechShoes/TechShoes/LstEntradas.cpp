@@ -244,3 +244,57 @@ void LstEntradas::desplegar()
 		}
 	}
 }
+Entrada * LstEntradas::obtenerEntrada(int _codArticulo)
+{
+	NEntrada * aux = dirNodo(_codArticulo);
+
+	if ((aux != NULL) && (aux->getEntrada()->getIdProducto() == _codArticulo))
+	{
+		return aux->getEntrada();
+	}
+	return NULL;
+}
+
+
+/*------------------------------ MULTILISTA: Lista de Listas Salteada --------------------------------------------*/
+
+// Inventario hacer Un Salto Hacia Producto
+int  LstEntradas::agregarUnCantidadProductoEnUnaEntrada(int _idProducto, Entrada *_entrada)
+{
+
+	/*
+	Agregar un Cantidad de Prodcuto En una Entrada con id Producto Existente y devuelve:
+	1. Sí se agregó exitosamente
+	2. No se agregó: La Entrada ya estaba registrado
+	3. No se agregó: El idProducto no existe en la lista de Productos
+	*/
+	LstProductos *_listaProductos = new LstProductos();
+	NProducto *auxProducto = _listaProductos->dirNodo(_idProducto);
+
+	if (auxProducto == NULL)
+		return 3;
+	else
+	{
+		if (agregar(_entrada))
+			return 1;
+		else
+			return 2;
+	}
+	return 0;
+}
+int LstEntradas::anularUnaEntrada(int _idProducto)
+{
+	NEntrada *auxEntrada = dirNodo(_idProducto);
+	//int cantidadProductoEntrada = auxEntrada->getEntrada()->getCantidadProducto();
+
+	if (auxEntrada == NULL)
+		return 2;
+	else
+	{
+		if (eliminar(_idProducto))
+			return 1;
+		else
+			return 2;
+	}
+	return 0;
+}

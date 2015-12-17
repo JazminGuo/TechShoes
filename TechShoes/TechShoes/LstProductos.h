@@ -8,7 +8,7 @@ private:
 	int size;
 
 	//Miscelaneos Privados
-	NProducto * dirNodo(int);
+	
 	NProducto * dirUltimo();
 	NProducto * dirAnterior(int);
 	void agregaNodoAntesDe(NProducto *, NProducto *);
@@ -25,6 +25,7 @@ public:
 	void setSize(int);
 
 	//Operraciones de Listas
+	NProducto * dirNodo(int);
 	//Agregar
 	bool agregar(Producto *);
 
