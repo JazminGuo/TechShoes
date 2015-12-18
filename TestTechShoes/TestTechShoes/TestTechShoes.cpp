@@ -1118,12 +1118,14 @@ void menuLineaFactura()
 {
 	int opcion = 0;
 
-	int idLineaFacturaRef;
-	int vidLineaFactura;
-	char vfecha[10];
-	char vcliente[10];
+	int idFactura;
+	int numLinea;
+	int idLinea;
+	int idSublinea;
+	int idProducto;
+	int cantidad;
 
-	LstLineaFacturas *lstLineaFacturas = new LstLineaFacturas();
+	LstLineaFacturas * lstLineaFacturas = new LstLineaFacturas();
 
 	do
 	{
@@ -1145,11 +1147,14 @@ void menuLineaFactura()
 		{
 			system("cls");
 			cout << "------- Agregando Un Linea de Factura --------" << endl;
-			cout << "Digite el ID de Linea Factura: "; cin >> vidLineaFactura;
-			cout << "Digite la fecha de Linea Factura: "; cin >> vfecha;
-			cout << "Digite el Cliente de Linea Factura: "; cin >> vcliente;
+			cout << "Digite el ID de la Factura: "; cin >> idFactura;
+			cout << "Digite el numero de linea: "; cin >> numLinea;
+			cout << "Digite el id de la Linea: "; cin >> idLinea;
+			cout << "Digite el ID de la sublinea: "; cin >> idSublinea;
+			cout << "Digite el id del producto: "; cin >> idProducto;
+			cout << "Digite la cantidad: "; cin >> cantidad;
 			cout << "                                          " << endl;
-			LineaFactura *nuevo = new LineaFactura(vidLineaFactura, vfecha, vcliente);
+			LineaFactura * nuevo = new LineaFactura(idFactura, numLinea, idLinea, idSublinea, idProducto, cantidad);
 			if (lstLineaFacturas->agregar(nuevo))
 				cout << "Agregar Nuevo Linea Factura Correctamente!" << endl;
 			else
@@ -1161,37 +1166,37 @@ void menuLineaFactura()
 		}
 		case 2:
 		{
-			system("cls");
-			cout << "                                          " << endl;
-			cout << "------- Modificando Un Linea de Factura --------" << endl;
-			cout << "Digite el ID de Linea de Factura que desea Mofidicar: "; cin >> idLineaFacturaRef;
-			//cout << "Digite el Nuevo ID de Linea de Factura: "; cin >> vidLineaFactura;
-			cout << "Digite el Nuevo Fecha de Linea de Factura: "; cin >> vfecha;
-			cout << "Digite el Nuevo Cliente de Linea de Factura: "; cin >> vcliente;
-			cout << "                                          " << endl;
+			//system("cls");
+			//cout << "                                          " << endl;
+			//cout << "------- Modificando Un Linea de Factura --------" << endl;
+			//cout << "Digite el ID de Linea de Factura que desea Mofidicar: "; cin >> idLineaFacturaRef;
+			////cout << "Digite el Nuevo ID de Linea de Factura: "; cin >> vidLineaFactura;
+			//cout << "Digite el Nuevo Fecha de Linea de Factura: "; cin >> vfecha;
+			//cout << "Digite el Nuevo Cliente de Linea de Factura: "; cin >> vcliente;
+			//cout << "                                          " << endl;
 
-			LineaFactura *nuevo = new LineaFactura(vidLineaFactura, vfecha, vcliente);
+			//LineaFactura *nuevo = new LineaFactura(vidLineaFactura, vfecha, vcliente);
 
-			if (lstLineaFacturas->modificar(idLineaFacturaRef, nuevo))
-				cout << "El ID SubLinea Producto " << idLineaFacturaRef << " modificado Corretamente" << endl;
-			else
-				cout << "El ID SubLinea Producto " << idLineaFacturaRef << " modificado Incorreto" << endl;
+			//if (lstLineaFacturas->modificar(idLineaFacturaRef, nuevo))
+			//	cout << "El ID SubLinea Producto " << idLineaFacturaRef << " modificado Corretamente" << endl;
+			//else
+			//	cout << "El ID SubLinea Producto " << idLineaFacturaRef << " modificado Incorreto" << endl;
 
-			system("pause");
+			//system("pause");
 			break;
 		}
 		case 3:
 		{
-			system("cls");
+			/*system("cls");
 			cout << "                                          " << endl;
 			cout << "------- Eliminando Un Linea de Factura --------" << endl;
-			cout << "Digite el ID de Linea Producto que desea Eliminar: "; cin >> idLineaFacturaRef;
-			if (lstLineaFacturas->eliminar(idLineaFacturaRef))
+			cout << "Digite el ID de Linea Producto que desea Eliminar: "; cin >> numLinea;
+			if (lstLineaFacturas->eliminar(numLinea))
 				cout << "ID Linea de Factura " << idLineaFacturaRef << " Eliminado Correctamente!" << endl;
 			else
 				cout << "ID Linea de Factura " << idLineaFacturaRef << " Eliminado Incorrecto!" << endl;
 
-			system("pause");
+			system("pause");*/
 			break;
 		}
 		case 4:
@@ -1206,7 +1211,7 @@ void menuLineaFactura()
 		}
 		case 5:
 		{
-			system("cls");
+			/*system("cls");
 			cout << "                                          " << endl;
 			cout << "------- Buscando Un Linea de Factura --------" << endl;
 			cout << "Digite el ID de Linea de Factura que desea Buscar: "; cin >> idLineaFacturaRef;
@@ -1223,7 +1228,7 @@ void menuLineaFactura()
 				cout << "------------------------------" << endl;
 			}
 
-			system("pause");
+			system("pause");*/
 			break;
 		}
 		case 6:
@@ -1699,119 +1704,125 @@ void menuAlmacen(LstAlmacenes * listaAlmacenes, LstLineaProductos *listaLineaPro
 //} // NO EXISTE //NO EXISTE
 
 
-//void menuAlmacen_Entrada(LstAlmacenes * listaAlmacenes, LstLineaProductos *listaLineaProductos)
-//{
-//	int opcion = 0;
-//
-//	int idAlmacen;
-//	int idArticulo;
-//	int existencia;
-//
-//	do
-//	{
-//		system("cls");
-//		cout << "================ *** Menu Almacen y Entrada *** ================" << endl << endl;
-//		cout << "(1) Agregar Una Entrada En Un Almacen" << endl;
-//		cout << "(2) Anular Una Entrada de Un Almacen" << endl;
-//		cout << "(3) Consultar Todos Inventarios de Un Almacen" << endl;
-//		cout << "(0) Salir" << endl;
-//		cout << "====================================================================" << endl << endl;
-//		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
-//		switch (opcion)
-//		{
-//		case 1:
-//		{
-//			system("cls");
-//			cout << endl;
-//			cout << "------- Agregando Una Entrada En Un Almacen --------" << endl << endl;
-//			cout << "Digite el codigo del almacen: "; cin >> idAlmacen;
-//			cout << "Digite el codigo del almacen: "; cin >> idAlmacen;
-//			cout << "Digite el codigo del almacen: "; cin >> idAlmacen;
-//			cout << "Digite el codigo del articulo: "; cin >> idArticulo;
-//			cout << "Digite cantidad del articulo: "; cin >> existencia;
-//
-//
-//			/*	1. Se inserto exitosamente
-//			2. No se inserto porque el Almacen no existe
-//			3. No se insertó porque el Inventario ya existe, ya fue registrado*/
-//			Entrada * entrada = new Entrada(idArticulo, existencia);
-//
-//
-//
-//			switch (listaAlmacenes->agregarUnaEntradaEnUnAlmacen(idAlmacen, idArticulo, entrada, listaLineaProductos))
-//			{
-//			case 1:
-//			{
-//				cout << endl; cout << "Se Agrego el Nuevo Entrada en Almacen " << idAlmacen << " Correctamente!" << endl;
-//				break;
-//			}
-//			case 2:
-//			{
-//				cout << endl; cout << "NO se Agrego el Nuevo Entrada,  porque YA EXISTE !" << endl;
-//				break;
-//			}
-//			case 3:
-//			{
-//				cout << endl; cout << "NO se Agrego porque NO EXISTE ID Ariticulo " << idArticulo << endl;
-//				break;
-//			}
-//			case 4:
-//			{
-//				cout << endl; cout << "No se Agrego porque el Almacen " << idAlmacen << " NO EXISTE" << endl;
-//			}
-//			}
-//			system("pause");
-//			break;
-//		}
-//		case 2:
-//		{
-//			system("cls");
-//			cout << endl;
-//			cout << "------- Anulando Una Entrada de Un Almacen --------" << endl << endl;
-//			cout << "Digite el ID Almacen Existente: "; cin >> idAlmacen;
-//			cout << "Digite el ID Articulo Existente: "; cin >> idArticulo;
-//			switch (listaAlmacenes->anularUnaEntradaDeUnAlmacen(idAlmacen, idArticulo))
-//			{
-//			case 1:
-//			{
-//				cout << endl; cout << "Se anulo la Entrada en Almace " << idAlmacen << " Correctamente!" << endl;
-//				break;
-//			}
-//			case 2:
-//			{
-//				cout << endl; cout << "NO se anulo la Entrada,  porque NO EXISTE !" << endl;
-//				break;
-//			}
-//			case 3:
-//			{
-//				cout << endl; cout << "NO SE ANULO porque NO EXISTE el Almacen " << idAlmacen << endl;
-//				break;
-//			}
-//			}
-//			system("pause");
-//			break;
-//		}
-//		case 3:
-//		{
-//			system("cls");
-//			cout << endl;
-//			cout << "------- Desplegando Una Entrada de Un Almacen --------" << endl << endl;
-//			cout << "Digite el ID Almacen Exsitente que desea Consultar: "; cin >> idAlmacen;
-//			cout << "Digite el ID Articulo Existente que desea Consultar: "; cin >> idArticulo;
-//			listaAlmacenes->desplegarUnaEntradaDeUnAlmacen(idAlmacen, idArticulo);
-//			system("pause");
-//			break;
-//		}
-//		}
-//	} while (opcion != 0);
-//}
-void menuAlmacen_Factura(LstAlmacenes * listaAlmacenes)
+void menuAlmacen_Entrada(LstAlmacenes * listaAlmacenes, LstLineaProductos *listaLineaProductos)
 {
 	int opcion = 0;
 
-	int idAlmacenRef;
+	int idAlmacen;
+	int idArticulo;
+	int existencia;
 
+	do
+	{
+		system("cls");
+		cout << "================ *** Menu Almacen y Entrada *** ================" << endl << endl;
+		cout << "(1) Agregar Una Entrada En Un Almacen" << endl;
+		cout << "(2) Anular Una Entrada de Un Almacen" << endl;
+		cout << "(3) Consultar Todos Inventarios de Un Almacen" << endl;
+		cout << "(0) Salir" << endl;
+		cout << "====================================================================" << endl << endl;
+		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
+		switch (opcion)
+		{
+		case 1:
+		{
+			system("cls");
+			cout << endl;
+			cout << "------- Agregando Una Entrada En Un Almacen --------" << endl << endl;
+			cout << "Digite el codigo del almacen: "; cin >> idAlmacen;
+			cout << "Digite el codigo del almacen: "; cin >> idAlmacen;
+			cout << "Digite el codigo del almacen: "; cin >> idAlmacen;
+			cout << "Digite el codigo del articulo: "; cin >> idArticulo;
+			cout << "Digite cantidad del articulo: "; cin >> existencia;
+
+
+			/*	1. Se inserto exitosamente
+			2. No se inserto porque el Almacen no existe
+			3. No se insertó porque el Inventario ya existe, ya fue registrado*/
+			Entrada * entrada = new Entrada(idArticulo, existencia);
+
+
+
+			/*switch (listaAlmacenes->agregarUnaEntradaEnUnAlmacen(idAlmacen, idArticulo, entrada, listaLineaProductos))
+			{
+			case 1:
+			{
+				cout << endl; cout << "Se Agrego el Nuevo Entrada en Almacen " << idAlmacen << " Correctamente!" << endl;
+				break;
+			}
+			case 2:
+			{
+				cout << endl; cout << "NO se Agrego el Nuevo Entrada,  porque YA EXISTE !" << endl;
+				break;
+			}
+			case 3:
+			{
+				cout << endl; cout << "NO se Agrego porque NO EXISTE ID Ariticulo " << idArticulo << endl;
+				break;
+			}
+			case 4:
+			{
+				cout << endl; cout << "No se Agrego porque el Almacen " << idAlmacen << " NO EXISTE" << endl;
+			}
+			}
+			system("pause");
+			break;*/
+		}
+		case 2:
+		{
+			system("cls");
+			cout << endl;
+			cout << "------- Anulando Una Entrada de Un Almacen --------" << endl << endl;
+			cout << "Digite el ID Almacen Existente: "; cin >> idAlmacen;
+			cout << "Digite el ID Articulo Existente: "; cin >> idArticulo;
+			switch (listaAlmacenes->anularUnaEntradaDeUnAlmacen(idAlmacen, idArticulo))
+			{
+			case 1:
+			{
+				cout << endl; cout << "Se anulo la Entrada en Almace " << idAlmacen << " Correctamente!" << endl;
+				break;
+			}
+			case 2:
+			{
+				cout << endl; cout << "NO se anulo la Entrada,  porque NO EXISTE !" << endl;
+				break;
+			}
+			case 3:
+			{
+				cout << endl; cout << "NO SE ANULO porque NO EXISTE el Almacen " << idAlmacen << endl;
+				break;
+			}
+			}
+			system("pause");
+			break;
+		}
+		case 3:
+		{
+			system("cls");
+			cout << endl;
+			cout << "------- Desplegando Una Entrada de Un Almacen --------" << endl << endl;
+			cout << "Digite el ID Almacen Exsitente que desea Consultar: "; cin >> idAlmacen;
+			cout << "Digite el ID Articulo Existente que desea Consultar: "; cin >> idArticulo;
+			listaAlmacenes->desplegarUnaEntradaDeUnAlmacen(idAlmacen, idArticulo);
+			system("pause");
+			break;
+		}
+		}
+	} while (opcion != 0);
+}
+
+void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
+{
+	int opcion = 0;
+
+	int idAlmacen = 0;
+	int idLinea = 0;
+	int idSublinea = 0;
+	int idProducto = 0;
+	int cantidad = 0;
 	int idFactura = 0;
+	int numLinea = 0;
+
 	char fecha[30] = "---";
 	char cliente[30] = "---";
 	int opc = 0;
@@ -1820,38 +1831,100 @@ void menuAlmacen_Factura(LstAlmacenes * listaAlmacenes)
 	{
 
 		system("cls");
-		cout << "================ *** Menu Almacen e Factura *** ================" << endl << endl;
-		cout << "(1) Agregar Una Factura En Un Almacen" << endl;
-		cout << "(2) Anular Una Factura de Un Almacen" << endl;
-		cout << "(3) Consultar Una Factura de Todos Almacenes" << endl;
-		cout << "(0) Salir" << endl;
-		cout << "====================================================================" << endl << endl;
+		cout << "======================== *** Facturacion *** ========================" << endl << endl;
+		cout << "(1) Facturar" << endl;
+		cout << "(2) Anular Factura" << endl;
+		cout << "(3) Buscar Factura" << endl;
+		cout << "(0) Salir" << endl << endl;
+		cout << "=====================================================================" << endl;
 		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
 
 		switch (opcion)
 		{
 		case 1:
-		{
+		{ 
 			system("cls");
 			cout << endl;
-			cout << "------- Agregar Una Factura En Un Almacen --------" << endl << endl;
-			cout << "Digite el ID Almacen Existente: "; cin >> idAlmacenRef;
-			cout << "Digite el id de la factura: "; cin >> idFactura;
+			cout << "==========================================================" << endl;
+			cout << "Facturacion." << endl;
+			cout << "==========================================================" << endl << endl;
+			cout << "Digite el ID del Almacen"; cin >> idAlmacen;
+			idFactura = lstAlmacenes->ultimaFactura(idAlmacen) + 1;
 			cout << "Digite la fecha de la factura: "; cin >> fecha;
-			cout << "Digite el cliente de la factura: "; cin >> cliente;
+			cout << "Digite el nombre del cliente: "; cin >> cliente;
 
 			Factura * factura = new Factura(idFactura, fecha, cliente);
 
-			switch (listaAlmacenes->agregarUnaFacturaEnUnAlmacen(idAlmacenRef, factura))
+			switch (lstAlmacenes->agregarFactura(idAlmacen, factura))
 			{
 			case 1:
 			{
-				cout << endl; cout << "Se Inserto el Nuevo Factura en Almacen " << idAlmacenRef << " Correctamente!" << endl;
-				break;
+				int dlt = 0;
+
+				cout << "======================== *** Facturacion *** ========================" << endl << endl;
+				cout << "(1) Anadir Productos" << endl;
+				cout << "(0) Terminar Factura" << endl;
+				cout << "=====================================================================" << endl << endl;
+				cout << "Opcion Seleccionada: "; cin >> dlt; cout << endl;
+
+				do
+				{
+					switch (dlt)
+					{ 
+						case 1:
+						{
+							cout << "==========================================================" << endl;
+							cout << "Anadir Productos." << endl;
+							cout << "==========================================================" << endl << endl;
+
+							cout << "Digite el ID de la Linea" << endl;
+							cin >> idLinea;
+							cout << "Digite el ID de la Sublinea" << endl;
+							cin >> idSublinea;
+							cout << "Digite el ID del Producto" << endl;
+							cin >> idProducto;
+
+							if (lstLineas->dirNodoGlobal(idLinea, idSublinea, idProducto))
+							{
+								cout << "Digite la cantidad" << endl;
+								cin >> cantidad;
+
+								numLinea = lstAlmacenes->ultimaLinea(idAlmacen, idFactura);
+								LineaFactura * nueva = new LineaFactura(idFactura, numLinea, idLinea, idSublinea, idProducto, cantidad);
+
+								lstAlmacenes->agregarLineaFactura(idAlmacen, idFactura, nueva);
+
+								cout << "Producto agregado a la Factura" << endl << endl;
+
+								cout << "Desea anadir mas Productos?" << endl << endl;
+								cout << "Si (1)" << endl;
+								cout << "No (0)" << endl;
+								cin >> dlt;
+							}
+							else
+							{
+								cout << "El producto que desa anadir a la factura no existe." << endl;
+								system("pause");
+								dlt = 1;
+							}
+						}
+						break;
+
+						case 2:
+						{
+							cout << "Ha salido del menu de facturas." << endl;
+							system("pause");
+							dlt = 0;
+						}
+						break;
+					}
+				} while (dlt != 0);
 			}
+			break;
+
 			case 2:
 			{
-				cout << endl; cout << "NO se Inserto el Nuevo Factura,  porque NO EXISTE Almacen " << idAlmacenRef << " !" << endl;
+				cout << endl; cout << "NO se Inserto el Nuevo Factura,  porque NO EXISTE Almacen " << idAlmacen << " !" << endl;
 				break;
 			}
 			case 3:
@@ -1868,9 +1941,9 @@ void menuAlmacen_Factura(LstAlmacenes * listaAlmacenes)
 			system("cls");
 			cout << endl;
 			cout << "------- Anulando Una Factura En Un Almacen --------" << endl << endl;
-			cout << "Digite el ID Almacen Existente: "; cin >> idAlmacenRef;
+			cout << "Digite el ID Almacen Existente: "; cin >> idAlmacen;
 			cout << "Digite el ID Factura Existente: "; cin >> idFactura;
-			switch (listaAlmacenes->anularUnaFacturaDeUnAlmacen(idAlmacenRef, idFactura))
+			switch (lstAlmacenes->elimniarFactura(idAlmacen, idFactura))
 			{
 			case 1:
 			{
@@ -1879,7 +1952,7 @@ void menuAlmacen_Factura(LstAlmacenes * listaAlmacenes)
 			}
 			case 2:
 			{
-				cout << endl; cout << "NO se Elimino la Factura,  porque NO EXISTE Almacen " << idAlmacenRef << " !" << endl;
+				cout << endl; cout << "NO se Elimino la Factura,  porque NO EXISTE Almacen " << idAlmacen << " !" << endl;
 				break;
 			}
 			case 3:
@@ -1896,13 +1969,14 @@ void menuAlmacen_Factura(LstAlmacenes * listaAlmacenes)
 			system("cls");
 			cout << endl;
 			cout << "------- Consultando Todos Facturas de Un Almacen --------" << endl << endl;
-			cout << "Digite el ID Almacen Existente: "; cin >> idAlmacenRef;
-			listaAlmacenes->desplegarTodosFacturasDeUnAlmacen(idAlmacenRef);
+			cout << "Digite el ID Almacen Existente: "; cin >> idAlmacen;
+			lstAlmacenes->desplegarFacturasDeAlmacen(idAlmacen);
 		}
 		}
 
 	} while (opcion != 0);
 }
+
 void menuAlmacen_Factura_lineaFactura(LstAlmacenes * listaAlmacenes)
 {
 	int opcion = 0;
@@ -2428,7 +2502,7 @@ void menuProducto(LstLineaProductos * _lstLinea)
 }
 
 // Aqui van todos lo de Almacen
-void menuMundoA(LstAlmacenes * listaAlmacenes, LstLineaProductos *listaLineaProductos)
+void menuMundoA(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 {
 	int opcion = 0;
 
@@ -2439,7 +2513,7 @@ void menuMundoA(LstAlmacenes * listaAlmacenes, LstLineaProductos *listaLineaProd
 		cout << "(1) OPERACION ALMACENES" << endl;
 		cout << "(2) OPERACION ALAMENCES CON INVENTARIOS" << endl;
 		cout << "(3) OPERACION ALAMENCES CON ENTRADAS" << endl;
-		cout << "(4) OPERACION ALAMENCES CON FACTURAS" << endl;
+		cout << "(4) Facturacion" << endl;
 		cout << "(0) Salir" << endl;
 		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
 
@@ -2447,7 +2521,7 @@ void menuMundoA(LstAlmacenes * listaAlmacenes, LstLineaProductos *listaLineaProd
 		{
 		case 1:
 		{
-			menuAlmacen(listaAlmacenes, listaLineaProductos);
+			menuAlmacen(lstAlmacenes, lstLineas);
 			break;
 		}
 		case 2:
@@ -2462,7 +2536,7 @@ void menuMundoA(LstAlmacenes * listaAlmacenes, LstLineaProductos *listaLineaProd
 		}
 		case 4:
 		{
-			menuAlmacen_Factura(listaAlmacenes);
+			menuFacturacion(lstAlmacenes, lstLineas);
 			break;
 		}
 		}
@@ -2862,13 +2936,15 @@ int main()
 {
 	//listasMenu();
 
-	LstAlmacenes * listaAlmacenes = new LstAlmacenes();
+	LstAlmacenes * lstAlmacenes = new LstAlmacenes();
 
-	LstLineaProductos * _lstLinea = new LstLineaProductos();
+	LstLineaProductos * lstLineas = new LstLineaProductos();
 
 
-	menuPrincipalAB(listaAlmacenes, _lstLinea);
+	menuPrincipalAB(lstAlmacenes, lstLineas);
 
+
+	system("pause");
 	return 0;
 }
 

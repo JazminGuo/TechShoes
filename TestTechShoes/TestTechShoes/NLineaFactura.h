@@ -3,9 +3,9 @@
 class NLineaFactura
 {
 private:
-	LineaFactura *lineaFactura;
-	NLineaFactura *sgte;
-	NLineaFactura *ante;
+	LineaFactura * lineaFactura;
+	NLineaFactura * sgte;
+	NLineaFactura * ante;
 
 public:
 	NLineaFactura();
@@ -13,13 +13,13 @@ public:
 
 	NLineaFactura(LineaFactura *);
 
-	LineaFactura *getLineaFactura();
+	LineaFactura * getLineaFactura();
 	void setLineaFactura(LineaFactura *);
 
-	NLineaFactura *getSgte();
+	NLineaFactura * getSgte();
 	void setSgte(NLineaFactura *);
 
-	NLineaFactura *getAnte();
+	NLineaFactura * getAnte();
 	void setAnte(NLineaFactura *);
 
 };

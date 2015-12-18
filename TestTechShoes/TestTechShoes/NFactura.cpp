@@ -36,3 +36,13 @@ void NFactura::setSgte(NFactura * _sgte)
 {
 	this->sgte = _sgte;
 }
+
+LstLineaFacturas * NFactura::getLstLineasF() 
+{
+	return this->lstLineasF;
+}
+
+void NFactura::setLstLineasF(LstLineaFacturas * lstLineasF) 
+{
+	this->lstLineasF = lstLineasF;
+}

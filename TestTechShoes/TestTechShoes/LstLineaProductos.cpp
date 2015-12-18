@@ -256,6 +256,7 @@ bool LstLineaProductos::eliminarTodos()
 	}
 	return true;
 }
+
 LineaProducto *LstLineaProductos::buscar(int _idLineaProducto)
 {
 	NLineaProducto *aux = dirNodo(_idLineaProducto);
@@ -264,6 +265,7 @@ LineaProducto *LstLineaProductos::buscar(int _idLineaProducto)
 	else
 		return aux->getLineaProducto();
 }
+
 void LstLineaProductos::desplegar()
 {
 	NLineaProducto *aux = getCab();
@@ -287,6 +289,36 @@ void LstLineaProductos::desplegar()
 	}
 }
 
+bool LstLineaProductos::dirNodoGlobal(int _idLinea, int _iSublinea, int _idProducto)
+{
+	bool exist = false;
+
+	if (dirNodo(_idLinea) != NULL)
+	{
+		if (dirNodo(_idLinea)->getLstSubLineaProductos()->dirNodo(_iSublinea) != NULL)
+		{
+			if (dirNodo(_idLinea)->getLstSubLineaProductos()->dirNodo(_iSublinea)->getLstProductos()->dirNodo(_idProducto) != NULL)
+			{
+				exist = true;
+			}
+			else
+			{
+				exist;
+			}
+		}
+		else
+		{
+			exist;
+		}
+	}
+	else
+	{
+		exist;
+	}
+	return exist;
+}
+
+// * Metodos de Listas de Listas  SubLinea*//
 int LstLineaProductos::agregarSubLinea(int _idLineaProducto, SubLineaProducto * _subLineaProducto)
 {
 	/*Este metodo agrega a _subLineaProducto en la Linea _idLineaProducto.

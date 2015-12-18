@@ -53,22 +53,31 @@ public:
 	void desplegarTodosEntradasDeUnAlmacen(int);
 	void desplegarUnaEntradaDeUnAlmacen(int, int);
 
-	// Operaciones Almacen Con Facturas
-	int agregarUnaFacturaEnUnAlmacen(int, Factura *);
-	int anularUnaFacturaDeUnAlmacen(int, int);
-	void desplegarTodosFacturasDeUnAlmacen(int);
+	// * Metodos de Listas de Listas Factura*//
+	int agregarFactura(int, Factura *);
+	int elimniarFactura(int, int);
+	Factura * buscarFactura(int, int);
+	void desplegarFacturasDeAlmacen(int);
+	void desplegarAlamacenConFacturas();
+	int ultimaFactura(int);
 
-	// Operaciones Almacen con Factura con Linea de Factura
-	int agregarUnaLineaFacturaEnUnAlmacen(int, Factura *);
-	int eliminarUnaLineaFacturaDeUnAlmacen(int, int);
-	void consultarUnaLineaFacturaDeUnaFactura(int);
-	void desplegarTodosLineasFacturasDeUnaFactura(int);
+	// * Metodos de Listas de Listas de Listas Lineas de Factura*//
+	int agregarLineaFactura(int, int, LineaFactura *);
+	int elimniarLineaFactura(int, int, int);
+	LineaFactura * buscarLineaFactura(int, int, int);
+	void desplegarLineasDeFactura(int, int);
+	void desplegarFacturasConLineas(int);
+	int ultimaLinea(int, int);
+
+
 
 
 	/*-------------------------------------------------------------*/
 
 
 	int comprobarLineasySubs(int, int, int, Inventario *);
+
+	void sustraerExistencia(int, int);
 
 	bool actualizarInventariosDeUnAlmacen(int, int, Entrada *);
 };

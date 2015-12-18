@@ -3,24 +3,35 @@
 class LineaFactura
 {
 private:
-	int idLineaFactura;
-	char fecha[10];
-	char cliente[10];
+	int idFactura;
+	int numFLinea;
+	int idLinea;
+	int idSublinea;
+	int idProducto;
+	int cantidad;
 
 public:
 	LineaFactura();
 	~LineaFactura();
 
+	LineaFactura(int, int, int, int, int, int);
 
-	LineaFactura(int, char *, char *);
+	void setIdFactura(int);
+	int getIdFactura();
 
-	int getIdLineaFactura();
-	void setIdLineaFactura(int);
-
-	char *getFecha();
-	void setFecha(char *);
-
-	char *getCliente();
-	void setCliente(char *);
+	void setNumFLinea(int);
+	int getNumFLinea();
+	
+	void setIdLinea(int);
+	int getIdLinea();
+	
+	void setIdSublinea(int);
+	int getIdSublinea();
+	
+	void setIdProducto(int);
+	int getIdProducto();
+	
+	void setCantidad(int);
+	int getCantidad();
 };
 

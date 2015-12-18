@@ -2,13 +2,13 @@
 #include "NLineaFactura.h"
 class LstLineaFacturas
 {
-	NLineaFactura *cab;
+	NLineaFactura * cab;
 	int size;
 
 	// Métodos Privados
-	NLineaFactura *dirNodo(int);
-	NLineaFactura *dirAnterior(int);
-	NLineaFactura *dirUltimo(int);
+	NLineaFactura * dirNodo(int);
+	NLineaFactura * dirAnterior(int);
+	NLineaFactura * dirUltimo();
 	void agregarNodoAntesDe(NLineaFactura *, NLineaFactura *);
 	void agregarNodoDespuesDe(NLineaFactura *, NLineaFactura *);
 
@@ -16,7 +16,7 @@ public:
 	LstLineaFacturas();
 	~LstLineaFacturas();
 
-	NLineaFactura *getCab();
+	NLineaFactura * getCab();
 	void setCab(NLineaFactura *);
 
 	int getSize();
@@ -29,8 +29,9 @@ public:
 	bool modificar(int, LineaFactura *);
 	bool eliminar(int);
 	bool eliminarTodos();
-	LineaFactura *buscar(int);
+	LineaFactura * buscar(int);
 	void desplegar();
+	int ultimaLinea();
 
 };
 

@@ -4,9 +4,12 @@
 
 LineaFactura::LineaFactura()
 {
-	setIdLineaFactura(0);
-	setFecha("");
-	setCliente("");
+	setIdFactura(0);
+	setNumFLinea(0);
+	setIdLinea(0);
+	setIdSublinea(0);
+	setIdProducto(0);
+	setCantidad(0);
 }
 
 
@@ -15,36 +18,72 @@ LineaFactura::~LineaFactura()
 }
 
 
-LineaFactura::LineaFactura(int _idFactura, char *_fecha, char *_cliente)
+LineaFactura::LineaFactura(int _idFactura, int _numFlinea, int _idLinea, int _idSublinea, int _idProducto, int _cantidad)
 {
-	setIdLineaFactura(_idFactura);
-	setFecha(_fecha);
-	setCliente(_cliente);
+	setIdFactura(_idFactura);
+	setNumFLinea(_numFlinea);
+	setIdLinea(_idLinea);
+	setIdSublinea(_idSublinea);
+	setIdProducto(_idProducto);
+	setCantidad(_cantidad);
 }
 
-int LineaFactura::getIdLineaFactura()
+void LineaFactura::setIdFactura(int idFactura)
 {
-	return this->idLineaFactura;
-}
-void LineaFactura::setIdLineaFactura(int _idFactura)
-{
-	this->idLineaFactura = _idFactura;
+	this->idFactura = idFactura;
 }
 
-char *LineaFactura::getFecha()
+int LineaFactura::getIdFactura()
 {
-	return this->fecha;
-}
-void LineaFactura::setFecha(char *_fecha)
-{
-	strcpy_s(this->fecha, _fecha);
+	return this->idFactura;
 }
 
-char *LineaFactura::getCliente()
+void LineaFactura::setNumFLinea(int numFLinea)
 {
-	return this->cliente;
+	this->numFLinea = numFLinea;
 }
-void LineaFactura::setCliente(char *_cliente)
+
+int LineaFactura::getNumFLinea()
 {
-	strcpy_s(this->cliente, _cliente);
+	return this->numFLinea;
+}
+
+void LineaFactura::setIdLinea(int idLinea)
+{
+	this->idLinea = idLinea;
+}
+
+int LineaFactura::getIdLinea()
+{
+	return this->idLinea;
+}
+
+void LineaFactura::setIdSublinea(int idSublinea)
+{
+	this->idSublinea = idSublinea;
+}
+
+int LineaFactura::getIdSublinea()
+{
+	return this->idSublinea;
+}
+
+void LineaFactura::setIdProducto(int idProducto)
+{
+	this->idProducto = idProducto;
+}
+
+int LineaFactura::getIdProducto()
+{
+	return this->idProducto;
+}
+
+void LineaFactura::setCantidad(int cantidad)
+{
+	this->cantidad = cantidad;
+}
+
+int LineaFactura::getCantidad()
+{
+	return this->cantidad;
 }

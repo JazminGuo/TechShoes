@@ -7,11 +7,11 @@ private:
 	int size;
 
 	// Métodos Privados
-
 	NLineaProducto *dirAnterior(int);
 	NLineaProducto *dirUltimo(int);
 	void agregarNodoAntesDe(NLineaProducto *, NLineaProducto *);
 	void agregarNodoDespuesDe(NLineaProducto *, NLineaProducto *);
+
 public:
 	LstLineaProductos();
 	~LstLineaProductos();
@@ -30,8 +30,10 @@ public:
 	bool modificar(int, LineaProducto *);
 	bool eliminar(int);
 	bool eliminarTodos();
-	LineaProducto *buscar(int);
+	LineaProducto * buscar(int);
 	void desplegar();
+
+	bool dirNodoGlobal(int, int, int);
 
 	// * Metodos de Listas de Listas  SubLinea*//
 	int agregarSubLinea(int, SubLineaProducto *);

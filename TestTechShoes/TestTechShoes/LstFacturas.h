@@ -36,5 +36,14 @@ public:
 	Factura * obtenerFactura(int);
 	bool modificarFactura(int, Factura *);
 	void desplegarLista();
+	int ultimaFactura();
+
+	// * Metodos de Listas de Listas  LineaFactura*//
+	int agregarLineaFactura(int, LineaFactura *);
+	int elimniarLineaFactura(int, int);
+	LineaFactura * buscarLineaFactura(int, int);
+	void desplegarLineasdeFactura(int);
+	void desplegarFacturasConLinea();
+	int ultimaLinea(int);
 };
 

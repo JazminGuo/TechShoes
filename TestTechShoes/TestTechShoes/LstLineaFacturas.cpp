@@ -14,7 +14,7 @@ LstLineaFacturas::~LstLineaFacturas()
 }
 
 // Getter y Setter
-NLineaFactura *LstLineaFacturas::getCab()
+NLineaFactura * LstLineaFacturas::getCab()
 {
 	return this->cab;
 }
@@ -37,18 +37,31 @@ bool LstLineaFacturas::vacia()
 }
 
 // Métodos Privados
-NLineaFactura *LstLineaFacturas::dirNodo(int _idLineaFactura)
+NLineaFactura * LstLineaFacturas::dirNodo(int _idLineaFactura)
 {
-	NLineaFactura *aux = getCab();
-	while (aux != NULL)
+	if (vacia())
 	{
-		if (_idLineaFactura == aux->getLineaFactura()->getIdLineaFactura())
-			return aux;
-		else
-			aux = aux->getSgte();
+		return NULL;
+	}
+	else
+	{
+		NLineaFactura * aux = getCab();
+		while (aux != NULL)
+		{
+			if (_idLineaFactura == aux->getLineaFactura()->getNumFLinea())
+			{
+				return aux;
+			}
+
+			else
+			{
+				aux = aux->getSgte();
+			}
+		}
 	}
 	return NULL;
 }
+
 NLineaFactura *LstLineaFacturas::dirAnterior(int _idLineaFactura)
 {
 	NLineaFactura *aux = dirNodo(_idLineaFactura);
@@ -62,15 +75,20 @@ NLineaFactura *LstLineaFacturas::dirAnterior(int _idLineaFactura)
 	else
 		return NULL;
 }
-NLineaFactura *LstLineaFacturas::dirUltimo(int _idLineaFactura)
+NLineaFactura * LstLineaFacturas::dirUltimo()
 {
-	NLineaFactura *aux = getCab();
-	while (aux != NULL)
+	if (vacia())
 	{
-		if (aux->getSgte() == NULL)
-			return aux;
-		else
+		return NULL;
+	}
+	else
+	{
+		NLineaFactura * aux = getCab();
+		while (aux->getSgte() != NULL)
+		{
 			aux = aux->getSgte();
+		}
+		return aux;
 	}
 	return NULL;
 }
@@ -115,14 +133,14 @@ bool LstLineaFacturas::agregar(LineaFactura *_lineaFactura)
 	else
 	{
 		NLineaFactura *aux = getCab();
-		int idLineaFactura = _lineaFactura->getIdLineaFactura();
+		int idLineaFactura = _lineaFactura->getNumFLinea();
 
 		while ((aux != NULL) && (aux->getSgte() != NULL))
 		{
-			if (idLineaFactura == aux->getLineaFactura()->getIdLineaFactura())
+			if (idLineaFactura == aux->getLineaFactura()->getNumFLinea())
 				return false;
 
-			if (idLineaFactura < aux->getLineaFactura()->getIdLineaFactura())
+			if (idLineaFactura < aux->getLineaFactura()->getNumFLinea())
 			{
 				agregarNodoAntesDe(nuevo, aux);
 				return true;
@@ -132,10 +150,10 @@ bool LstLineaFacturas::agregar(LineaFactura *_lineaFactura)
 		}
 		if (aux->getSgte() == NULL)
 		{
-			if (idLineaFactura == aux->getLineaFactura()->getIdLineaFactura())
+			if (idLineaFactura == aux->getLineaFactura()->getNumFLinea())
 				return false;
 
-			if (idLineaFactura < aux->getLineaFactura()->getIdLineaFactura())
+			if (idLineaFactura < aux->getLineaFactura()->getNumFLinea())
 			{
 				agregarNodoAntesDe(nuevo, aux);
 				return true;
@@ -151,7 +169,7 @@ bool LstLineaFacturas::agregar(LineaFactura *_lineaFactura)
 	return true;
 
 }
-bool LstLineaFacturas::modificar(int _idLineaFactura, LineaFactura *_lineaFactura)
+bool LstLineaFacturas::modificar(int _idLineaFactura, LineaFactura * _lineaFactura)
 {
 	if (vacia())
 		return false;
@@ -242,23 +260,43 @@ LineaFactura *LstLineaFacturas::buscar(int _idLineaFactura)
 }
 void LstLineaFacturas::desplegar()
 {
-	NLineaFactura *aux = getCab();
+	NLineaFactura * aux = getCab();
 
 	if(aux == NULL)
 		cout << "La Lista esta vacio!!" << endl;
 	else
 	{
 		cout << endl;
-		cout << "-----------------------------------" << endl;
-
+		cout << "No Linea:" << "     " << "Codigo:" << "     " << "Cantidad:" << endl;
+		cout << "_____________________________________________________________________" << endl;
 		while (aux != NULL)
 		{
-			cout << "ID Linea Factura: " << aux->getLineaFactura()->getIdLineaFactura() << endl;
-			cout << "Fecha: " << aux->getLineaFactura()->getFecha() << endl;
-			cout << "Descripcion: " << aux->getLineaFactura()->getCliente() << endl;
-			cout << "-----------------------------------" << endl;
+			cout << "   " << aux->getLineaFactura()->getNumFLinea(); cout << "           " << aux->getLineaFactura()->getIdLinea() << "-" << aux->getLineaFactura()->getIdSublinea() << "-" << aux->getLineaFactura()->getIdProducto(); cout << "          " << aux->getLineaFactura()->getCantidad() << endl;
+			cout << "_____________________________________________________________________" << endl;
 
 			aux = aux->getSgte();
 		}
 	}
+}
+
+int LstLineaFacturas::ultimaLinea() 
+{
+	if (vacia())
+	{
+		return 0;
+	}
+	else
+	{
+		NLineaFactura * aux = dirUltimo();
+
+		if (aux == NULL)
+		{
+			return 0;
+		}
+		else
+		{
+			return aux->getLineaFactura()->getNumFLinea();
+		}
+	}
+	return 0;
 }

@@ -525,67 +525,6 @@ void LstAlmacenes::desplegarUnaEntradaDeUnAlmacen(int _idAlmacen, int _idProduct
 	}
 }
 
-// Operaciones Almacen Con Facturas
-int LstAlmacenes::agregarUnaFacturaEnUnAlmacen(int _idAlmacen, Factura *_factura)
-{
-	/*	    1. Se inserto exitosamente
-	2. No se inserto porque el Almacen no existe
-	3. No se insertó porque el Inventario ya existe, ya fue matriculado
-	*/
-	NAlmacen *aux = dirNodo(_idAlmacen);
-
-	if (aux == NULL)
-		return 2;
-	else
-	{
-		if (aux->getListaFacturas()->agregaAsc(_factura))
-			return 1;
-		else
-			return 3;
-
-	}
-	return 0;
-}
-int LstAlmacenes::anularUnaFacturaDeUnAlmacen(int _idAlmacen, int _idFactura)
-{
-/*	    1. Se eliminó exitosamente
-	    2. No se eliminó porque el Almacen no existe
-	    3. No se eliminó porque el Inventario NO existe
-*/
-	NAlmacen *aux = dirNodo(_idAlmacen); // Buscando Alamacen
-
-	if (aux == NULL)
-		return 2;
-	else
-	{
-		if (aux->getListaFacturas()->eliminar(_idFactura))
-			return 1;
-
-		else
-			return 3;
-	}
-}
-void LstAlmacenes::desplegarTodosFacturasDeUnAlmacen(int _idAlmacen)
-{
-	NAlmacen *aux = dirNodo(_idAlmacen);
-	bool existe = false;
-	if (aux != NULL)
-	{
-		cout << endl;
-		cout << "***********************************************" << endl;
-		cout << "ID Almacen: " << aux->getAlmacen()->getIdAlmacen() << endl;
-		cout << "====================================" << endl;
-		cout << "Ubicacion: " << aux->getAlmacen()->getUbicacion() << endl;
-		cout << "====================================" << endl;
-		cout << "Facturas en el Almacen: " << endl;
-		cout << "====================================" << endl;
-		aux->getListaFacturas()->desplegarLista();
-		cout << "*********************************************" << endl;
-	}
-	else
-		existe;
-}
-
 
 
 //Auto agregar todos los articulos de Lineas //
@@ -639,4 +578,198 @@ void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 			}
 		} while (auxL != lstLinea->getCab());
 	}
+}
+
+
+// * Metodos de Listas de Listas Factura*//
+int LstAlmacenes::agregarFactura(int _idAlmacen, Factura * _factura)
+{
+	/*Este metodo agrega a _subLineaProducto en la Linea _idAlmacen.
+	El metodo devuelve:
+	1. Si el se inserto correctamente.
+	2. No se inserto por que el curso no existe
+	3.No se inserto por que el estudiante ya existe
+	*/
+
+	NAlmacen * aux = dirNodo(_idAlmacen);
+
+	if (aux == NULL)
+	{
+		return 2;
+	}
+	else
+	{
+		if (aux->getListaFacturas()->agregaAsc(_factura))
+		{
+			return 1;
+		}
+		else
+		{
+			return 3;
+		}
+	}
+}
+
+int LstAlmacenes::elimniarFactura(int _idAlmacen, int _idFactura)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+
+	if (aux == NULL)
+	{
+		return 2;
+	}
+	else
+	{
+		if (aux->getListaFacturas()->eliminar(_idFactura))
+		{
+			return 1;
+		}
+		else
+		{
+			return 3;
+		}
+	}
+}
+
+Factura * LstAlmacenes::buscarFactura(int _idAlmacen, int _idFactura)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+
+	if (aux == NULL)
+	{
+		cout << "La linea que esta bucando no existe" << endl;
+	}
+	else
+	{
+		Factura * _factura = aux->getListaFacturas()->obtenerFactura(_idFactura);
+
+		if (_factura == NULL)
+		{
+			cout << "La sublinea que esta buscando no existe" << endl;
+		}
+		else
+		{
+			cout << "======================Factura========================" << endl;
+			cout << "ID: " << _factura->getIdFactura() << endl;
+			cout << "Cliente: " << _factura->getCliente() << endl;
+			cout << "Fecha: " << _factura->getFecha() << endl;
+			cout << "======================================================" << endl;
+			return _factura;
+		}
+	}
+}
+
+void LstAlmacenes::desplegarFacturasDeAlmacen(int _idAlmacen)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+
+	cout << "=======================================================" << endl;
+	cout << "ID: " << aux->getAlmacen()->getIdAlmacen() << endl;
+	cout << "Ubicacion: " << aux->getAlmacen()->getUbicacion() << endl;
+
+	aux->getListaFacturas()->desplegarLista();
+}
+
+void LstAlmacenes::desplegarAlamacenConFacturas()
+{
+	if (vacia())
+	{
+		cout << "La lista esta vacia" << endl;
+	}
+	else
+	{
+		NAlmacen * aux = getCab();
+		int i = 1;
+		cout << "============================================" << endl;
+
+		do
+		{
+			cout << "Almacen #" << i << ": " << endl;
+			cout << "ID: " << aux->getAlmacen()->getIdAlmacen() << endl;
+			cout << "Ubicacion: " << aux->getAlmacen()->getUbicacion() << endl;
+			cout << "============================================" << endl;
+			aux->getListaFacturas()->desplegarLista();
+
+			aux = aux->getSgte();
+			i++;
+		} while (aux != getCab());
+		cout << endl << "Fin de la Lista" << endl;
+	}
+	system("pause");
+}
+
+int LstAlmacenes::ultimaFactura(int _idAlmacen)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+
+	return aux->getListaFacturas()->ultimaFactura();
+}
+
+
+// * Metodos de Listas de Listas de Listas Lineas de Factura*//
+int LstAlmacenes::agregarLineaFactura(int _idAlmacen, int _idFactura, LineaFactura * _lineaFactura)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+
+	if (aux == NULL)
+	{
+		return 4;
+	}
+	else
+	{
+		return aux->getListaFacturas()->agregarLineaFactura(_idFactura, _lineaFactura);
+	}
+}
+
+int LstAlmacenes::elimniarLineaFactura(int _idAlmacen, int _idFactura, int _numLinea)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+
+	if (aux == NULL)
+	{
+		return 4;
+	}
+	else
+	{
+		return aux->getListaFacturas()->elimniarLineaFactura(_idFactura, _numLinea);
+	}
+}
+
+LineaFactura * LstAlmacenes::buscarLineaFactura(int _idAlmacen, int _idFactura, int _numLinea)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+
+	if (aux == NULL)
+	{
+		return NULL;
+	}
+	else
+	{
+		return aux->getListaFacturas()->buscarLineaFactura(_idFactura, _numLinea);
+	}
+}
+
+void LstAlmacenes::desplegarLineasDeFactura(int _idAlmacen, int _idFactura)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+	aux->getListaFacturas()->desplegarLineasdeFactura(_idFactura);
+}
+
+void LstAlmacenes::desplegarFacturasConLineas(int _idAlmacen)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+	aux->getListaFacturas()->desplegarFacturasConLinea();
+}
+
+int LstAlmacenes::ultimaLinea(int _idAlamacen, int _idFactura)
+{
+	NAlmacen * aux = dirNodo(_idAlamacen);
+
+	return aux->getListaFacturas()->ultimaLinea(_idFactura);
+}
+
+
+void LstAlmacenes::sustraerExistencia(int _idAlmacen, int _exitencia)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
 }

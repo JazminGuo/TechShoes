@@ -12,9 +12,9 @@ private:
 	Almacen * almacen;
 	NAlmacen * ante;
 	NAlmacen * sgte;
-	LstInventario *listaInventarios;
-	LstEntradas *listaEntradas;
-	LstFacturas *listaFacturas;
+	LstInventario * listaInventarios;
+	LstEntradas * listaEntradas;
+	LstFacturas * listaFacturas;
 
 public:
 	NAlmacen();

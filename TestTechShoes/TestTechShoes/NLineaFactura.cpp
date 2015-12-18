@@ -21,7 +21,7 @@ NLineaFactura::NLineaFactura(LineaFactura *_factura)
 	setAnte(NULL);
 }
 
-LineaFactura *NLineaFactura::getLineaFactura()
+LineaFactura * NLineaFactura::getLineaFactura()
 {
 	return this->lineaFactura;
 }
@@ -39,7 +39,7 @@ void NLineaFactura::setSgte(NLineaFactura *_sgte)
 	this->sgte = _sgte;
 }
 
-NLineaFactura *NLineaFactura::getAnte()
+NLineaFactura * NLineaFactura::getAnte()
 {
 	return this->ante;
 }
