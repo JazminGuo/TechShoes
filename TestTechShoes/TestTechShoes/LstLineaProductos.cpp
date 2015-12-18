@@ -399,12 +399,20 @@ SubLineaProducto * LstLineaProductos::buscarSublinea(int _idLineaProducto, int _
 void LstLineaProductos::desplegarSubLineasDeLinea(int _idLineaProducto)
 {
 	NLineaProducto * aux = dirNodo(_idLineaProducto);
+	if (aux != NULL)
+	{
+		cout << "=======================================================" << endl;
+		cout << "ID: " << aux->getLineaProducto()->getIdLineaProducto() << endl;
+		cout << "Descripcion: " << aux->getLineaProducto()->getDescripcion() << endl;
 
-	cout << "=======================================================" << endl;
-	cout << "ID: " << aux->getLineaProducto()->getIdLineaProducto() << endl;
-	cout << "Descripcion: " << aux->getLineaProducto()->getDescripcion() << endl;
 
-	aux->getLstSubLineaProductos()->desplegar();
+		aux->getLstSubLineaProductos()->desplegar();
+	}
+	else
+	{
+		cout << "La Lista Linea de Producto esta vacia!" << endl;
+		cout << endl;
+	}
 }
 
 
@@ -484,11 +492,28 @@ Producto * LstLineaProductos::buscarProducto(int _idLinea, int _idSubLinea, int 
 void LstLineaProductos::desplegarProductosDeSubLinea(int _idLinea, int _idSubLinea)
 {
 	NLineaProducto * aux = dirNodo(_idLinea);
-	aux->getLstSubLineaProductos()->desplegarProductosDeSubLinea(_idSubLinea);
+	if (aux != NULL)
+	{
+		aux->getLstSubLineaProductos()->desplegarProductosDeSubLinea(_idSubLinea);
+	}
+	else
+	{
+		cout << "La Lista Linea de Producto esta vacia!" << endl;
+		cout << endl;
+	}
+	
 }
 
 void LstLineaProductos::desplegarSubLineasConProductos(int _idLinea)
 {
 	NLineaProducto * aux = dirNodo(_idLinea);
-	aux->getLstSubLineaProductos()->desplegarSubLineasConProductos();
+	if (aux != NULL)
+	{
+		aux->getLstSubLineaProductos()->desplegarSubLineasConProductos();
+	}
+	else
+	{
+		cout << "La Lista Linea de Producto esta vacia!" << endl;
+		cout << endl;
+	}
 }
