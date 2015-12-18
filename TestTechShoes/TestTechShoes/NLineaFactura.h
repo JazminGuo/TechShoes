@@ -1,9 +1,12 @@
 #pragma once
 #include "LineaFactura.h"
+#include "LstLineaProductos.h"
+
 class NLineaFactura
 {
 private:
 	LineaFactura * lineaFactura;
+	LstLineaProductos * lstLineasProducto;
 	NLineaFactura * sgte;
 	NLineaFactura * ante;
 
@@ -21,6 +24,5 @@ public:
 
 	NLineaFactura * getAnte();
 	void setAnte(NLineaFactura *);
-
 };
 

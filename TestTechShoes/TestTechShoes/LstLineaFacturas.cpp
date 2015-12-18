@@ -258,21 +258,25 @@ LineaFactura *LstLineaFacturas::buscar(int _idLineaFactura)
 		return NULL;
 	return NULL;
 }
-void LstLineaFacturas::desplegar()
+
+
+void LstLineaFacturas::desplegar(LstLineaProductos * _lstLineaProducto)
 {
 	NLineaFactura * aux = getCab();
 
 	if(aux == NULL)
-		cout << "La Lista esta vacio!!" << endl;
+		cout << "No hay lineas en la Factura" << endl;
 	else
 	{
 		cout << endl;
-		cout << "No Linea:" << "     " << "Codigo:" << "     " << "Cantidad:" << endl;
-		cout << "_____________________________________________________________________" << endl;
+		cout << "No. Linea:" << "     " << "Codigo:" << "     " << "Cantidad:" << "     " << "Descripcion:" << "     " << "Talla:" << "     " << "Precio Unitario:" << "     " << "Subtotal:" << endl;
+		cout << "__________________________________________________________________________________________________________________" << endl;
 		while (aux != NULL)
 		{
-			cout << "   " << aux->getLineaFactura()->getNumFLinea(); cout << "           " << aux->getLineaFactura()->getIdLinea() << "-" << aux->getLineaFactura()->getIdSublinea() << "-" << aux->getLineaFactura()->getIdProducto(); cout << "          " << aux->getLineaFactura()->getCantidad() << endl;
-			cout << "_____________________________________________________________________" << endl;
+			Producto * producto = _lstLineaProducto->buscarProducto(aux->getLineaFactura()->getIdLinea(), aux->getLineaFactura()->getIdSublinea(), aux->getLineaFactura()->getIdProducto());
+			
+			cout << "   " << aux->getLineaFactura()->getNumFLinea(); cout << "           " << aux->getLineaFactura()->getIdLinea() << "-" << aux->getLineaFactura()->getIdSublinea() << "-" << aux->getLineaFactura()->getIdProducto(); cout << "          " << aux->getLineaFactura()->getCantidad(); cout << "          " << producto->getDescripcion(); cout << "              " << producto->getTalla(); cout << "          " << producto->getPrecio(); cout << "          " << producto->getPrecio() * aux->getLineaFactura()->getCantidad() << endl;
+			cout << "__________________________________________________________________________________________________________________" << endl;
 
 			aux = aux->getSgte();
 		}

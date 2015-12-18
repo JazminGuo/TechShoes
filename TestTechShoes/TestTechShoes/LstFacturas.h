@@ -42,7 +42,7 @@ public:
 	int agregarLineaFactura(int, LineaFactura *);
 	int elimniarLineaFactura(int, int);
 	LineaFactura * buscarLineaFactura(int, int);
-	void desplegarLineasdeFactura(int);
+	void imprimirFactura(int, LstLineaProductos *);
 	void desplegarFacturasConLinea();
 	int ultimaLinea(int);
 };

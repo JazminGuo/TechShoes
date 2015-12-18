@@ -374,7 +374,8 @@ SubLineaProducto * LstLineaProductos::buscarSublinea(int _idLineaProducto, int _
 
 	if (aux == NULL)
 	{
-		cout << "La linea que esta bucando no existe" << endl;
+		cout << "La Linea que esta buscando no existe" << endl;
+		return NULL;
 	}
 	else
 	{
@@ -382,15 +383,11 @@ SubLineaProducto * LstLineaProductos::buscarSublinea(int _idLineaProducto, int _
 
 		if (_subLinea == NULL)
 		{
-			cout << "La sublinea que esta buscando no existe" << endl;
+			cout << "La Sublinea que esta buscando no existe" << endl;
+			return NULL;
 		}
 		else
 		{
-			cout << "======================SubLinea========================" << endl;
-			cout << "Id: " << _subLinea->getIdLinea() << endl;
-			cout << "Descripcion: " << _subLinea->getDescripcion() << endl;
-			cout << "Linea: " << _subLinea->getIdLinea() << endl;
-			cout << "======================================================" << endl;
 			return _subLinea;
 		}
 	}
