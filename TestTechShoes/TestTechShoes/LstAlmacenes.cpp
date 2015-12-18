@@ -749,10 +749,10 @@ LineaFactura * LstAlmacenes::buscarLineaFactura(int _idAlmacen, int _idFactura, 
 	}
 }
 
-void LstAlmacenes::desplegarLineasDeFactura(int _idAlmacen, int _idFactura)
+void LstAlmacenes::imprimirFactura(int _idAlmacen, int _idFactura, LstLineaProductos * lstLineaProducto)
 {
 	NAlmacen * aux = dirNodo(_idAlmacen);
-	aux->getListaFacturas()->desplegarLineasdeFactura(_idFactura);
+	aux->getListaFacturas()->imprimirFactura(_idFactura, lstLineaProducto);
 }
 
 void LstAlmacenes::desplegarFacturasConLineas(int _idAlmacen)

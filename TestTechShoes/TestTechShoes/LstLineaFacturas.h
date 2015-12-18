@@ -30,8 +30,7 @@ public:
 	bool eliminar(int);
 	bool eliminarTodos();
 	LineaFactura * buscar(int);
-	void desplegar();
+	void desplegar(LstLineaProductos *);
 	int ultimaLinea();
-
 };
 

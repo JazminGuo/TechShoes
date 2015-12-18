@@ -65,7 +65,7 @@ public:
 	int agregarLineaFactura(int, int, LineaFactura *);
 	int elimniarLineaFactura(int, int, int);
 	LineaFactura * buscarLineaFactura(int, int, int);
-	void desplegarLineasDeFactura(int, int);
+	void imprimirFactura(int, int, LstLineaProductos *);
 	void desplegarFacturasConLineas(int);
 	int ultimaLinea(int, int);
 

@@ -3,6 +3,7 @@
 NFactura::NFactura()
 {
 	setFactura(new Factura());
+	setLstLineasF(new LstLineaFacturas());
 	setSgte(NULL);
 }
 
@@ -14,6 +15,7 @@ NFactura::~NFactura()
 NFactura::NFactura(Factura * _factura)
 {
 	setFactura(_factura);
+	setLstLineasF(new LstLineaFacturas());
 	setSgte(NULL);
 }
 

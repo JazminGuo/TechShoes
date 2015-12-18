@@ -1114,141 +1114,6 @@ void menuSubLineaProducto()
 		system("cls");
 	} while (opcion != 0);
 }
-void menuLineaFactura()
-{
-	int opcion = 0;
-
-	int idFactura;
-	int numLinea;
-	int idLinea;
-	int idSublinea;
-	int idProducto;
-	int cantidad;
-
-	LstLineaFacturas * lstLineaFacturas = new LstLineaFacturas();
-
-	do
-	{
-		system("cls");
-		cout << "================ *** Menu Linea Factura *** ================" << endl << endl;
-		cout << "(1) Agregar Un Linea de Factura" << endl;
-		cout << "(2) Modificar Un Linea de Factura" << endl;
-		cout << "(3) Eliminar Un Linea de Factura" << endl;
-		cout << "(4) Eliminar Todos Lineas de Factura" << endl;
-		cout << "(5) Buscar Un Linea de Factura" << endl;
-		cout << "(6) Desplegar Todos Lineas de Factura" << endl;
-		cout << "(0) Salir" << endl << endl;
-		cout << "============================================================" << endl << endl;
-		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
-
-		switch (opcion)
-		{
-		case 1:
-		{
-			system("cls");
-			cout << "------- Agregando Un Linea de Factura --------" << endl;
-			cout << "Digite el ID de la Factura: "; cin >> idFactura;
-			cout << "Digite el numero de linea: "; cin >> numLinea;
-			cout << "Digite el id de la Linea: "; cin >> idLinea;
-			cout << "Digite el ID de la sublinea: "; cin >> idSublinea;
-			cout << "Digite el id del producto: "; cin >> idProducto;
-			cout << "Digite la cantidad: "; cin >> cantidad;
-			cout << "                                          " << endl;
-			LineaFactura * nuevo = new LineaFactura(idFactura, numLinea, idLinea, idSublinea, idProducto, cantidad);
-			if (lstLineaFacturas->agregar(nuevo))
-				cout << "Agregar Nuevo Linea Factura Correctamente!" << endl;
-			else
-				cout << "Agregar Incorrecto!!!" << endl;
-
-			system("pause");
-			break;
-
-		}
-		case 2:
-		{
-			//system("cls");
-			//cout << "                                          " << endl;
-			//cout << "------- Modificando Un Linea de Factura --------" << endl;
-			//cout << "Digite el ID de Linea de Factura que desea Mofidicar: "; cin >> idLineaFacturaRef;
-			////cout << "Digite el Nuevo ID de Linea de Factura: "; cin >> vidLineaFactura;
-			//cout << "Digite el Nuevo Fecha de Linea de Factura: "; cin >> vfecha;
-			//cout << "Digite el Nuevo Cliente de Linea de Factura: "; cin >> vcliente;
-			//cout << "                                          " << endl;
-
-			//LineaFactura *nuevo = new LineaFactura(vidLineaFactura, vfecha, vcliente);
-
-			//if (lstLineaFacturas->modificar(idLineaFacturaRef, nuevo))
-			//	cout << "El ID SubLinea Producto " << idLineaFacturaRef << " modificado Corretamente" << endl;
-			//else
-			//	cout << "El ID SubLinea Producto " << idLineaFacturaRef << " modificado Incorreto" << endl;
-
-			//system("pause");
-			break;
-		}
-		case 3:
-		{
-			/*system("cls");
-			cout << "                                          " << endl;
-			cout << "------- Eliminando Un Linea de Factura --------" << endl;
-			cout << "Digite el ID de Linea Producto que desea Eliminar: "; cin >> numLinea;
-			if (lstLineaFacturas->eliminar(numLinea))
-				cout << "ID Linea de Factura " << idLineaFacturaRef << " Eliminado Correctamente!" << endl;
-			else
-				cout << "ID Linea de Factura " << idLineaFacturaRef << " Eliminado Incorrecto!" << endl;
-
-			system("pause");*/
-			break;
-		}
-		case 4:
-		{
-			system("cls");
-			cout << "                                          " << endl;
-			cout << "------- Eliminando Todos Lineas de Factura --------" << endl;
-			lstLineaFacturas->eliminarTodos();
-
-			system("pause");
-			break;
-		}
-		case 5:
-		{
-			/*system("cls");
-			cout << "                                          " << endl;
-			cout << "------- Buscando Un Linea de Factura --------" << endl;
-			cout << "Digite el ID de Linea de Factura que desea Buscar: "; cin >> idLineaFacturaRef;
-			cout << "                                          " << endl;
-			LineaFactura *aux = lstLineaFacturas->buscar(idLineaFacturaRef);
-			if (aux == NULL)
-				cout << "No Existe el ID Linea de Factura: " << idLineaFacturaRef << endl;
-			else
-			{
-				cout << "------------------------------" << endl;
-				cout << "ID Linea Factura: " << aux->getIdLineaFactura() << endl;
-				cout << "Fecha: " << aux->getFecha() << endl;
-				cout << "Descripcion: " << aux->getCliente() << endl;
-				cout << "------------------------------" << endl;
-			}
-
-			system("pause");*/
-			break;
-		}
-		case 6:
-		{
-			system("cls");
-			cout << "                                          " << endl;
-			cout << "------- Desplegando Todos Linea de Factura --------" << endl;
-			lstLineaFacturas->desplegar();
-
-			system("pause");
-			break;
-		}
-		//default:cout << "Opcion No Valida!" << endl;
-
-		}
-		//system("pause");
-		system("cls");
-	} while (opcion != 0);
-
-}
 void menuEntrada()
 {
 	int opcion = 0;
@@ -1889,7 +1754,7 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 								cout << "Digite la cantidad" << endl;
 								cin >> cantidad;
 
-								numLinea = lstAlmacenes->ultimaLinea(idAlmacen, idFactura);
+								numLinea = lstAlmacenes->ultimaLinea(idAlmacen, idFactura) + 1;
 								LineaFactura * nueva = new LineaFactura(idFactura, numLinea, idLinea, idSublinea, idProducto, cantidad);
 
 								lstAlmacenes->agregarLineaFactura(idAlmacen, idFactura, nueva);
@@ -1899,11 +1764,13 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 								cout << "Desea anadir mas Productos?" << endl << endl;
 								cout << "Si (1)" << endl;
 								cout << "No (0)" << endl;
-								cin >> dlt;
+								cout << "Opcion selecionada: "; cin >> dlt; cout << endl;
+
+								lstAlmacenes->imprimirFactura(idAlmacen, idFactura, lstLineas);
 							}
 							else
 							{
-								cout << "El producto que desa anadir a la factura no existe." << endl;
+								cout << "El producto que desea anadir a la factura no existe." << endl;
 								system("pause");
 								dlt = 1;
 							}

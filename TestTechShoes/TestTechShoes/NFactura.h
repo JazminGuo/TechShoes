@@ -1,6 +1,6 @@
 #pragma once
 #include "Factura.h"
-#include"LstLineaFacturas.h"
+#include "LstLineaFacturas.h"
 
 class NFactura
 {

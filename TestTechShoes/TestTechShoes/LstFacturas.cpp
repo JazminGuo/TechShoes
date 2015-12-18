@@ -342,16 +342,17 @@ LineaFactura * LstFacturas::buscarLineaFactura(int _idFactura, int _numLinea)
 	}
 }
 
-void LstFacturas::desplegarLineasdeFactura(int _idFactura)
+void LstFacturas::imprimirFactura(int _idFactura, LstLineaProductos * _lstLineaProducto)
 {
 	NFactura * aux = dirNodo(_idFactura);
 
-	cout << "=======================================================" << endl;
+	cout << "=====================================================================" << endl;
 	cout << "No. Factura: " << aux->getFactura()->getIdFactura() << endl;
 	cout << "Cliente: " << aux->getFactura()->getCliente() << endl;
 	cout << "Fecha: " << aux->getFactura()->getFecha() << endl;
+	cout << "=====================================================================" << endl;
 
-	aux->getLstLineasF()->desplegar();
+	aux->getLstLineasF()->desplegar(_lstLineaProducto);
 }
 
 void LstFacturas::desplegarFacturasConLinea()
@@ -374,7 +375,7 @@ void LstFacturas::desplegarFacturasConLinea()
 			cout << "Cliente: " << aux->getFactura()->getCliente() << endl;
 			cout << "Fecha: " << aux->getFactura()->getFecha() << endl;
 			cout << "============================================" << endl;
-			aux->getLstLineasF()->desplegar();
+			//aux->getLstLineasF()->desplegar();
 
 			aux = aux->getSgte();
 			i++;
