@@ -823,7 +823,7 @@ Factura * LstAlmacenes::buscarFactura(int _idAlmacen, int _idFactura)
 	}
 	else
 	{
-		Factura * _factura = aux->getListaFacturas()->obtenerFactura(_idFactura);
+		Factura * _factura = aux->getListaFacturas()->buscar(_idFactura);
 
 		if (_factura == NULL)
 		{
@@ -887,6 +887,43 @@ int LstAlmacenes::ultimaFactura(int _idAlmacen)
 	return aux->getListaFacturas()->ultimaFactura();
 }
 
+bool LstAlmacenes::anularFactura(int _idAlmacen, int _idFactura)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+
+	if (aux == NULL)
+	{
+		return false;
+	}
+	else
+	{
+		NFactura * nfactura = aux->getListaFacturas()->anularFactura(_idFactura);
+
+		if (nfactura != NULL)
+		{
+			int i = 1;
+			int tamano = nfactura->getLstLineasF()->getSize();
+			LineaFactura * lfactura;
+
+			while (i <= tamano)
+			{
+				lfactura = nfactura->getLstLineasF()->buscar(i);
+
+				if (lfactura != NULL)
+				{
+					sumarExistencia(_idAlmacen, lfactura->getIdLinea(), lfactura->getIdSublinea(), lfactura->getIdProducto(), lfactura->getCantidad());
+				}
+				i++;
+			}
+			return true;
+		}
+		else
+		{
+			return NULL;
+		}
+	}
+}
+
 
 // * Metodos de Listas de Listas de Listas Lineas de Factura*//
 int LstAlmacenes::agregarLineaFactura(int _idAlmacen, int _idFactura, LineaFactura * _lineaFactura)
@@ -937,10 +974,10 @@ void LstAlmacenes::imprimirFactura(int _idAlmacen, int _idFactura, LstLineaProdu
 	aux->getListaFacturas()->imprimirFactura(_idFactura, lstLineaProducto);
 }
 
-void LstAlmacenes::desplegarFacturasConLineas(int _idAlmacen)
+void LstAlmacenes::desplegarFacturasConLineas(int _idAlmacen, LstLineaProductos * _lstLineas)
 {
 	NAlmacen * aux = dirNodo(_idAlmacen);
-	aux->getListaFacturas()->desplegarFacturasConLinea();
+	aux->getListaFacturas()->desplegarFacturasConLinea(_lstLineas);
 }
 
 int LstAlmacenes::ultimaLinea(int _idAlamacen, int _idFactura)

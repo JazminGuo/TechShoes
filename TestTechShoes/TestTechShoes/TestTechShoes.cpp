@@ -493,23 +493,15 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 			cout << "==========================================================" << endl << endl;
 			cout << "Digite el ID del Almacen: "; cin >> idAlmacen;
 			cout << "Digite el ID de la Factura: "; cin >> idFactura;
-			switch (lstAlmacenes->elimniarFactura(idAlmacen, idFactura))
+
+
+			if (lstAlmacenes->anularFactura(idAlmacen, idFactura))
 			{
-			case 1:
-			{
-				cout << endl; cout << "Se Elimino la Factura " << idFactura << " Correctamente!" << endl;
-				break;
+				cout << "Factura anulada correctamente" << endl;
 			}
-			case 2:
+			else
 			{
-				cout << endl; cout << "No se puede eliminar la Factura por que el Almacen no existe" << idAlmacen << " !" << endl;
-				break;
-			}
-			case 3:
-			{
-				cout << endl; cout << "No se puede eliminar la Factura por que la Factura no existe" << endl;
-				break;
-			}
+				cout << "No se puede anular la Factura por que la Factura no existe" << endl;
 			}
 			system("pause");
 			break;
@@ -517,10 +509,26 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 		case 3:
 		{
 			system("cls");
-			cout << endl;
-			cout << "------- Consultando Todos Facturas de Un Almacen --------" << endl << endl;
-			cout << "Digite el ID Almacen Existente: "; cin >> idAlmacen;
+			cout << "==========================================================" << endl;
+			cout << "Buscar Factura." << endl;
+			cout << "==========================================================" << endl << endl;
+			cout << "Digite el ID del Almacen: "; cin >> idAlmacen;
+			cout << "Digite el ID de la Factura: "; cin >> idFactura;
+
+			system("cls");
+			lstAlmacenes->imprimirFactura(idAlmacen, idFactura, lstLineas);
+			system("pause");
+			break;
+		}
+		case 4:
+		{
+			system("cls");
+			cout << "==========================================================" << endl;
+			cout << "Ver Facturas por Almacen." << endl;
+			cout << "==========================================================" << endl << endl;
+			cout << "Digite el ID del Almacen: "; cin >> idAlmacen;
 			lstAlmacenes->desplegarFacturasDeAlmacen(idAlmacen);
+			break;
 		}
 		}
 

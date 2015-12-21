@@ -190,7 +190,7 @@ bool LstFacturas::vacia()
 	return getCab() == NULL;
 }
 
-Factura * LstFacturas::obtenerFactura(int _idFactura)
+Factura * LstFacturas::buscar(int _idFactura)
 {
 	NFactura * aux = dirNodo(_idFactura);
 
@@ -355,9 +355,9 @@ void LstFacturas::imprimirFactura(int _idFactura, LstLineaProductos * _lstLineaP
 	aux->getLstLineasF()->desplegar(_lstLineaProducto);
 }
 
-void LstFacturas::desplegarFacturasConLinea()
+void LstFacturas::desplegarFacturasConLinea(LstLineaProductos * _lstLineas)
 {
-	//Desplegar los datos de cada uno de los cursos y cada uno de sus estudiantes.
+	//Despliega todas las facturas con todas sus lineas.
 	if (vacia())
 	{
 		cout << "La lista esta vacia" << endl;
@@ -375,7 +375,7 @@ void LstFacturas::desplegarFacturasConLinea()
 			cout << "Cliente: " << aux->getFactura()->getCliente() << endl;
 			cout << "Fecha: " << aux->getFactura()->getFecha() << endl;
 			cout << "============================================" << endl;
-			//aux->getLstLineasF()->desplegar();
+			aux->getLstLineasF()->desplegar(_lstLineas);
 
 			aux = aux->getSgte();
 			i++;
@@ -390,4 +390,19 @@ int LstFacturas::ultimaLinea(int _idFactura)
 	NFactura * aux = dirNodo(_idFactura);
 
 	return aux->getLstLineasF()->ultimaLinea();
+}
+
+NFactura * LstFacturas::anularFactura(int _idFactura)
+{
+	NFactura * aux = dirNodo(_idFactura);
+
+	if (aux == NULL)
+	{
+		return NULL;
+	}
+	else 
+	{
+		aux->getFactura()->setAnular(true);
+		return aux;
+	}
 }

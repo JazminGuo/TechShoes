@@ -67,13 +67,14 @@ public:
 	void desplegarFacturasDeAlmacen(int);
 	void desplegarAlamacenConFacturas();
 	int ultimaFactura(int);
+	bool anularFactura(int, int);
 
 	// * Metodos de Listas de Listas de Listas Lineas de Factura*//
 	int agregarLineaFactura(int, int, LineaFactura *);
 	int elimniarLineaFactura(int, int, int);
 	LineaFactura * buscarLineaFactura(int, int, int);
 	void imprimirFactura(int, int, LstLineaProductos *);
-	void desplegarFacturasConLineas(int);
+	void desplegarFacturasConLineas(int, LstLineaProductos *);
 	int ultimaLinea(int, int);
 
 

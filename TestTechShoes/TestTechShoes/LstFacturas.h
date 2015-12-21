@@ -33,7 +33,7 @@ public:
 
 	//Miscelaneos
 	bool vacia();
-	Factura * obtenerFactura(int);
+	Factura * buscar(int);
 	bool modificarFactura(int, Factura *);
 	void desplegarLista();
 	int ultimaFactura();
@@ -43,7 +43,8 @@ public:
 	int elimniarLineaFactura(int, int);
 	LineaFactura * buscarLineaFactura(int, int);
 	void imprimirFactura(int, LstLineaProductos *);
-	void desplegarFacturasConLinea();
+	void desplegarFacturasConLinea(LstLineaProductos *);
 	int ultimaLinea(int);
+	NFactura * anularFactura(int);
 };
 
