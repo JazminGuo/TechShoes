@@ -331,7 +331,7 @@ void LstInventario::desplegarLista()
 			aux = aux->getSgte();
 			i++;
 		} while (aux != getCab());
-		cout << endl << "Fin de la Lista" << endl;
+		//cout << endl << "Fin de la Lista" << endl;
 	}
 	//system("pause");
 	//system("cls");

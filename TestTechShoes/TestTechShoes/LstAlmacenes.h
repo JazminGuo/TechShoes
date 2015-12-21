@@ -58,6 +58,7 @@ public:
 	int anularUnaEntradaDeUnAlmacen(int, int);
 	void desplegarTodosEntradasDeUnAlmacen(int);
 	void desplegarUnaEntradaDeUnAlmacen(int, int);
+	void desplegarTodosEntradaDeTodosAlmacen();
 
 	// * Metodos de Listas de Listas Factura*//
 	int agregarFactura(int, Factura *);

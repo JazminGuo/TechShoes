@@ -192,8 +192,8 @@ void menuEntradas(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 		cout << "================ *** Menu Entradas *** ================" << endl << endl;
 		cout << "(1) Nueva Entrada" << endl;
 		cout << "(2) Anular Entrada" << endl;
-		cout << "(3) Ver Entradas de Almacen" << endl;
-		cout << "(3) Ver Todas las Entradas" << endl;
+		cout << "(3) Ver Entradas por Almacen" << endl;
+		cout << "(4) Ver Todas las Entradas" << endl;
 		cout << "(0) Salir" << endl;
 		cout << "====================================================================" << endl << endl;
 		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
@@ -264,6 +264,15 @@ void menuEntradas(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 			cout << "Digite el ID Almacen Exsitente que desea Consultar: "; cin >> idAlmacen;
 			cout << "Digite el ID Articulo Existente que desea Consultar: "; cin >> idArticulo;
 			lstAlmacenes->desplegarUnaEntradaDeUnAlmacen(idAlmacen, idArticulo);
+			system("pause");
+			break;
+		}
+		case 4:
+		{
+			system("cls");
+			cout << endl;
+			cout << "------- Desplegando Una Entrada de Un Almacen --------" << endl << endl;
+			lstAlmacenes->desplegarTodosEntradaDeTodosAlmacen();
 			system("pause");
 			break;
 		}

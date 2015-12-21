@@ -477,7 +477,44 @@ void LstAlmacenes::desplegarUnInventarioDeUnAlmacen(int _idAlmacen, int _idProdu
 		cout << "*********************************************************" << endl;
 	}
 }
-
+void LstAlmacenes::desplegarTodosEntradasDeUnAlmacen(int _idAlmacen)
+{
+	NAlmacen *aux = dirNodo(_idAlmacen);
+	if (aux != NULL)
+	{
+		cout << endl;
+		cout << "*********************************************************" << endl;
+		cout << "--------------------------------------" << endl;
+		desplegarLista();
+		cout << "Entrada En el Almacen:" << endl;
+		cout << "--------------------------------------" << endl;
+		aux->getListaEntradas()->desplegar();
+		cout << "--------------------------------------" << endl;
+		cout << "*********************************************************" << endl;
+	}
+}
+void LstAlmacenes::desplegarTodosEntradaDeTodosAlmacen()
+{
+	NAlmacen *aux = getCab();
+	if (aux == NULL)
+	{
+		cout << endl; cout << "La Lista de Almacen Esta Vacia!" << endl;
+	}
+	else
+	{
+		cout << endl;
+		cout << "***********************************************************************" << endl;
+		while (aux != NULL)
+		{
+			cout << endl;
+			desplegarLista();
+			aux->getListaEntradas()->desplegar();
+			cout << endl;
+			cout << "***********************************************************************" << endl;
+			aux = aux->getSgte();
+		}
+	}
+}
 //Auto agregar todos los articulos de Lineas //
 void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 {
