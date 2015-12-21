@@ -389,7 +389,10 @@ int LstFacturas::ultimaLinea(int _idFactura)
 {
 	NFactura * aux = dirNodo(_idFactura);
 
-	return aux->getLstLineasF()->ultimaLinea();
+	if (aux != NULL)
+		return aux->getLstLineasF()->ultimaLinea();
+	else
+		return 0;
 }
 
 NFactura * LstFacturas::anularFactura(int _idFactura)
