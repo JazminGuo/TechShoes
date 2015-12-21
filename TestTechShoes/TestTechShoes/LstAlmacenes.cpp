@@ -281,13 +281,13 @@ void LstAlmacenes::desplegarLista()
 	{
 		NAlmacen * aux = getCab();
 		int i = 1;
-		cout << "============================================" << endl;
+		cout << "=====================================================================" << endl;
 		while (aux != NULL)
 		{
 			cout << "Almacen #" << i << ": " << endl;
 			cout << "Id: " << aux->getAlmacen()->getIdAlmacen() << endl;
 			cout << "Ubicacion: " << aux->getAlmacen()->getUbicacion() << endl;
-			cout << "============================================" << endl;
+			cout << "=====================================================================" << endl;
 
 			aux = aux->getSgte();
 			i++;
@@ -304,10 +304,10 @@ Almacen *LstAlmacenes::buscar(int _idAlmacen)
 	if (aux != NULL)
 	{
 		cout << endl;
-		cout << "-----------------------------------" << endl;
+		cout << "=====================================================================" << endl;
 		cout << "ID Almacen : " << aux->getAlmacen()->getIdAlmacen() << endl;
 		cout << "Ubicacion : " << aux->getAlmacen()->getUbicacion() << endl;
-		cout << "-----------------------------------" << endl;
+		cout << "=====================================================================" << endl;
 	}
 	else
 		cout << "La Estructura de Almacen estan vacia! " << endl;
@@ -436,15 +436,15 @@ void LstAlmacenes::desplegarTodosInventariosDeUnAlmacen(int _idAlmacen)
 	if (aux != NULL)
 	{
 		cout << endl;
-		cout << "***********************************************" << endl;
+		cout << "=====================================================================" << endl;
 		cout << "ID Almacen: " << aux->getAlmacen()->getIdAlmacen() << endl;
-		cout << "====================================" << endl;
+		cout << "=====================================================================" << endl;
 		cout << "Ubicacion: " << aux->getAlmacen()->getUbicacion() << endl;
-		cout << "====================================" << endl;
+		cout << "=====================================================================" << endl;
 		cout << "Inventarios en el Almacen: " << endl;
-		cout << "====================================" << endl;
+		cout << "=====================================================================" << endl;
 		aux->getListaInventarios()->desplegarLista();
-		cout << "*********************************************" << endl;
+		cout << "=====================================================================" << endl;
 	}
 	else
 		existe;
@@ -463,13 +463,13 @@ void LstAlmacenes::desplegarTodosInventariosDeTodosAlmacenes()
 			cout << endl;
 			//cout << "***********************************************" << endl;
 			cout << "ID Almacen: " << aux->getAlmacen()->getIdAlmacen() << endl;
-			cout << "====================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Ubicacion: " << aux->getAlmacen()->getUbicacion() << endl;
-			cout << "====================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Inventarios en el Almacen: " << endl;
-			cout << "====================================" << endl;
+			cout << "=====================================================================" << endl;
 			aux->getListaInventarios()->desplegarLista();
-			cout << "***********************************************************************" << endl;
+			cout << "=====================================================================" << endl;
 			aux = aux->getSgte();
 		}
 		//system("pause");
@@ -481,14 +481,14 @@ void LstAlmacenes::desplegarUnInventarioDeUnAlmacen(int _idAlmacen, int _idProdu
 	if (aux != NULL)
 	{
 		cout << endl;
-		cout << "*********************************************************" << endl;
-		cout << "--------------------------------------" << endl;
+		cout << "=====================================================================" << endl;
+		cout << "=====================================================================" << endl;
 		buscar(_idAlmacen);
 		cout << "Entrada En el Almacen:" << endl;
-		cout << "--------------------------------------" << endl;
+		cout << "=====================================================================" << endl;
 		aux->getListaInventarios()->buscar(_idProducto);
-		cout << "--------------------------------------" << endl;
-		cout << "*********************************************************" << endl;
+		cout << "=====================================================================" << endl;
+		cout << "=====================================================================" << endl;
 	}
 }
 void LstAlmacenes::desplegarTodosEntradasDeUnAlmacen(int _idAlmacen)
@@ -497,14 +497,14 @@ void LstAlmacenes::desplegarTodosEntradasDeUnAlmacen(int _idAlmacen)
 	if (aux != NULL)
 	{
 		cout << endl;
-		cout << "*********************************************************" << endl;
-		cout << "--------------------------------------" << endl;
+		cout << "=====================================================================" << endl;
+		cout << "=====================================================================" << endl;
 		desplegarLista();
 		cout << "Entrada En el Almacen:" << endl;
-		cout << "--------------------------------------" << endl;
+		cout << "=====================================================================" << endl;
 		aux->getListaEntradas()->desplegar();
-		cout << "--------------------------------------" << endl;
-		cout << "*********************************************************" << endl;
+		cout << "=====================================================================" << endl;
+		cout << "=====================================================================" << endl;
 	}
 }
 void LstAlmacenes::desplegarTodosEntradaDeTodosAlmacen()
@@ -517,14 +517,14 @@ void LstAlmacenes::desplegarTodosEntradaDeTodosAlmacen()
 	else
 	{
 		cout << endl;
-		cout << "***********************************************************************" << endl;
+		cout << "=====================================================================" << endl;
 		while (aux != NULL)
 		{
 			cout << endl;
 			desplegarLista();
 			aux->getListaEntradas()->desplegar();
 			cout << endl;
-			cout << "***********************************************************************" << endl;
+			cout << "=====================================================================" << endl;
 			aux = aux->getSgte();
 		}
 	}
@@ -706,14 +706,14 @@ void LstAlmacenes::desplegarUnaEntradaDeUnAlmacen(int _idAlmacen, int _idProduct
 	if (aux != NULL)
 	{
 		cout << endl;
-		cout << "*********************************************************" << endl;
-		cout << "--------------------------------------" << endl;
+		cout << "=====================================================================" << endl;
+		cout << "=====================================================================" << endl;
 		buscar(_idAlmacen);
 		cout << "Entrada En el Almacen:" << endl;
-		cout << "--------------------------------------" << endl;
+		cout << "=====================================================================" << endl;
 		aux->getListaEntradas()->buscar(_idProducto);
-		cout << "--------------------------------------" << endl;
-		cout << "*********************************************************" << endl;
+		cout << "=====================================================================" << endl;
+		cout << "=====================================================================" << endl;
 	}
 }
 
@@ -845,11 +845,11 @@ Factura * LstAlmacenes::buscarFactura(int _idAlmacen, int _idFactura)
 		}
 		else
 		{
-			cout << "======================Factura========================" << endl;
+			cout << "==============================Factura================================" << endl;
 			cout << "ID: " << _factura->getIdFactura() << endl;
 			cout << "Cliente: " << _factura->getCliente() << endl;
 			cout << "Fecha: " << _factura->getFecha() << endl;
-			cout << "======================================================" << endl;
+			cout << "=====================================================================" << endl;
 			return _factura;
 		}
 	}
@@ -859,7 +859,7 @@ void LstAlmacenes::desplegarFacturasDeAlmacen(int _idAlmacen)
 {
 	NAlmacen * aux = dirNodo(_idAlmacen);
 
-	cout << "=======================================================" << endl;
+	cout << "=====================================================================" << endl;
 	cout << "ID: " << aux->getAlmacen()->getIdAlmacen() << endl;
 	cout << "Ubicacion: " << aux->getAlmacen()->getUbicacion() << endl;
 
@@ -876,14 +876,14 @@ void LstAlmacenes::desplegarAlamacenConFacturas()
 	{
 		NAlmacen * aux = getCab();
 		int i = 1;
-		cout << "============================================" << endl;
+		cout << "=====================================================================" << endl;
 
 		do
 		{
 			cout << "Almacen #" << i << ": " << endl;
 			cout << "ID: " << aux->getAlmacen()->getIdAlmacen() << endl;
 			cout << "Ubicacion: " << aux->getAlmacen()->getUbicacion() << endl;
-			cout << "============================================" << endl;
+			cout << "=====================================================================" << endl;
 			aux->getListaFacturas()->desplegarLista();
 
 			aux = aux->getSgte();

@@ -18,18 +18,16 @@ void menuAlmacen(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 	char ubicacion[30] = "---";
 	int opc = 0;
 
-	//LstAlmacenes * lista = new LstAlmacenes();
-
 	do
 	{
 		system("cls");
-		cout << "================ *** Menu Almacen *** ================" << endl << endl;
+		cout << "======================== *** Menu Almacen *** =======================" << endl << endl;
 		cout << "(1) Agregar Almacen" << endl;
 		cout << "(2) Buscar Almacen" << endl;
 		cout << "(3) Eliminar Almacen" << endl;
 		cout << "(4) Ver todos los Almacenes" << endl;
 		cout << "(0) Salir" << endl << endl;
-		cout << "======================================================" << endl << endl;
+		cout << "=====================================================================" << endl << endl;
 		cout << "Opcion seleccionada: "; cin >> opc; cout << endl;
 
 		switch (opc)
@@ -37,11 +35,10 @@ void menuAlmacen(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 		case 1:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Agregar Almacen." << endl;
-			cout << "==========================================================" << endl << endl;
-			cout << "Digite el id del almacen." << endl;
-			cin >> idAlmacen;
+			cout << "=====================================================================" << endl << endl;
+			idAlmacen = lstAlmacenes->getSize() + 1;
 			cout << "Digite la ubicacion del almacen." << endl;
 			cin >> ubicacion;
 
@@ -69,9 +66,9 @@ void menuAlmacen(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 		case 2:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Buscar Almacen." << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 			cout << "Digite el id del almacen que desea buscar" << endl;
 			cin >> idAlmacen;
 			cout << "Digite el id del inventario que desea buscar" << endl;
@@ -107,9 +104,9 @@ void menuAlmacen(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 			do
 			{
 				system("cls");
-				cout << "==========================================================" << endl;
+				cout << "=====================================================================" << endl;
 				cout << "Eliminar Almacen." << endl;
-				cout << "==========================================================" << endl << endl;
+				cout << "=====================================================================" << endl << endl;
 				cout << "Digite el id del almacen que desea eliminar" << endl;
 				cin >> idAlmacen;
 
@@ -124,10 +121,10 @@ void menuAlmacen(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 				}
 				else
 				{
-					cout << "============================================" << endl;
+					cout << "=====================================================================" << endl;
 					cout << "Id: " << almacen->getIdAlmacen() << endl;
 					cout << "Ubicacion: " << almacen->getUbicacion() << endl;
-					cout << "============================================" << endl;
+					cout << "=====================================================================" << endl;
 					cout << endl;
 					cout << "Esta seguro de que desea eliminar esta almacen?" << endl;
 					cout << "Presione (1) para confirmar, (2) para cancelar o (0) para regresar al menu anterior" << endl;
@@ -202,9 +199,9 @@ void menuEntradas(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 		case 1:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Nueva Entrada." << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 			cout << "Digite el ID del Almacen: "; cin >> idAlmacen;
 			cout << "Digite el ID de la Linea: "; cin >> idLinea;
 			cout << "Digite el ID de la Sublinea: "; cin >> idSublinea;
@@ -324,9 +321,9 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 		{ 
 			system("cls");
 			cout << endl;
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Facturacion." << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 			cout << "Digite el ID del Almacen: "; cin >> idAlmacen;
 			idFactura = lstAlmacenes->ultimaFactura(idAlmacen) + 1;
 			cout << "Digite el nombre del cliente: "; cin >> cliente;
@@ -352,9 +349,9 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 						case 1:
 						{
 							system("cls");
-							cout << "==========================================================" << endl;
+							cout << "=====================================================================" << endl;
 							cout << "Anadir Productos." << endl;
-							cout << "==========================================================" << endl << endl;
+							cout << "=====================================================================" << endl << endl;
 
 							cout << "Digite el ID de la Linea" << endl;
 							cin >> idLinea;
@@ -488,9 +485,9 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 		{
 
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Anular Factura." << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 			cout << "Digite el ID del Almacen: "; cin >> idAlmacen;
 			cout << "Digite el ID de la Factura: "; cin >> idFactura;
 
@@ -509,9 +506,9 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 		case 3:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Buscar Factura." << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 			cout << "Digite el ID del Almacen: "; cin >> idAlmacen;
 			cout << "Digite el ID de la Factura: "; cin >> idFactura;
 
@@ -523,9 +520,9 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 		case 4:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Ver Facturas por Almacen." << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 			cout << "Digite el ID del Almacen: "; cin >> idAlmacen;
 			lstAlmacenes->desplegarFacturasDeAlmacen(idAlmacen);
 			break;
@@ -548,13 +545,13 @@ void menuLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 	do
 	{
 		system("cls");
-		cout << "================= *** Menu de Categorias *** ==================" << endl << endl;
+		cout << "====================== *** Menu de Categorias *** ====================" << endl << endl;
 		cout << "(1) Agregar Categoria." << endl;
 		cout << "(2) Eliminar Categoria." << endl;
 		cout << "(3) Buscar Categoria." << endl;
 		cout << "(4) Ver Categorias." << endl;
 		cout << "(0) Salir" << endl << endl;
-		cout << "==========================================================" << endl;
+		cout << "=====================================================================" << endl;
 		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
 
 
@@ -563,21 +560,24 @@ void menuLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 1:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Agregar Linea." << endl;
-			cout << "==========================================================" << endl << endl;
-			cout << "Digite el ID de la Linea. " << endl;
-			cin >> vidProducto;
-			cout << "Digite la descripcion de la Linea." << endl;
+			cout << "=====================================================================" << endl << endl;
+			vidProducto = _lstLinea->getSize() + 1;
+			cout << "Digite la descripcion de la Categoria." << endl;
 			cin >> vdescripcion;
 
 			LineaProducto * lp = new LineaProducto(vidProducto, vdescripcion);
 
 			if (_lstLinea->agregar(lp))
-				cout << "Linea agregada correctamente." << endl;
+			{
+				cout << "Categoria agregada correctamente." << endl;
+				_lstLinea->desplegar();
+			}
 			else
-				cout << "Error no se agrego la Linea." << endl;
-
+			{
+				cout << "Error no se agrego la Categoria." << endl;
+			}
 			system("pause");
 			break;
 
@@ -585,16 +585,16 @@ void menuLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 2:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Eliminar Categoria" << endl;
-			cout << "==========================================================" << endl << endl;
-			cout << "Digite el ID de Linea que desea eliminar." << endl;
+			cout << "=====================================================================" << endl << endl;
+			cout << "Digite el ID de Categoria que desea eliminar." << endl;
 			cin >> idRef;
 
 			if (_lstLinea->eliminar(idRef))
-				cout << "ID Linea" << idRef << " se eliminado correctamente." << endl;
+				cout << "ID Categoria" << idRef << " se eliminado correctamente." << endl;
 			else
-				cout << "ID Linea" << idRef << " no se eliminado." << endl;
+				cout << "ID Categoria" << idRef << " no se eliminado." << endl;
 
 			system("pause");
 			break;
@@ -602,14 +602,14 @@ void menuLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 3:
 		{
 			system("cls");
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 			cout << "Buscar Categoria." << endl;
-			cout << "==========================================================" << endl << endl;
-			cout << "Digite el ID de Linea Producto que desea Buscar." << endl;
+			cout << "=====================================================================" << endl << endl;
+			cout << "Digite el ID de la Categoria que desea Buscar." << endl;
 			cin >> idRef;
 			LineaProducto *aux = _lstLinea->buscar(idRef);
 			if (aux == NULL)
-				cout << "No Existe el ID Linea: " << idRef << endl;
+				cout << "No Existe el ID Categoria: " << idRef << endl;
 			else
 			{
 				//cout << "                                          " << endl;
@@ -624,9 +624,9 @@ void menuLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 4:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Ver Categorias." << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 			_lstLinea->desplegar();
 			system("pause");
 			break;
@@ -647,14 +647,14 @@ void menuSubLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 	do
 	{
 		system("cls");
-		cout << "================ *** Menu de SubLinea *** ================" << endl << endl;
+		cout << "====================== *** Menu de SubLinea *** =====================" << endl << endl;
 		cout << "(1) Agregar Sublinea." << endl;
 		cout << "(2) Elimiar Sublinea." << endl;
 		cout << "(3) Buscar Sublinea." << endl;
 		cout << "(4) Ver Sublineas." << endl;
 		cout << "(5) Ver Lineas con Sublineas." << endl;
 		cout << "(0) Salir." << endl << endl;
-		cout << "==========================================================" << endl;
+		cout << "=====================================================================" << endl;
 		cout << "Opcion seleccionada: "; cin >> opc; cout << endl;
 
 		switch (opc)
@@ -663,13 +663,13 @@ void menuSubLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 1:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Agregar Sublinea." << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 			cout << "Digite el ID de la Linea en la que va a agregar la Sublinea." << endl;
 			cin >> idLinea;
-			cout << "Digite el ID de la Sublinea." << endl;
-			cin >> idSubLinea;
+			idSubLinea = _lstLinea->dirNodo(idLinea)->getLstSubLineaProductos()->getSize() + 1;
+
 			cout << "Digite la descripcion de la Sublinea." << endl;
 			cin >> descripcion;
 
@@ -680,6 +680,8 @@ void menuSubLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 			case 1:
 			{
 				cout << "Sublinea agregada correctamente." << endl;
+				_lstLinea->desplegarSubLineasDeLinea(idLinea);
+				system("pause");
 			}
 			break;
 
@@ -701,9 +703,9 @@ void menuSubLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 2:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Eliminar Sublinea" << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 
 			cout << "Digite el ID de la Linea a la que pertenece la Sublinea" << endl;
 			cin >> idLinea;
@@ -739,9 +741,9 @@ void menuSubLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 3:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "(3) Buscar Sublinea" << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 
 			cout << "Digite el ID de la Linea " << endl;
 			cin >> idLinea;
@@ -756,9 +758,9 @@ void menuSubLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 4:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Ver Sublineas" << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 
 			cout << "Digite el ID de la Linea." << endl;
 			cin >> idLinea;
@@ -771,9 +773,9 @@ void menuSubLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 5:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Ver Lineas con Sublineas" << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 
 			_lstLinea->desplegarLineasConSubLineas();
 		}
@@ -796,14 +798,14 @@ void menuProducto(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 	do
 	{
 		system("cls");
-		cout << "================ *** Menu de Producto *** ================" << endl << endl;
+		cout << "====================== *** Menu de Producto *** =====================" << endl << endl;
 		cout << "(1) Agregar Producto" << endl;
 		cout << "(2) Elimiar Producto" << endl;
 		cout << "(3) Buscar Producto" << endl;
 		cout << "(4) Ver Productos" << endl;
 		cout << "(5) Ver Sublineas con Productos" << endl;
 		cout << "(0) Salir" << endl << endl;
-		cout << "==========================================================" << endl;
+		cout << "=====================================================================" << endl;
 		cout << "Opcion seleccionada: "; cin >> opc; cout << endl;
 
 		switch (opc)
@@ -811,9 +813,9 @@ void menuProducto(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 1:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Agregar Producto" << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 			cout << "Digite el ID de la Linea en la que va a agregar el producto" << endl;
 			cin >> idLinea;
 			cout << "Digite el ID de la Sublinea en la que va a agregar el producto" << endl;
@@ -869,9 +871,9 @@ void menuProducto(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 2:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Eliminar Producto" << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 			cout << "Digite el ID de la Linea" << endl;
 			cin >> idLinea;
 			cout << "Digite el ID de la Sublinea" << endl;
@@ -916,9 +918,9 @@ void menuProducto(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 3:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Buscar Productos" << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 			cout << "Digite el ID de la Linea " << endl;
 			cin >> idLinea;
 			cout << "Digite el ID de la SubLinea " << endl;
@@ -934,9 +936,9 @@ void menuProducto(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 4:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Ver Productos" << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 
 			cout << "Digite el ID de la Linea." << endl;
 			cin >> idLinea;
@@ -951,9 +953,9 @@ void menuProducto(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		case 5:
 		{
 			system("cls");
-			cout << "==========================================================" << endl;
+			cout << "=====================================================================" << endl;
 			cout << "Ver Sublineas con Productos" << endl;
-			cout << "==========================================================" << endl << endl;
+			cout << "=====================================================================" << endl << endl;
 
 			cout << "Digite el ID de la Linea." << endl;
 			cin >> idLinea;
@@ -974,13 +976,13 @@ void menuMundoA(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 	do
 	{
 		system("cls");
-		cout << "================ *** Menu Principal *** ================" << endl << endl;
+		cout << "======================= *** Menu Principal *** ======================" << endl << endl;
 		cout << "(1) Almacenes" << endl;
 		cout << "(2) Inventario" << endl;
 		cout << "(3) Entradas" << endl;
 		cout << "(4) Facturacion" << endl;
 		cout << "(0) Salir" << endl << endl;
-		cout << "========================================================" << endl << endl;
+		cout << "=====================================================================" << endl << endl;
 		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
 
 		switch (opcion)
@@ -1018,12 +1020,12 @@ void menuMundoB(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 	do
 	{
 		system("cls");
-		cout << "================ *** Menu Principal *** ================" << endl << endl;
+		cout << "======================= *** Menu Principal *** ======================" << endl << endl;
 		cout << "(1) Categorias" << endl;
 		cout << "(2) Subcategorias" << endl;
 		cout << "(3) Productos" << endl;
 		cout << "(0) Salir" << endl << endl;
-		cout << "========================================================" << endl << endl;
+		cout << "=====================================================================" << endl << endl;
 		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
 
 		switch (opcion)
@@ -1057,11 +1059,11 @@ void menuPrincipalAB(LstAlmacenes * listaAlmacenes, LstLineaProductos * listaLin
 	do
 	{
 		system("cls");
-		cout << "================ *** Menu Principal *** ================" << endl << endl;
+		cout << "======================= *** Menu Principal *** ======================" << endl << endl;
 		cout << "(1) (Almacenes, Facturacion, Entradas, Inventario)" << endl;
 		cout << "(2) (Categorias, Subcategorias, Productos)" << endl;
 		cout << "(0) Salir" << endl << endl;
-		cout << "========================================================" << endl << endl;
+		cout << "=====================================================================" << endl << endl;
 		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
 
 		switch (opcion)

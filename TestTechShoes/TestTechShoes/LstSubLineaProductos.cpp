@@ -254,16 +254,17 @@ void LstSubLineaProductos::desplegar()
 		cout << "La Lista esta vacio!!" << endl;
 	else
 	{
+		int i = 1;
 		cout << endl;
-		cout << "-----------------------------------" << endl;
+		cout << "============================================" << endl;
 
 		while (aux != NULL)
 		{
+			cout << "ID Categoria: " << aux->getSubLineaProducto()->getIdLinea() << endl;
 			cout << "ID SubLinea: " << aux->getSubLineaProducto()->getIdSubLinea() << endl;
-			cout << "ID Linea: " << aux->getSubLineaProducto()->getIdLinea() << endl;
 			cout << "Descripcion: " << aux->getSubLineaProducto()->getDescripcion() << endl;
-			cout << "-----------------------------------" << endl;
-
+			cout << "============================================" << endl;
+			i++;
 			aux = aux->getSgte();
 	    }
     }	

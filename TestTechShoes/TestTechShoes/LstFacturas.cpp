@@ -232,14 +232,14 @@ void LstFacturas::desplegarLista()
 	{
 		NFactura * aux = getCab();
 		int i = 1;
-		cout << "============================================" << endl;
+		cout << "=====================================================================" << endl;
 		while (aux != NULL)
 		{
 			cout << "Factura #" << i << ": " << endl;
 			cout << "Id: " << aux->getFactura()->getIdFactura() << endl;
 			cout << "Fecha: " << aux->getFactura()->getFecha() << endl;
 			cout << "Cliente: " << aux->getFactura()->getCliente() << endl;
-			cout << "============================================" << endl;
+			cout << "=====================================================================" << endl;
 
 			aux = aux->getSgte();
 			i++;
@@ -332,11 +332,11 @@ LineaFactura * LstFacturas::buscarLineaFactura(int _idFactura, int _numLinea)
 		}
 		else
 		{
-			cout << "======================Linea Factura========================" << endl;
+			cout << "===========================Linea Factura=============================" << endl;
 			cout << "No Linea: " << _lineaFactura->getNumFLinea() << endl;
 			cout << "Codigo: " << _lineaFactura->getIdLinea() << "-" << _lineaFactura->getIdSublinea() << "-" << _lineaFactura->getIdProducto();
 			cout << "Linea: " << _lineaFactura->getIdLinea() << endl;
-			cout << "======================================================" << endl;
+			cout << "=====================================================================" << endl;
 			return _lineaFactura;
 		}
 	}
@@ -366,7 +366,7 @@ void LstFacturas::desplegarFacturasConLinea(LstLineaProductos * _lstLineas)
 	{
 		NFactura * aux = getCab();
 		int i = 1;
-		cout << "============================================" << endl;
+		cout << "=====================================================================" << endl;
 
 		do
 		{
@@ -374,7 +374,7 @@ void LstFacturas::desplegarFacturasConLinea(LstLineaProductos * _lstLineas)
 			cout << "No. Factura: " << aux->getFactura()->getIdFactura() << endl;
 			cout << "Cliente: " << aux->getFactura()->getCliente() << endl;
 			cout << "Fecha: " << aux->getFactura()->getFecha() << endl;
-			cout << "============================================" << endl;
+			cout << "=====================================================================" << endl;
 			aux->getLstLineasF()->desplegar(_lstLineas);
 
 			aux = aux->getSgte();
