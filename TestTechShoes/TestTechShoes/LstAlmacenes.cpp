@@ -352,7 +352,8 @@ void LstAlmacenes::actualizarInventariosDeTodosAlmacenAuto(LstLineaProductos *_l
 				{
 					
 					Producto *producto = auxProducto->getProducto();
-					if (auxAlmacen->getListaInventarios()->dirNodoGlobal(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto()))
+					Inventario *auxInventario = auxAlmacen->getListaInventarios()->buscarArticulo(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto());
+					if (auxInventario != NULL)
 					{
 						auxProducto = auxProducto->getSgte();
 					}

@@ -120,7 +120,7 @@ bool LstInventario::agregar(Inventario * _inventario)
 		NInventario * prim = getCab();
 		NInventario * ult = getCab()->getAnte();
 
-		if ((codArticulo < prim->getInventario()->getCodArticulo()) || (codArticulo > ult->getInventario()->getCodArticulo()))
+		if ((codArticulo <= prim->getInventario()->getCodArticulo()) || (codArticulo >= ult->getInventario()->getCodArticulo()))
 		{
 			agregaNInventarioDespuesDe(ult, new NInventario(_inventario));
 			
@@ -138,14 +138,14 @@ bool LstInventario::agregar(Inventario * _inventario)
 			do
 			{
 
-				if ((idLinea == aux->getInventario()->getCodLinea()) && (idSubLinea == aux->getInventario()->getCodSubLinea()) && (codArticulo == aux->getInventario()->getCodArticulo()))
-				{
-					exist = true;
-				}
-				else
-				{
+				//if ((idLinea == aux->getInventario()->getCodLinea()) && (idSubLinea == aux->getInventario()->getCodSubLinea()) && (codArticulo == aux->getInventario()->getCodArticulo()))
+				//{
+				//	exist = true;
+				//}
+				//else
+				//{
 
-					if (codArticulo < aux->getSgte()->getInventario()->getCodArticulo())
+					if (codArticulo <= aux->getSgte()->getInventario()->getCodArticulo())
 					{
 						agregaNInventarioDespuesDe(aux, new NInventario(_inventario));
 						agregado = true;
@@ -154,9 +154,11 @@ bool LstInventario::agregar(Inventario * _inventario)
 					{
 						aux = aux->getSgte();
 					}
-				}
+				/*}*/
 			} while ((aux != getCab()) && !exist);
+			
 		}
+
 	}
 	if (agregado)
 	{

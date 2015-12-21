@@ -801,14 +801,16 @@ void menuProducto(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 			cin >> idLinea;
 			cout << "Digite el ID de la Sublinea en la que va a agregar el producto" << endl;
 			cin >> idSubLinea;
-			cout << "Digite el ID del Producto" << endl;
-			cin >> idProducto;
+			//cout << "Digite el ID del Producto" << endl;
+			//cin >> idProducto;
 			cout << "Digite la descripcion del Producto" << endl;
 			cin >> descripcion;
 			cout << "Digite la talla del Producto" << endl;
 			cin >> talla;
 			cout << "Digite el precio del Producto" << endl;
 			cin >> precio;
+
+			idProducto = _lstLinea->dirNodo(idLinea)->getLstSubLineaProductos()->dirNodo(idSubLinea)->getLstProductos()->getSize() + 1;
 
 			Producto * producto = new Producto(idProducto, descripcion, talla, precio, idLinea, idSubLinea);
 
