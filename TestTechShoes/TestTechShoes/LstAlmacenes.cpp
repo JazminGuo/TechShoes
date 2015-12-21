@@ -363,7 +363,7 @@ void LstAlmacenes::actualizarInventariosDeTodosAlmacenAuto(LstLineaProductos *_l
 						auxProducto = auxProducto->getSgte();
 					}
 
-<<<<<<< HEAD
+
 					 
 				} while ( (auxProducto!= NULL) && (auxProducto != auxSubLinea->getLstProductos()->getCab()) );  // end while de Producto
 				auxSubLinea = auxSubLinea->getSgte();
@@ -373,10 +373,11 @@ void LstAlmacenes::actualizarInventariosDeTodosAlmacenAuto(LstLineaProductos *_l
 		auxAlmacen = auxAlmacen->getSgte();
 	}  // end while de Almacen
 }
+
 // Operaciones Almacen Con Inventarios
-=======
+
 // Listas de Listas Inventarios
->>>>>>> origin/development
+
 int LstAlmacenes::agregarUnInventarioEnUnAlmacen(int _idAlmacen, Inventario *_inventario)
 {
 /*	    1. Se inserto exitosamente
@@ -516,9 +517,9 @@ void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 
 							Inventario * inventario = new Inventario(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto(), idAlmacen, 0);
 
-							comprobarLineasySubs(inventario->getCodLinea(), inventario->getCodSubLinea(), idAlmacen, inventario);
+							//comprobarLineasySubs(inventario->getCodLinea(), inventario->getCodSubLinea(), idAlmacen, inventario);
 
-							//agregarUnInventarioEnUnAlmacen(idAlmacen, inventario);
+							agregarUnInventarioEnUnAlmacen(idAlmacen, inventario);
 
 							auxP = auxP->getSgte();
 						} while (auxP != auxS->getLstProductos()->getCab());
@@ -584,27 +585,29 @@ int LstAlmacenes::agregarUnaEntradaEnUnAlmacen(int _idAlmacen, int _idLineaProdu
 		return 4;
 	else
 	{
-		
-		NProducto *saltoLineaProducto = _listaLineaProductos->dirNodoLSP(_idLineaProducto,_idSubLinea,_idProducto);
+
+		NProducto *saltoLineaProducto = _listaLineaProductos->dirNodoLSP(_idLineaProducto, _idSubLinea, _idProducto);
 		if (saltoLineaProducto != NULL)
 		{
 			if (auxAlmacen->getListaEntradas()->agregar(_entrada))
+			{
+				actualizarExistenciaInventariosDeUnAlmacen(_idAlmacen, _idProducto, _entrada);
+
 				return 1;
+			}
+
 			else
 				return 2;
 		}
 		else
 			return 3;
-<<<<<<< HEAD
-		if (auxAlmacen->getListaEntradas()->agregarUnCantidadProductoEnUnaEntrada(_idProducto, _entrada) == 1)
-		{
-			if (actualizarExistenciaInventariosDeUnAlmacen(_idAlmacen, _idProducto, _entrada))
-				return 1;
-		}
-		else
-			return auxAlmacen->getListaEntradas()->agregarUnCantidadProductoEnUnaEntrada(_idProducto, _entrada);
-=======
->>>>>>> origin/development
+		//if (auxAlmacen->getListaEntradas()->agregarUnCantidadProductoEnUnaEntrada(_idProducto, _entrada) == 1)
+		//{
+		//	if (actualizarInventariosDeUnAlmacen(_idAlmacen, _idProducto, _entrada))
+		//		return 1;
+		//}
+		//else
+		//	return aux->getListaEntradas()->agregarUnCantidadProductoEnUnaEntrada(_idProducto, _entrada);	
 	}
 	return 0;
 }
@@ -659,70 +662,66 @@ void LstAlmacenes::desplegarUnaEntradaDeUnAlmacen(int _idAlmacen, int _idProduct
 	}
 }
 
-<<<<<<< HEAD
 
 
-//Auto agregar todos los articulos de Lineas //
-void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
-{
-	NLineaProducto * auxL = lstLinea->getCab();
+////Auto agregar todos los articulos de Lineas //
+//void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
+//{
+//	NLineaProducto * auxL = lstLinea->getCab();
+//
+//	if (auxL == NULL)
+//	{
+//		cout << "La Lista esta Vacia !!" << endl;
+//	}
+//	else
+//	{
+//		do
+//		{
+//			NSubLineaProducto * auxS = auxL->getLstSubLineaProductos()->getCab();
+//			if (auxS == NULL)
+//				cout << "La Lista esta vacio!!" << endl;
+//			else
+//			{
+//
+//				while (auxS != NULL)
+//				{
+//
+//					if (vacia())
+//					{
+//						cout << "La lista Almacen esta vacia" << endl;
+//					}
+//					else
+//					{
+//						NProducto * auxP = auxS->getLstProductos()->getCab();
+//
+//						do
+//						{
+//							Producto * producto = auxP->getProducto();
+//							NAlmacen *auxAlmacen = dirNodo(idAlmacen);
+//							if (auxAlmacen->getListaInventarios()->dirNodoGlobal(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto()))
+//							{
+//								auxP = auxP->getSgte();
+//							}
+//							else
+//							{
+//								Inventario *inventario = new Inventario(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto(), idAlmacen, 0);
+//								agregarUnInventarioEnUnAlmacen(idAlmacen, inventario);
+//								auxP = auxP->getSgte();
+//							}
+//
+//							//comprobarLineasySubs(inventario->getCodLinea(), inventario->getCodSubLinea(), idAlmacen, inventario);
+//						} while ( (auxP != NULL) && (auxP != auxS->getLstProductos()->getCab()) );  // end while de auxP
+//
+//						auxS = auxS->getSgte();
+//					}
+//				} // end while de auxS
+//
+//				auxL = auxL->getSgte();
+//			}
+//		} while (auxL != lstLinea->getCab());
+//	}
+//}
 
-	if (auxL == NULL)
-	{
-		cout << "La Lista esta Vacia !!" << endl;
-	}
-	else
-	{
-		do
-		{
-			NSubLineaProducto * auxS = auxL->getLstSubLineaProductos()->getCab();
-			if (auxS == NULL)
-				cout << "La Lista esta vacio!!" << endl;
-			else
-			{
-
-				while (auxS != NULL)
-				{
-
-					if (vacia())
-					{
-						cout << "La lista Almacen esta vacia" << endl;
-					}
-					else
-					{
-						NProducto * auxP = auxS->getLstProductos()->getCab();
-
-						do
-						{
-							Producto * producto = auxP->getProducto();
-							NAlmacen *auxAlmacen = dirNodo(idAlmacen);
-							if (auxAlmacen->getListaInventarios()->dirNodoGlobal(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto()))
-							{
-								auxP = auxP->getSgte();
-							}
-							else
-							{
-								Inventario *inventario = new Inventario(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto(), idAlmacen, 0);
-								agregarUnInventarioEnUnAlmacen(idAlmacen, inventario);
-								auxP = auxP->getSgte();
-							}
-
-							//comprobarLineasySubs(inventario->getCodLinea(), inventario->getCodSubLinea(), idAlmacen, inventario);
-						} while ( (auxP != NULL) && (auxP != auxS->getLstProductos()->getCab()) );  // end while de auxP
-
-						auxS = auxS->getSgte();
-					}
-				} // end while de auxS
-
-				auxL = auxL->getSgte();
-			}
-		} while (auxL != lstLinea->getCab());
-	}
-}
-
-
-=======
->>>>>>> origin/development
 // * Metodos de Listas de Listas Factura*//
 int LstAlmacenes::agregarFactura(int _idAlmacen, Factura * _factura)
 {

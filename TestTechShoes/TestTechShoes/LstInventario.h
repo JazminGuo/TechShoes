@@ -29,6 +29,7 @@ public:
 	//Operraciones de Listas
 	//Agregar
 	bool agregar(Inventario *);
+	bool agregar2(Inventario *);
 
 	//Eliminar
 	bool eliminar(int);

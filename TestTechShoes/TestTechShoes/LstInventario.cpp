@@ -114,6 +114,8 @@ bool LstInventario::agregar(Inventario * _inventario)
 	}
 	else
 	{
+		int idLinea = _inventario->getCodLinea();
+		int idSubLinea = _inventario->getCodSubLinea();
 		int codArticulo = _inventario->getCodArticulo();
 		NInventario * prim = getCab();
 		NInventario * ult = getCab()->getAnte();
@@ -136,7 +138,7 @@ bool LstInventario::agregar(Inventario * _inventario)
 			do
 			{
 
-				if (codArticulo == aux->getInventario()->getCodArticulo())
+				if ((idLinea == aux->getInventario()->getCodLinea()) && (idSubLinea == aux->getInventario()->getCodSubLinea()) && (codArticulo == aux->getInventario()->getCodArticulo()))
 				{
 					exist = true;
 				}
@@ -159,7 +161,78 @@ bool LstInventario::agregar(Inventario * _inventario)
 	}
 	return agregado;
 }
+bool LstInventario::agregar2(Inventario *_inventario)
+{
+	bool agregado = false;
+	if (vacia())
+	{
+		setCab(new NInventario(_inventario));
+		getCab()->setSgte(getCab());
+		getCab()->setAnte(getCab());
+		agregado = true;
+	}
+	else
+	{
+		int idLinea = _inventario->getCodLinea();
+		int idSubLinea = _inventario->getCodSubLinea();
+		int idProducto = _inventario->getCodArticulo();
 
+		NInventario * prim = getCab();
+		NInventario * ult = getCab()->getAnte();
+
+		NInventario *aux = getCab();
+		if ((idLinea == aux->getInventario()->getCodLinea()) && (idSubLinea == aux->getInventario()->getCodSubLinea()) && (idProducto == aux->getInventario()->getCodArticulo()))
+			return false;
+		else
+		{
+			if ((idLinea <= prim->getInventario()->getCodLinea()) || (idLinea >= ult->getInventario()->getCodLinea()))
+			{
+				if ((idSubLinea <= prim->getInventario()->getCodSubLinea()) || (idSubLinea >= ult->getInventario()->getCodSubLinea()))
+				{
+					if (idProducto <= prim->getInventario()->getCodArticulo() || (idProducto >= ult->getInventario()->getCodArticulo()))
+					{
+						agregaNInventarioDespuesDe(ult, new NInventario(_inventario));
+						if (idLinea < prim->getInventario()->getCodLinea())
+						{
+							setCab(prim->getAnte());
+						}
+						agregado = true;
+
+					}
+				}
+			}
+			else
+			{
+				NInventario * aux = getCab();
+				bool exist = false;
+				do
+				{
+					if (idLinea <= aux->getSgte()->getInventario()->getCodLinea())
+					{
+						if (idSubLinea <= aux->getSgte()->getInventario()->getCodSubLinea())
+						{
+							if (idProducto <= aux->getSgte()->getInventario()->getCodArticulo())
+							{
+								agregaNInventarioDespuesDe(aux, new NInventario(_inventario));
+								agregado = true;
+							}
+						}
+						
+					}
+					else
+					{
+						aux = aux->getSgte();
+					}
+				} while ((aux != getCab()) && !exist);
+			}
+		}
+	}
+	if (agregado)
+	{
+		setSize(getSize() + 1);
+	}
+	return agregado;
+}
 //Eliminar
 bool LstInventario::eliminar(int _codArticulo)
 {
