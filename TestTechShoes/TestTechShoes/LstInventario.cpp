@@ -268,7 +268,35 @@ bool LstInventario::eliminar(int _codArticulo)
 		return false;
 	}
 }
+bool LstInventario::eliminarGlobal(int _idLinea, int _idSubLinea, int _idProducto)
+{
+	NInventario *auxInventario = buscarNodoArticulo(_idLinea, _idSubLinea, _idProducto);
 
+	if (auxInventario != NULL)
+	{
+		if (getSize() == 1)
+		{
+			setCab(NULL);
+		}
+		else
+		{
+			auxInventario->getAnte()->setSgte(auxInventario->getSgte());
+			auxInventario->getSgte()->setAnte(auxInventario->getAnte());
+
+			if (auxInventario == getCab())
+			{
+				setCab(auxInventario->getSgte());
+			}
+		}
+		delete auxInventario;
+		setSize(getSize() - 1);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 //Miscelaneos
 bool LstInventario::vacia()
 {
@@ -388,6 +416,30 @@ bool LstInventario::actualizarInventarios(int _idProducto, int _cantidadEntrada)
 		return false;
 	return true;
 }
+bool LstInventario::actualizarInventariosEliminado(int _idLinea, int _idSubLinea, int _idProducto)
+{
+	NInventario * aux = getCab();
+	if (aux == NULL)
+		return false;
+	else
+	{
+		do
+		{
+			Inventario * inventario = buscarArticulo(_idLinea, _idSubLinea, _idProducto);
+			if (inventario != NULL)
+			{
+				eliminarGlobal(_idLinea, _idSubLinea, _idProducto);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		} while (aux != getCab());
+
+	}
+}
+
 bool LstInventario::agregarUnProductoAlInventario(int _idAlmacen, Producto *_producto)
 {
 	// Agregando Un Producto en la Lista de Inventario
@@ -484,7 +536,30 @@ Inventario * LstInventario::buscarArticulo(int _idLinea, int _idSublinea, int _i
 		return NULL;
 	}
 }
+NInventario * LstInventario::buscarNodoArticulo(int _idLinea, int _idSublinea, int _idProducto)
+{
+	if (vacia())
+	{
+		return NULL;
+	}
+	else
+	{
+		NInventario * aux = getCab();
 
+		do
+		{
+			if ((aux->getInventario()->getCodLinea() == _idLinea) && (aux->getInventario()->getCodSubLinea() == _idSublinea) && (aux->getInventario()->getCodArticulo() == _idProducto))
+			{
+				return aux;
+			}
+			else
+			{
+				aux = aux->getSgte();
+			}
+		} while (aux != getCab());
+		return NULL;
+	}
+}
 bool LstInventario::sumarExistencia(int _idLinea, int _idSublinea, int _idProducto, int _existencia)
 {
 	Inventario * articulo = buscarArticulo(_idLinea, _idSublinea, _idProducto);

@@ -33,6 +33,7 @@ public:
 
 	//Eliminar
 	bool eliminar(int);
+	bool eliminarGlobal(int, int, int);
 
 	//Miscelaneos
 	bool vacia();
@@ -49,10 +50,10 @@ public:
 	bool agregarUnProductoAlInventario(int, Producto *);
 
 	bool actualizarInventarios(int, int);
-
+	bool actualizarInventariosEliminado(int, int, int);
 
 	Inventario * buscarArticulo(int, int, int);
 	bool sumarExistencia(int, int, int, int);
 	bool restarExistencia(int, int, int, int);
-
+	NInventario *buscarNodoArticulo(int, int, int);
 };

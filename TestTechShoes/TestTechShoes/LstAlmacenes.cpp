@@ -371,7 +371,21 @@ void LstAlmacenes::actualizarInventariosDeTodosAlmacenAuto(LstLineaProductos *_l
 		auxAlmacen = auxAlmacen->getSgte();
 	}  // end while de Almacen
 }
-
+void LstAlmacenes::actualizarInventariosEliminadoDeTodosAlmacenAuto(int _idLinea, int _idSubLinea, int _idProducto)
+{
+	NAlmacen *auxAlmacen = getCab();
+	while (auxAlmacen != NULL)
+	{
+	
+		bool eliminado = false;
+		if (auxAlmacen->getListaInventarios()->actualizarInventariosEliminado(_idLinea, _idSubLinea, _idProducto))
+		{
+			auxAlmacen = auxAlmacen->getSgte();
+		}
+		else
+			eliminado = false;
+	}  // end while de Almacen
+}
 // Operaciones Almacen Con Inventarios
 
 // Listas de Listas Inventarios

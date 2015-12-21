@@ -89,5 +89,6 @@ public:
 
 	bool actualizarExistenciaInventariosDeUnAlmacen(int, int, Entrada *);
 	void actualizarInventariosDeTodosAlmacenAuto(LstLineaProductos *);
+	void actualizarInventariosEliminadoDeTodosAlmacenAuto(int,int,int);
 };
 

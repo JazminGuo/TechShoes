@@ -883,6 +883,7 @@ void menuProducto(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 			{
 			case 1:
 			{
+				listaAlmacenes->actualizarInventariosEliminadoDeTodosAlmacenAuto(idLinea, idSubLinea, idProducto);
 				cout << "El Producto se elimino correctamente" << endl;
 				system("pause");
 			}
