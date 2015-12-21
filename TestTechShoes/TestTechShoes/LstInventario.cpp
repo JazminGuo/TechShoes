@@ -142,15 +142,18 @@ bool LstInventario::agregar(Inventario * _inventario)
 				{
 					exist = true;
 				}
-
-				if (codArticulo < aux->getSgte()->getInventario()->getCodArticulo())
-				{
-					agregaNInventarioDespuesDe(aux, new NInventario(_inventario));
-					agregado = true;
-				}
 				else
 				{
-					aux = aux->getSgte();
+
+					if (codArticulo < aux->getSgte()->getInventario()->getCodArticulo())
+					{
+						agregaNInventarioDespuesDe(aux, new NInventario(_inventario));
+						agregado = true;
+					}
+					else
+					{
+						aux = aux->getSgte();
+					}
 				}
 			} while ((aux != getCab()) && !exist);
 		}
