@@ -100,7 +100,7 @@ void LstInventario::agregaNInventarioDespuesDe(NInventario * _ref, NInventario *
 //Operraciones de Listas
 //Agregar
 
-bool LstInventario::agregaAsc(Inventario * _inventario)
+bool LstInventario::agregar(Inventario * _inventario)
 {
 	// Devuleve true si se puede insertar
 	//Devuelve false si no se inserto el estudiante ya esta en la lista
@@ -231,6 +231,7 @@ Inventario * LstInventario::obtenerInventario(int _codArticulo)
 //		return false;
 //	}
 //}
+
 void LstInventario::desplegarLista()
 {
 	if (vacia())
@@ -323,7 +324,7 @@ bool LstInventario::agregarUnProductoAlInventario(int _idAlmacen, Producto *_pro
 	// Devuelve false si no se inserto el estudiante ya esta en la lista
 
 
-	Inventario * _inventario = new Inventario(_producto->getLinea(), _producto ->getSubLinea(), _producto ->getIdProducto(), _idAlmacen, 0);
+	Inventario * _inventario = new Inventario(_producto->getLinea(), _producto->getSubLinea(), _producto->getIdProducto(), _idAlmacen, 0);
 
 	bool agregado = false;
 	if (vacia())
@@ -377,48 +378,46 @@ bool LstInventario::agregarUnProductoAlInventario(int _idAlmacen, Producto *_pro
 	if (agregado)
 	{
 		setSize(getSize() + 1);
-		
+
 	}
 	return agregado;
+}
 
+Inventario * LstInventario::buscarArticulo(int _idLinea, int _idSublinea, int _idProducto)
+{
+	if (vacia())
+	{
+		return NULL;
+	}
+	else
+	{
+		NInventario * aux = getCab();
 
+		do
+		{
+			if ((aux->getInventario()->getCodLinea() == _idLinea) && (aux->getInventario()->getCodSubLinea() == _idSublinea) && (aux->getInventario()->getCodArticulo() == _idProducto))
+			{
+				return aux->getInventario();
+			}
+			else
+			{
+				aux = aux->getSgte();
+			}
+		} while (aux != getCab());
+		return NULL;
+	}
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	//if (vacia())
-	//{
-	//	setCab(new NInventario(_inventario));
-	//	getCab()->setSgte(getCab());
-	//	getCab()->setAnte(getCab());
-	//	setSize(getSize() + 1);
-	//}
-	//else
-	//{
-	//	NInventario *auxInventario = getCab();
-	//	NInventario *nuevoInventario = new NInventario(_inventario);
-	//	agregaNInventarioDespuesDe(auxInventario, nuevoInventario);
-	//	setSize(getSize() + 1);
-	//}
-
-	//return true;
+bool LstInventario::aumentarExistencia(int _idLinea, int _idSublinea, int _idProducto, int _existencia)
+{
+	Inventario * articulo = buscarArticulo(_idLinea, _idSublinea, _idProducto);
+	if(articulo == NULL)
+	{
+		return false;
+	}
+	else
+	{
+		articulo->setExistencia(articulo->getExistencia() + _existencia);
+		return true;
+	}
 }

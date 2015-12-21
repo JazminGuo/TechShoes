@@ -7,6 +7,7 @@ Factura::Factura()
 	setIdFactura(0);
 	setFecha("--/--/--");
 	setCliente("----");
+	setAnular(false);
 }
 
 
@@ -19,6 +20,7 @@ Factura::Factura(int _idFactura, char * _fecha, char * _cliente)
 	setIdFactura(_idFactura);
 	setFecha(_fecha);
 	setCliente(_cliente);
+	setAnular(false);
 }
 
 int Factura::getIdFactura()
@@ -49,4 +51,14 @@ char * Factura::getCliente()
 void Factura::setCliente(char * _cliente)
 {
 	strcpy_s(this->cliente, _cliente);
+}
+
+bool Factura::getAnular()
+{
+	return this->anular;
+}
+
+void Factura::setAnular(bool _anular)
+{
+	this->anular = _anular;
 }

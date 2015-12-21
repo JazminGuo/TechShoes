@@ -47,8 +47,11 @@ public:
 	void desplegarTodosInventariosDeTodosAlmacenes();
 	void desplegarUnInventarioDeUnAlmacen(int, int);
 	void autoAgregar(int, LstLineaProductos *);
+	Inventario * buscarArticulo(int, int, int, int);
+	bool aumentarExistencia(int, int, int, int, int);
 
 	// Operaciones Almacen Con Entradas
+	bool agregarEntrada(int, Entrada *);
 	int agregarUnaEntradaEnUnAlmacen(int, int , int , int, Entrada *, LstLineaProductos *);
 	int anularUnaEntradaDeUnAlmacen(int, int);
 	void desplegarTodosEntradasDeUnAlmacen(int);

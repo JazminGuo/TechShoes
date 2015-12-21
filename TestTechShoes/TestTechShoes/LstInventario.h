@@ -28,7 +28,7 @@ public:
 
 	//Operraciones de Listas
 	//Agregar
-	bool agregaAsc(Inventario *);
+	bool agregar(Inventario *);
 
 	//Eliminar
 	bool eliminar(int);
@@ -50,5 +50,8 @@ public:
 	bool actualizarInventarios(int, int);
 
 
+	Inventario * buscarArticulo(int, int, int);
+
+	bool aumentarExistencia(int, int, int, int);
 
 };

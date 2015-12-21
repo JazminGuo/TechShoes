@@ -363,6 +363,7 @@ void LstAlmacenes::actualizarInventariosDeTodosAlmacenAuto(LstLineaProductos *_l
 						auxProducto = auxProducto->getSgte();
 					}
 
+<<<<<<< HEAD
 					 
 				} while ( (auxProducto!= NULL) && (auxProducto != auxSubLinea->getLstProductos()->getCab()) );  // end while de Producto
 				auxSubLinea = auxSubLinea->getSgte();
@@ -373,6 +374,9 @@ void LstAlmacenes::actualizarInventariosDeTodosAlmacenAuto(LstLineaProductos *_l
 	}  // end while de Almacen
 }
 // Operaciones Almacen Con Inventarios
+=======
+// Listas de Listas Inventarios
+>>>>>>> origin/development
 int LstAlmacenes::agregarUnInventarioEnUnAlmacen(int _idAlmacen, Inventario *_inventario)
 {
 /*	    1. Se inserto exitosamente
@@ -385,7 +389,7 @@ int LstAlmacenes::agregarUnInventarioEnUnAlmacen(int _idAlmacen, Inventario *_in
 		return 2;
 	else
 	{
-		if (aux->getListaInventarios()->agregaAsc(_inventario))
+		if (aux->getListaInventarios()->agregar(_inventario))
 			return 1;
 		else
 			return 3;
@@ -476,9 +480,94 @@ void LstAlmacenes::desplegarUnInventarioDeUnAlmacen(int _idAlmacen, int _idProdu
 	}
 }
 
+//Auto agregar todos los articulos de Lineas //
+void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
+{
+	NLineaProducto * auxL = lstLinea->getCab();
+
+	if (auxL == NULL)
+	{
+		cout << "La Lista esta Vacia !!" << endl;
+	}
+	else
+	{
+		do
+		{
+			NSubLineaProducto * auxS = auxL->getLstSubLineaProductos()->getCab();
+			if (auxS == NULL)
+				cout << "La Lista esta vacio!!" << endl;
+			else
+			{
+
+				while (auxS != NULL)
+				{
+
+					if (vacia())
+					{
+						cout << "La lista esta vacia" << endl;
+					}
+					else
+					{
+						NProducto * auxP = auxS->getLstProductos()->getCab();
+
+						do
+						{
+							Producto * producto = auxP->getProducto();
+
+							Inventario * inventario = new Inventario(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto(), idAlmacen, 0);
+
+							comprobarLineasySubs(inventario->getCodLinea(), inventario->getCodSubLinea(), idAlmacen, inventario);
+
+							//agregarUnInventarioEnUnAlmacen(idAlmacen, inventario);
+
+							auxP = auxP->getSgte();
+						} while (auxP != auxS->getLstProductos()->getCab());
+
+						auxS = auxS->getSgte();
+					}
+				}
+
+				auxL = auxL->getSgte();
+			}
+		} while (auxL != lstLinea->getCab());
+	}
+}
+
+Inventario * LstAlmacenes::buscarArticulo(int _idAlmacen, int _idLinea, int _idSublinea, int _idProducto)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+
+	return aux->getListaInventarios()->buscarArticulo(_idLinea, _idSublinea, _idProducto);
+}
+
+bool LstAlmacenes::aumentarExistencia(int _idAlmacen, int _idLinea, int _idSublinea, int _idProducto, int _existencia)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+
+	return aux->getListaInventarios()->aumentarExistencia(_idLinea, _idSublinea, _idProducto, _existencia);
+}
 
 
-// Operaciones Almacen Con Entradas
+
+
+
+// Lista de listas Entradas
+
+bool LstAlmacenes::agregarEntrada(int _idAlmacaen, Entrada * _entrada)
+{
+	NAlmacen * aux = dirNodo(_idAlmacaen);
+
+	if (aux == NULL)
+	{
+		return false;
+	}
+	else
+	{
+		return aux->getListaEntradas()->agregar(_entrada);
+	}
+}
+
+
 int LstAlmacenes::agregarUnaEntradaEnUnAlmacen(int _idAlmacen, int _idLineaProducto, int _idSubLinea ,int _idProducto, Entrada *_entrada, LstLineaProductos *_listaLineaProductos)
 {
 /*	   
@@ -506,6 +595,7 @@ int LstAlmacenes::agregarUnaEntradaEnUnAlmacen(int _idAlmacen, int _idLineaProdu
 		}
 		else
 			return 3;
+<<<<<<< HEAD
 		if (auxAlmacen->getListaEntradas()->agregarUnCantidadProductoEnUnaEntrada(_idProducto, _entrada) == 1)
 		{
 			if (actualizarExistenciaInventariosDeUnAlmacen(_idAlmacen, _idProducto, _entrada))
@@ -513,9 +603,12 @@ int LstAlmacenes::agregarUnaEntradaEnUnAlmacen(int _idAlmacen, int _idLineaProdu
 		}
 		else
 			return auxAlmacen->getListaEntradas()->agregarUnCantidadProductoEnUnaEntrada(_idProducto, _entrada);
+=======
+>>>>>>> origin/development
 	}
 	return 0;
 }
+
 int LstAlmacenes::anularUnaEntradaDeUnAlmacen(int _idAlmacen, int _idProducto)
 {
 
@@ -545,9 +638,10 @@ int LstAlmacenes::anularUnaEntradaDeUnAlmacen(int _idAlmacen, int _idProducto)
 			
 	}
 	return 0;
-
 }
+
 void desplegarTodosEntradasDeUnAlmacen();
+
 void LstAlmacenes::desplegarUnaEntradaDeUnAlmacen(int _idAlmacen, int _idProducto)
 {
 	NAlmacen *aux = getCab();
@@ -565,6 +659,7 @@ void LstAlmacenes::desplegarUnaEntradaDeUnAlmacen(int _idAlmacen, int _idProduct
 	}
 }
 
+<<<<<<< HEAD
 
 
 //Auto agregar todos los articulos de Lineas //
@@ -626,6 +721,8 @@ void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 }
 
 
+=======
+>>>>>>> origin/development
 // * Metodos de Listas de Listas Factura*//
 int LstAlmacenes::agregarFactura(int _idAlmacen, Factura * _factura)
 {

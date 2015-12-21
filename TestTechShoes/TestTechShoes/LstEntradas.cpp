@@ -113,7 +113,7 @@ void LstEntradas::agregarNodoDespuesDe(NEntrada *_nuevo, NEntrada *_aux)
 // Métodos Publicos
 bool LstEntradas::agregar(Entrada *_entrada)
 {
-	NEntrada *nuevo = new NEntrada(_entrada);
+	NEntrada * nuevo = new NEntrada(_entrada);
 	if (vacia())
 	{
 		nuevo->setSgte(getCab());
@@ -128,10 +128,10 @@ bool LstEntradas::agregar(Entrada *_entrada)
 
 		while ((aux != NULL) && (aux->getSgte() != NULL))
 		{
-			if (idProducto == aux->getEntrada()->getIdProducto())
-				return false;
+			/*if (idProducto == aux->getEntrada()->getIdProducto())
+				return false;*/
 
-			if (idProducto < aux->getEntrada()->getIdProducto())
+			if (idProducto <= aux->getEntrada()->getIdProducto())
 			{
 				agregarNodoAntesDe(nuevo, aux);
 				return true;
@@ -141,10 +141,10 @@ bool LstEntradas::agregar(Entrada *_entrada)
 		}
 		if (aux->getSgte() == NULL)
 		{
-			if (idProducto == aux->getEntrada()->getIdProducto())
-				return false;
+			/*if (idProducto == aux->getEntrada()->getIdProducto())
+				return false;*/
 
-			if (idProducto < aux->getEntrada()->getIdProducto())
+			if (idProducto <= aux->getEntrada()->getIdProducto())
 			{
 				agregarNodoAntesDe(nuevo, aux);
 				return true;
@@ -159,6 +159,7 @@ bool LstEntradas::agregar(Entrada *_entrada)
 	}
 	return true;
 }
+
 bool LstEntradas::modificar(int _idProducto, Entrada *_entrada)
 {
 	NEntrada *aux = dirNodo(_idProducto);

@@ -7,6 +7,7 @@ private:
 	int idFactura;
 	char fecha[30];
 	char cliente[30];
+	bool anular;
 
 public:
 	Factura();
@@ -22,5 +23,8 @@ public:
 
 	char * getCliente();
 	void setCliente(char *);
+
+	bool getAnular();
+	void setAnular(bool);
 };
 

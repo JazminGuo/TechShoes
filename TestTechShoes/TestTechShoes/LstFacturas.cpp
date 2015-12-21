@@ -346,11 +346,11 @@ void LstFacturas::imprimirFactura(int _idFactura, LstLineaProductos * _lstLineaP
 {
 	NFactura * aux = dirNodo(_idFactura);
 
-	cout << "=====================================================================" << endl;
+	cout << "==================================================================================================================" << endl;
 	cout << "No. Factura: " << aux->getFactura()->getIdFactura() << endl;
 	cout << "Cliente: " << aux->getFactura()->getCliente() << endl;
 	cout << "Fecha: " << aux->getFactura()->getFecha() << endl;
-	cout << "=====================================================================" << endl;
+	cout << "==================================================================================================================" << endl;
 
 	aux->getLstLineasF()->desplegar(_lstLineaProducto);
 }

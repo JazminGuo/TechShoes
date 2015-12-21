@@ -275,7 +275,7 @@ void LstLineaFacturas::desplegar(LstLineaProductos * _lstLineaProducto)
 		{
 			Producto * producto = _lstLineaProducto->buscarProducto(aux->getLineaFactura()->getIdLinea(), aux->getLineaFactura()->getIdSublinea(), aux->getLineaFactura()->getIdProducto());
 			
-			cout << "   " << aux->getLineaFactura()->getNumFLinea(); cout << "           " << aux->getLineaFactura()->getIdLinea() << "-" << aux->getLineaFactura()->getIdSublinea() << "-" << aux->getLineaFactura()->getIdProducto(); cout << "          " << aux->getLineaFactura()->getCantidad(); cout << "          " << producto->getDescripcion(); cout << "              " << producto->getTalla(); cout << "          " << producto->getPrecio(); cout << "          " << producto->getPrecio() * aux->getLineaFactura()->getCantidad() << endl;
+			cout << "   " << aux->getLineaFactura()->getNumFLinea(); cout << "           " << aux->getLineaFactura()->getIdLinea() << "-" << aux->getLineaFactura()->getIdSublinea() << "-" << aux->getLineaFactura()->getIdProducto(); cout << "          " << aux->getLineaFactura()->getCantidad(); cout << "          " << producto->getDescripcion(); cout << "              " << producto->getTalla(); cout << "          " << producto->getPrecio(); cout << "               " << producto->getPrecio() * aux->getLineaFactura()->getCantidad() << endl;
 			cout << "__________________________________________________________________________________________________________________" << endl;
 
 			aux = aux->getSgte();
