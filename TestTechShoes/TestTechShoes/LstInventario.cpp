@@ -483,7 +483,7 @@ Inventario * LstInventario::buscarArticulo(int _idLinea, int _idSublinea, int _i
 	}
 }
 
-bool LstInventario::aumentarExistencia(int _idLinea, int _idSublinea, int _idProducto, int _existencia)
+bool LstInventario::sumarExistencia(int _idLinea, int _idSublinea, int _idProducto, int _existencia)
 {
 	Inventario * articulo = buscarArticulo(_idLinea, _idSublinea, _idProducto);
 	if(articulo == NULL)
@@ -496,3 +496,25 @@ bool LstInventario::aumentarExistencia(int _idLinea, int _idSublinea, int _idPro
 		return true;
 	}
 }
+
+bool LstInventario::restarExistencia(int _idLinea, int _idSublinea, int _idProducto, int _existencia)
+{
+	Inventario * articulo = buscarArticulo(_idLinea, _idSublinea, _idProducto);
+	if (articulo == NULL)
+	{
+		return false;
+	}
+	else
+	{
+		if (_existencia <= articulo->getExistencia())
+		{
+			articulo->setExistencia(articulo->getExistencia() - _existencia);
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
+
+

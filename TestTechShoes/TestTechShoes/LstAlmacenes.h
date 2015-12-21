@@ -48,7 +48,9 @@ public:
 	void desplegarUnInventarioDeUnAlmacen(int, int);
 	void autoAgregar(int, LstLineaProductos *);
 	Inventario * buscarArticulo(int, int, int, int);
-	bool aumentarExistencia(int, int, int, int, int);
+	bool sumarExistencia(int, int, int, int, int);
+	bool restarExistencia(int, int, int, int, int);
+
 
 	// Operaciones Almacen Con Entradas
 	bool agregarEntrada(int, Entrada *);

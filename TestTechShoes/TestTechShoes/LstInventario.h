@@ -52,7 +52,7 @@ public:
 
 
 	Inventario * buscarArticulo(int, int, int);
-
-	bool aumentarExistencia(int, int, int, int);
+	bool sumarExistencia(int, int, int, int);
+	bool restarExistencia(int, int, int, int);
 
 };

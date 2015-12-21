@@ -374,7 +374,6 @@ void LstAlmacenes::actualizarInventariosDeTodosAlmacenAuto(LstLineaProductos *_l
 // Operaciones Almacen Con Inventarios
 
 // Listas de Listas Inventarios
-
 int LstAlmacenes::agregarUnInventarioEnUnAlmacen(int _idAlmacen, Inventario *_inventario)
 {
 /*	    1. Se inserto exitosamente
@@ -538,11 +537,18 @@ Inventario * LstAlmacenes::buscarArticulo(int _idAlmacen, int _idLinea, int _idS
 	return aux->getListaInventarios()->buscarArticulo(_idLinea, _idSublinea, _idProducto);
 }
 
-bool LstAlmacenes::aumentarExistencia(int _idAlmacen, int _idLinea, int _idSublinea, int _idProducto, int _existencia)
+bool LstAlmacenes::sumarExistencia(int _idAlmacen, int _idLinea, int _idSublinea, int _idProducto, int _existencia)
 {
 	NAlmacen * aux = dirNodo(_idAlmacen);
 
-	return aux->getListaInventarios()->aumentarExistencia(_idLinea, _idSublinea, _idProducto, _existencia);
+	return aux->getListaInventarios()->sumarExistencia(_idLinea, _idSublinea, _idProducto, _existencia);
+}
+
+bool LstAlmacenes::restarExistencia(int _idAlmacen, int _idLinea, int _idSublinea, int _idProducto, int _existencia)
+{
+	NAlmacen * aux = dirNodo(_idAlmacen);
+
+	return aux->getListaInventarios()->restarExistencia(_idLinea, _idSublinea, _idProducto, _existencia);
 }
 
 
