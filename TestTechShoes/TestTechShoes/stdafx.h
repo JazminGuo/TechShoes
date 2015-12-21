@@ -11,7 +11,7 @@
 #include <tchar.h>
 #include <iostream>
 #include <stdlib.h>
-#include<ctime>
+#include <Windows.h>
 
 using namespace std;
 
