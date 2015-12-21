@@ -189,7 +189,7 @@ void menuEntradas(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 	do
 	{
 		system("cls");
-		cout << "================ *** Menu Almacen y Entrada *** ================" << endl << endl;
+		cout << "================ *** Menu Entradas *** ================" << endl << endl;
 		cout << "(1) Nueva Entrada" << endl;
 		cout << "(2) Anular Entrada" << endl;
 		cout << "(3) Ver Entradas de Almacen" << endl;
@@ -299,12 +299,12 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 
 	do
 	{
-
 		system("cls");
 		cout << "======================== *** Facturacion *** ========================" << endl << endl;
 		cout << "(1) Facturar" << endl;
 		cout << "(2) Anular Factura" << endl;
 		cout << "(3) Buscar Factura" << endl;
+		cout << "(4) Ver Facturas por Almacen" << endl;
 		cout << "(0) Salir" << endl << endl;
 		cout << "=====================================================================" << endl;
 		cout << "Opcion Seleccionada: "; cin >> opcion; cout << endl;
@@ -332,7 +332,7 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 
 				cout << "======================== *** Facturacion *** ========================" << endl << endl;
 				cout << "(1) Anadir Productos" << endl;
-				cout << "(0) Terminar Factura" << endl;
+				cout << "(0) Terminar Factura" << endl << endl;
 				cout << "=====================================================================" << endl << endl;
 				cout << "Opcion Seleccionada: "; cin >> dlt; cout << endl;
 
@@ -364,22 +364,24 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 
 								lstAlmacenes->agregarLineaFactura(idAlmacen, idFactura, nueva);
 
+								system("cls");
 								cout << "Producto agregado a la Factura" << endl << endl;
-
 								lstAlmacenes->imprimirFactura(idAlmacen, idFactura, lstLineas);
 
 								cout << endl << endl;
-								cout << "Desea anadir mas Productos?" << endl;
-								cout << "Si (1)" << endl;
-								cout << "No (0)" << endl;
+								cout << "Seleccione una opcion" << endl;
+								cout << "(1) Anandir mas Productos" << endl;
+								cout << "(2) Eliminar Linea" << endl;
+								cout << "(0) Terminar Factura" << endl;
 								cout << "Opcion selecionada: "; cin >> dlt; cout << endl << endl;
 							}
 							else
 							{
 								cout << "El producto que desea anadir a la factura no existe." << endl << endl;
-								cout << "Desea anadir mas Productos?" << endl;
-								cout << "Si (1)" << endl;
-								cout << "No (0)" << endl;
+								cout << "Seleccione una opcion" << endl;
+								cout << "(1) Anandir mas Productos" << endl;
+								cout << "(2) Eliminar Linea" << endl;
+								cout << "(0) Terminar Factura" << endl;
 								cout << "Opcion selecionada: "; cin >> dlt; cout << endl << endl;
 							}
 						}
@@ -387,9 +389,16 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 
 						case 2:
 						{
-							cout << "Ha salido del menu de facturas." << endl;
-							system("pause");
-							dlt = 0;
+							system("cls");
+							cout << "Linea eliminada correctamente" << endl << endl;
+							lstAlmacenes->elimniarLineaFactura(idAlmacen, idFactura, numLinea);
+							lstAlmacenes->imprimirFactura(idAlmacen, idFactura, lstLineas);
+							cout << endl << endl;
+							cout << "Seleccione una opcion" << endl;
+							cout << "(1) Anandir mas Productos" << endl;
+							cout << "(2) Eliminar Linea" << endl;
+							cout << "(0) Terminar Factura" << endl;
+							cout << "Opcion selecionada: "; cin >> dlt; cout << endl << endl;
 						}
 						break;
 					}
@@ -399,12 +408,12 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 
 			case 2:
 			{
-				cout << endl; cout << "NO se Inserto el Nuevo Factura,  porque NO EXISTE Almacen " << idAlmacen << " !" << endl;
+				cout << endl; cout << "No se puede crear la Factura por que el Almacen no existe" << idAlmacen << " !" << endl;
 				break;
 			}
 			case 3:
 			{
-				cout << endl; cout << "NO se Inserto el Nuevo Factura,  porque YA EXISTE !" << endl;
+				cout << endl; cout << "No se puede crea la Factura por que la Factura ya existe" << endl;
 				break;
 			}
 			}
@@ -413,11 +422,13 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 		}
 		case 2:
 		{
+
 			system("cls");
-			cout << endl;
-			cout << "------- Anulando Una Factura En Un Almacen --------" << endl << endl;
-			cout << "Digite el ID Almacen Existente: "; cin >> idAlmacen;
-			cout << "Digite el ID Factura Existente: "; cin >> idFactura;
+			cout << "==========================================================" << endl;
+			cout << "Anular Factura." << endl;
+			cout << "==========================================================" << endl << endl;
+			cout << "Digite el ID del Almacen: "; cin >> idAlmacen;
+			cout << "Digite el ID de la Factura: "; cin >> idFactura;
 			switch (lstAlmacenes->elimniarFactura(idAlmacen, idFactura))
 			{
 			case 1:
@@ -427,12 +438,12 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 			}
 			case 2:
 			{
-				cout << endl; cout << "NO se Elimino la Factura,  porque NO EXISTE Almacen " << idAlmacen << " !" << endl;
+				cout << endl; cout << "No se puede eliminar la Factura por que el Almacen no existe" << idAlmacen << " !" << endl;
 				break;
 			}
 			case 3:
 			{
-				cout << endl; cout << "NO se Elimino la Factura,  porque NO EXISTE !" << endl;
+				cout << endl; cout << "No se puede eliminar la Factura por que la Factura no existe" << endl;
 				break;
 			}
 			}
@@ -869,7 +880,7 @@ void menuProducto(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 		{
 			system("cls");
 			cout << "==========================================================" << endl;
-			cout << "Buscar Producto" << endl;
+			cout << "Buscar Productos" << endl;
 			cout << "==========================================================" << endl << endl;
 			cout << "Digite el ID de la Linea " << endl;
 			cin >> idLinea;

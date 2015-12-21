@@ -430,7 +430,6 @@ bool LstInventario::agregarUnProductoAlInventario(int _idAlmacen, Producto *_pro
 			bool exist = false;
 			do
 			{
-
 				if (codArticulo == aux->getInventario()->getCodArticulo())
 				{
 					exist = true;

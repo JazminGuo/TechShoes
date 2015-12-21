@@ -268,6 +268,7 @@ void LstLineaFacturas::desplegar(LstLineaProductos * _lstLineaProducto)
 		cout << "No hay lineas en la Factura" << endl;
 	else
 	{
+		double total = 0;
 		cout << endl;
 		cout << "No. Linea:" << "     " << "Codigo:" << "     " << "Cantidad:" << "     " << "Descripcion:" << "     " << "Talla:" << "     " << "Precio Unitario:" << "     " << "Subtotal:" << endl;
 		cout << "__________________________________________________________________________________________________________________" << endl;
@@ -275,11 +276,16 @@ void LstLineaFacturas::desplegar(LstLineaProductos * _lstLineaProducto)
 		{
 			Producto * producto = _lstLineaProducto->buscarProducto(aux->getLineaFactura()->getIdLinea(), aux->getLineaFactura()->getIdSublinea(), aux->getLineaFactura()->getIdProducto());
 			
+			double subtotal = producto->getPrecio() * aux->getLineaFactura()->getCantidad();
+
 			cout << "   " << aux->getLineaFactura()->getNumFLinea(); cout << "           " << aux->getLineaFactura()->getIdLinea() << "-" << aux->getLineaFactura()->getIdSublinea() << "-" << aux->getLineaFactura()->getIdProducto(); cout << "          " << aux->getLineaFactura()->getCantidad(); cout << "          " << producto->getDescripcion(); cout << "              " << producto->getTalla(); cout << "          " << producto->getPrecio(); cout << "               " << producto->getPrecio() * aux->getLineaFactura()->getCantidad() << endl;
 			cout << "__________________________________________________________________________________________________________________" << endl;
 
+			total = total += subtotal;
 			aux = aux->getSgte();
 		}
+		cout << "Total: " << total << endl;
+		cout << "==================================================================================================================" << endl;
 	}
 }
 
