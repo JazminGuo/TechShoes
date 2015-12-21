@@ -37,6 +37,7 @@ public:
 	bool modificarAlmacen(int, Almacen *);
 	void desplegarLista();
 	Almacen *buscar(int);
+	
 
 	/*------------------------------------ MULTILISTA: Lista de Listas ----------------------------------*/
 
@@ -79,6 +80,7 @@ public:
 
 	void sustraerExistencia(int, int);
 
-	bool actualizarInventariosDeUnAlmacen(int, int, Entrada *);
+	bool actualizarExistenciaInventariosDeUnAlmacen(int, int, Entrada *);
+	void actualizarInventariosDeTodosAlmacenAuto(LstLineaProductos *);
 };
 

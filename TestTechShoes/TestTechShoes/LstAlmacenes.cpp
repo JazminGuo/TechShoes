@@ -164,8 +164,8 @@ bool LstAlmacenes::agregaAsc( Almacen * _almacen, LstLineaProductos *_listaLinea
 			}
 		}	
 	}
-	if (agregado == true)
-	{
+	//if (agregado == true)
+	//{
 		/*NLineaProducto *auxLineaProducto = _listaLineaProductos->getCab();
 		if (auxLineaProducto != NULL)
 		{
@@ -199,7 +199,7 @@ bool LstAlmacenes::agregaAsc( Almacen * _almacen, LstLineaProductos *_listaLinea
 		else
 			return false;*/
 		
-	}
+	//}
 
 	return true;
 }
@@ -314,9 +314,10 @@ Almacen *LstAlmacenes::buscar(int _idAlmacen)
 	return NULL;
 }
 
+
 /*------------------------------------ MULTILISTA: Lista de Listas ----------------------------------*/
 
-bool LstAlmacenes::actualizarInventariosDeUnAlmacen(int _idAlmacen, int _idProducto, Entrada *_entrada)
+bool LstAlmacenes::actualizarExistenciaInventariosDeUnAlmacen(int _idAlmacen, int _idProducto, Entrada *_entrada)
 {
 	NAlmacen *auxAlmacen = dirNodo(_idAlmacen);
 	if (auxAlmacen != NULL)
@@ -331,7 +332,46 @@ bool LstAlmacenes::actualizarInventariosDeUnAlmacen(int _idAlmacen, int _idProdu
 		return false;
 	return true;
 }
+void LstAlmacenes::actualizarInventariosDeTodosAlmacenAuto(LstLineaProductos *_listaLineaProductos)
+{
 
+	// Sí NAlmacen no es NULL, entonces comparo
+
+	NAlmacen *auxAlmacen = getCab();
+	while (auxAlmacen != NULL)
+	{
+		int idAlmacen = auxAlmacen->getAlmacen()->getIdAlmacen();
+		NLineaProducto *auxLineaProducto = _listaLineaProductos->getCab();
+		do
+		{
+			NSubLineaProducto *auxSubLinea = auxLineaProducto->getLstSubLineaProductos()->getCab();
+			while (auxSubLinea != NULL)
+			{
+				NProducto *auxProducto = auxSubLinea->getLstProductos()->getCab();
+				do
+				{
+					
+					Producto *producto = auxProducto->getProducto();
+					if (auxAlmacen->getListaInventarios()->dirNodoGlobal(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto()))
+					{
+						auxProducto = auxProducto->getSgte();
+					}
+					else
+					{
+						Inventario *inventario = new Inventario(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto(),idAlmacen, 0);
+						agregarUnInventarioEnUnAlmacen(idAlmacen, inventario);
+						auxProducto = auxProducto->getSgte();
+					}
+
+					 
+				} while ( (auxProducto!= NULL) && (auxProducto != auxSubLinea->getLstProductos()->getCab()) );  // end while de Producto
+				auxSubLinea = auxSubLinea->getSgte();
+			}  // end while de SubLinea Producto
+			auxLineaProducto = auxLineaProducto->getSgte();
+		} while ( (auxLineaProducto != NULL) && (auxLineaProducto != _listaLineaProductos->getCab()) );  // end while de Linea Producto
+		auxAlmacen = auxAlmacen->getSgte();
+	}  // end while de Almacen
+}
 // Operaciones Almacen Con Inventarios
 int LstAlmacenes::agregarUnInventarioEnUnAlmacen(int _idAlmacen, Inventario *_inventario)
 {
@@ -466,13 +506,13 @@ int LstAlmacenes::agregarUnaEntradaEnUnAlmacen(int _idAlmacen, int _idLineaProdu
 		}
 		else
 			return 3;
-		//if (auxAlmacen->getListaEntradas()->agregarUnCantidadProductoEnUnaEntrada(_idProducto, _entrada) == 1)
-		//{
-		//	if (actualizarInventariosDeUnAlmacen(_idAlmacen, _idProducto, _entrada))
-		//		return 1;
-		//}
-		//else
-		//	return aux->getListaEntradas()->agregarUnCantidadProductoEnUnaEntrada(_idProducto, _entrada);	
+		if (auxAlmacen->getListaEntradas()->agregarUnCantidadProductoEnUnaEntrada(_idProducto, _entrada) == 1)
+		{
+			if (actualizarExistenciaInventariosDeUnAlmacen(_idAlmacen, _idProducto, _entrada))
+				return 1;
+		}
+		else
+			return auxAlmacen->getListaEntradas()->agregarUnCantidadProductoEnUnaEntrada(_idProducto, _entrada);
 	}
 	return 0;
 }
@@ -497,7 +537,7 @@ int LstAlmacenes::anularUnaEntradaDeUnAlmacen(int _idAlmacen, int _idProducto)
 			Entrada *entrada = auxAlmacen->getListaEntradas()->obtenerEntrada(_idProducto);
 			entrada->setCantidadProducto(0);
 
-			if (actualizarInventariosDeUnAlmacen(_idAlmacen, _idProducto, entrada))
+			//if (actualizarInventariosDeUnAlmacen(_idAlmacen, _idProducto, entrada))
 				return 1;
 		}
 		else
@@ -551,7 +591,7 @@ void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 
 					if (vacia())
 					{
-						cout << "La lista esta vacia" << endl;
+						cout << "La lista Almacen esta vacia" << endl;
 					}
 					else
 					{
@@ -560,19 +600,24 @@ void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 						do
 						{
 							Producto * producto = auxP->getProducto();
+							NAlmacen *auxAlmacen = dirNodo(idAlmacen);
+							if (auxAlmacen->getListaInventarios()->dirNodoGlobal(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto()))
+							{
+								auxP = auxP->getSgte();
+							}
+							else
+							{
+								Inventario *inventario = new Inventario(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto(), idAlmacen, 0);
+								agregarUnInventarioEnUnAlmacen(idAlmacen, inventario);
+								auxP = auxP->getSgte();
+							}
 
-							Inventario * inventario = new Inventario(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto(), idAlmacen, 0);
-
-							comprobarLineasySubs(inventario->getCodLinea(), inventario->getCodSubLinea(), idAlmacen, inventario);
-
-							//agregarUnInventarioEnUnAlmacen(idAlmacen, inventario);
-
-							auxP = auxP->getSgte();
-						} while (auxP != auxS->getLstProductos()->getCab());
+							//comprobarLineasySubs(inventario->getCodLinea(), inventario->getCodSubLinea(), idAlmacen, inventario);
+						} while ( (auxP != NULL) && (auxP != auxS->getLstProductos()->getCab()) );  // end while de auxP
 
 						auxS = auxS->getSgte();
 					}
-				}
+				} // end while de auxS
 
 				auxL = auxL->getSgte();
 			}

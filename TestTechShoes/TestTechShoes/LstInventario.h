@@ -8,7 +8,7 @@ private:
 	int size;
 
 	//Miscelaneos Privados
-	NInventario * dirNodo(int);
+	
 	NInventario * dirUltimo();
 	NInventario * dirAnterior(int);
 	void agregaNodoAntesDe(NInventario *, NInventario *);
@@ -17,6 +17,8 @@ private:
 public:
 	LstInventario();
 	~LstInventario();
+
+	NInventario * dirNodo(int);
 
 	NInventario * getCab();
 	void setCab(NInventario *);
@@ -37,6 +39,8 @@ public:
 	bool modificarInventario(int, Inventario *);
 	void desplegarLista();
 	void buscar(int);
+	bool dirNodoGlobal(int, int, int);
+
 
 	/*------------------------------ MULTILISTA: Lista de Listas Salteada --------------------------------------------*/
 

@@ -1906,7 +1906,7 @@ void menuAlmacen_Factura_lineaFactura(LstAlmacenes * listaAlmacenes)
 
 
 // MENU PARA MUNDO B
-void menuLinea(LstLineaProductos * _lstLinea)
+void menuLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 {
 	int opcion = 0;
 
@@ -2043,7 +2043,7 @@ void menuLinea(LstLineaProductos * _lstLinea)
 	} while (opcion != 0);
 }
 
-void menuSubLinea(LstLineaProductos * _lstLinea)
+void menuSubLinea(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 {
 	int opc = 0;
 
@@ -2189,7 +2189,7 @@ void menuSubLinea(LstLineaProductos * _lstLinea)
 	} while (opc != 0);
 }
 
-void menuProducto(LstLineaProductos * _lstLinea)
+void menuProducto(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 {
 	int opc = 0;
 
@@ -2241,6 +2241,7 @@ void menuProducto(LstLineaProductos * _lstLinea)
 			{
 			case 1:
 			{
+				listaAlmacenes->actualizarInventariosDeTodosAlmacenAuto(_lstLinea);
 				cout << "Producto creado correctamaente." << endl;
 				system("pause");
 			}
@@ -2413,7 +2414,7 @@ void menuMundoA(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 
 
 // Aqui van todos lo de Linea Producto
-void menuMundoB(LstLineaProductos * _lstLinea)
+void menuMundoB(LstLineaProductos * _lstLinea, LstAlmacenes * listaAlmacenes)
 {
 	int opcion = 0;
 
@@ -2432,19 +2433,19 @@ void menuMundoB(LstLineaProductos * _lstLinea)
 		{
 		case 1:
 		{
-			menuLinea(_lstLinea);
+			menuLinea(_lstLinea, listaAlmacenes);
 		}
 		break;
 
 		case 2:
 		{
-			menuSubLinea(_lstLinea);
+			menuSubLinea(_lstLinea, listaAlmacenes);
 		}
 		break;
 
 		case 3:
 		{
-			menuProducto(_lstLinea);
+			menuProducto(_lstLinea, listaAlmacenes);
 		}
 		break;
 		}
@@ -2474,7 +2475,7 @@ void menuPrincipalAB(LstAlmacenes * listaAlmacenes, LstLineaProductos *listaLine
 		}
 		case 2:
 		{
-			menuMundoB(listaLineaProductos);
+			menuMundoB(listaLineaProductos, listaAlmacenes);
 			break;
 		}
 		}

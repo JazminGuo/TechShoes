@@ -272,7 +272,25 @@ void LstInventario::buscar(int _idProducto)
 	else
 		cout << "La Estructura de Inventarios estan vacia!" << endl;
 }
+bool LstInventario::dirNodoGlobal(int _idLinea, int _idSublinea, int _idProducto)
+{
+	
+	NInventario *aux = dirNodo(_idProducto);
+	if (aux != NULL)
+	{
+		int idLinea = aux->getInventario()->getCodLinea();
+		int idSubLinea = aux->getInventario()->getCodSubLinea();
+		int idProducto = aux->getInventario()->getCodArticulo();
 
+		if ((idLinea == _idLinea) && (idSubLinea == _idSublinea) && (idProducto == _idProducto))
+			return true;
+		else
+			return false;
+	}
+	else
+		return false;
+	return true;
+}
 
 /*------------------------------ MULTILISTA: Lista de Listas Salteada --------------------------------------------*/
 

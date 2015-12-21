@@ -1,10 +1,10 @@
-﻿Build started 12/20/2015 5:21:46 PM.
-     1>Project "C:\Users\Yohel\Documents\GitHub\TechShoes\TestTechShoes\TestTechShoes\TestTechShoes.vcxproj" on node 2 (Build target(s)).
+﻿Build started 21/12/2015 05:59:29 a.m..
+     1>Project "C:\Users\Admin\Documents\GitHub\TechShoes\TestTechShoes\TestTechShoes\TestTechShoes.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt LstLineaFacturas.cpp
-         LstLineaFacturas.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt LstInventario.cpp
+         LstInventario.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Yohel\Documents\GitHub\TechShoes\TestTechShoes\Debug\TestTechShoes.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Yohel\Documents\GitHub\TechShoes\TestTechShoes\Debug\TestTechShoes.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Yohel\Documents\GitHub\TechShoes\TestTechShoes\Debug\TestTechShoes.lib" /MACHINE:X86 Debug\Almacen.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Admin\Documents\GitHub\TechShoes\TestTechShoes\Debug\TestTechShoes.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Admin\Documents\GitHub\TechShoes\TestTechShoes\Debug\TestTechShoes.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Admin\Documents\GitHub\TechShoes\TestTechShoes\Debug\TestTechShoes.lib" /MACHINE:X86 Debug\Almacen.obj
          Debug\Entrada.obj
          Debug\Factura.obj
          Debug\Inventario.obj
@@ -30,9 +30,9 @@
          Debug\stdafx.obj
          Debug\SubLineaProducto.obj
          Debug\TestTechShoes.obj
-         TestTechShoes.vcxproj -> C:\Users\Yohel\Documents\GitHub\TechShoes\TestTechShoes\Debug\TestTechShoes.exe
-     1>Done Building Project "C:\Users\Yohel\Documents\GitHub\TechShoes\TestTechShoes\TestTechShoes\TestTechShoes.vcxproj" (Build target(s)).
+         TestTechShoes.vcxproj -> C:\Users\Admin\Documents\GitHub\TechShoes\TestTechShoes\Debug\TestTechShoes.exe
+     1>Done Building Project "C:\Users\Admin\Documents\GitHub\TechShoes\TestTechShoes\TestTechShoes\TestTechShoes.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:07.24
+Time Elapsed 00:00:01.53
