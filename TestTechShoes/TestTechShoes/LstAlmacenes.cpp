@@ -361,10 +361,7 @@ void LstAlmacenes::actualizarInventariosDeTodosAlmacenAuto(LstLineaProductos *_l
 						Inventario *inventario = new Inventario(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto(),idAlmacen, 0);
 						agregarUnInventarioEnUnAlmacen(idAlmacen, inventario);
 						auxProducto = auxProducto->getSgte();
-					}
-
-
-					 
+					} 
 				} while ( (auxProducto!= NULL) && (auxProducto != auxSubLinea->getLstProductos()->getCab()) );  // end while de Producto
 				auxSubLinea = auxSubLinea->getSgte();
 			}  // end while de SubLinea Producto
