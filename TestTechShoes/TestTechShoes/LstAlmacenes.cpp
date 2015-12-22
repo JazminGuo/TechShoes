@@ -529,6 +529,57 @@ void LstAlmacenes::desplegarTodosEntradaDeTodosAlmacen()
 		}
 	}
 }
+////Auto agregar todos los articulos de Lineas //
+//void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
+//{
+//	NLineaProducto * auxL = lstLinea->getCab();
+//
+//	if (auxL == NULL)
+//	{
+//		cout << "La Lista Linea esta Vacia !!" << endl;
+//	}
+//	else
+//	{
+//		do
+//		{
+//			NSubLineaProducto * auxS = auxL->getLstSubLineaProductos()->getCab();
+//			if (auxS == NULL)
+//				cout << "La Lista SubLinea esta vacio!!" << endl;
+//			else
+//			{
+//
+//				while (auxS != NULL)
+//				{
+//					NProducto * auxP = auxS->getLstProductos()->getCab();
+//
+//					if (auxP != NULL)
+//					{
+//						do
+//						{
+//							Producto * producto = auxP->getProducto();
+//
+//							Inventario * inventario = new Inventario(producto->getLinea(), producto->getSubLinea(), producto->getIdProducto(), idAlmacen, 0);
+//
+//							//comprobarLineasySubs(inventario->getCodLinea(), inventario->getCodSubLinea(), idAlmacen, inventario);
+//
+//							agregarUnInventarioEnUnAlmacen(idAlmacen, inventario);
+//
+//							auxP = auxP->getSgte();
+//						} while (auxP != auxS->getLstProductos()->getCab());
+//
+//						
+//					}
+//					else
+//						auxS = auxS->getSgte();
+//				
+//				}
+//
+//				auxL = auxL->getSgte();
+//			}
+//		} while (auxL != lstLinea->getCab());
+//	}
+//}
+
 //Auto agregar todos los articulos de Lineas //
 void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 {
@@ -552,7 +603,11 @@ void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 				{
 					NProducto * auxP = auxS->getLstProductos()->getCab();
 
-					if (auxP != NULL)
+					if (vacia())
+					{
+						cout << "La Lista Esta Vacia" << endl;
+					}
+					else
 					{
 						do
 						{
@@ -565,13 +620,10 @@ void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 							agregarUnInventarioEnUnAlmacen(idAlmacen, inventario);
 
 							auxP = auxP->getSgte();
-						} while (auxP != auxS->getLstProductos()->getCab());
+						} while ((auxP != NULL) && (auxP != auxS->getLstProductos()->getCab()));
 
-						
-					}
-					else
 						auxS = auxS->getSgte();
-				
+					}
 				}
 
 				auxL = auxL->getSgte();
