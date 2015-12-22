@@ -536,7 +536,7 @@ void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 
 	if (auxL == NULL)
 	{
-		cout << "La Lista esta Vacia !!" << endl;
+		cout << "La Lista Linea esta Vacia !!" << endl;
 	}
 	else
 	{
@@ -544,7 +544,7 @@ void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 		{
 			NSubLineaProducto * auxS = auxL->getLstSubLineaProductos()->getCab();
 			if (auxS == NULL)
-				cout << "La Lista esta vacio!!" << endl;
+				cout << "La Lista SubLinea esta vacio!!" << endl;
 			else
 			{
 
@@ -553,7 +553,7 @@ void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 
 					if (vacia())
 					{
-						cout << "La lista esta vacia" << endl;
+						cout << "La lista Almacen esta vacia" << endl;
 					}
 					else
 					{

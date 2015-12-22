@@ -233,12 +233,12 @@ void LstEntradas::desplegar()
 	else
 	{
 		cout << endl;
-		cout << "-----------------------------------" << endl;
+		cout << "=====================================================================" << endl;
 		while (aux != NULL)
 		{
 			cout << "ID Producto: " << aux->getEntrada()->getIdProducto() << endl;
 			cout << "Cantidades Productos: " << aux->getEntrada()->getCantidadProducto() << endl;
-			cout << "-----------------------------------" << endl;
+			cout << "=====================================================================" << endl;
 
 			aux = aux->getSgte();
 

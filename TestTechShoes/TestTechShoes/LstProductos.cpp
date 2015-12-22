@@ -242,7 +242,7 @@ void LstProductos::desplegarLista()
 	{
 		NProducto * aux = getCab();
 		int i = 1;
-		cout << "============================================" << endl;
+		cout << "=====================================================================" << endl;
 		do
 		{
 			cout << "Producto #" << i << ": " << endl;
@@ -250,7 +250,7 @@ void LstProductos::desplegarLista()
 			cout << "Descripcion: " << aux->getProducto()->getDescripcion() << endl;
 			cout << "Talla: " << aux->getProducto()->getTalla() << endl;
 			cout << "Precio: " << aux->getProducto()->getPrecio() << endl;
-			cout << "============================================" << endl;
+			cout << "=====================================================================" << endl;
 			aux = aux->getSgte();
 			i++;
 		} while (aux != getCab());

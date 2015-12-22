@@ -256,14 +256,14 @@ void LstSubLineaProductos::desplegar()
 	{
 		int i = 1;
 		cout << endl;
-		cout << "============================================" << endl;
+		cout << "=====================================================================" << endl;
 
 		while (aux != NULL)
 		{
 			cout << "ID Categoria: " << aux->getSubLineaProducto()->getIdLinea() << endl;
 			cout << "ID SubLinea: " << aux->getSubLineaProducto()->getIdSubLinea() << endl;
 			cout << "Descripcion: " << aux->getSubLineaProducto()->getDescripcion() << endl;
-			cout << "============================================" << endl;
+			cout << "=====================================================================" << endl;
 			i++;
 			aux = aux->getSgte();
 	    }
@@ -349,7 +349,7 @@ void LstSubLineaProductos::desplegarProductosDeSubLinea(int _idSubLineaProducto)
 {
 	NSubLineaProducto * aux = dirNodo(_idSubLineaProducto);
 
-	cout << "=======================================================" << endl;
+	cout << "=====================================================================" << endl;
 	cout << "ID: " << aux->getSubLineaProducto()->getIdSubLinea() << endl;
 	cout << "Descripcion: " << aux->getSubLineaProducto()->getDescripcion() << endl;
 
@@ -367,14 +367,14 @@ void LstSubLineaProductos::desplegarSubLineasConProductos()
 	{
 		NSubLineaProducto * aux = getCab();
 		int i = 1;
-		cout << "============================================" << endl;
+		cout << "=====================================================================" << endl;
 		while (aux != NULL)
 		{
 			cout << "Sublinea #" << i << ": " << endl;
 			cout << "ID: " << aux->getSubLineaProducto()->getIdSubLinea() << endl;
 			cout << "Descripcion: " << aux->getSubLineaProducto()->getDescripcion() << endl;
 			cout << "Linea: " << aux->getSubLineaProducto()->getIdLinea() << endl;
-			cout << "============================================" << endl;
+			cout << "=====================================================================" << endl;
 			aux->getLstProductos()->desplegarLista();
 
 			aux = aux->getSgte();

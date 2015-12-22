@@ -348,14 +348,14 @@ void LstInventario::desplegarLista()
 	{
 		NInventario * aux = getCab();
 		int i = 1;
-		cout << "============================================" << endl;
+		cout << "=====================================================================" << endl;
 		do
 		{
 			cout << "Inventario #" << i << ": " << endl;
 			cout << "Codigo del Articulo: " <<aux->getInventario()->getCodLinea() << "-" << aux->getInventario()->getCodSubLinea() << "-" << aux->getInventario()->getCodArticulo() << endl;
 			cout << "Codigo del Almacen: " << aux->getInventario()->getCodAlmacen() << endl;
 			cout << "Existencia: " << aux->getInventario()->getExistencia() << endl;
-			cout << "============================================" << endl;
+			cout << "=====================================================================" << endl;
 			aux = aux->getSgte();
 			i++;
 		} while (aux != getCab());
@@ -370,11 +370,11 @@ void LstInventario::buscar(int _idProducto)
 	if (aux != NULL)
 	{
 		cout << endl;
-		cout << "-----------------------------------" << endl;
+		cout << "=====================================================================" << endl;
 		cout << "ID Almacen : " << aux->getInventario()->getCodAlmacen() << endl;
 		//cout << "ID Producto : " << aux->getInventario()->getCodArticulo() << endl;
 		cout << "Cantidad de Prodcuto : " << aux->getInventario()->getExistencia() << endl;
-		cout << "-----------------------------------" << endl;
+		cout << "=====================================================================" << endl;
 	}
 	else
 		cout << "La Estructura de Inventarios estan vacia!" << endl;

@@ -277,13 +277,13 @@ void LstLineaProductos::desplegar()
 	{
 		int i = 1;
 		cout << endl;
-		cout << "============================================" << endl;
+		cout << "=====================================================================" << endl;
 		do
 		{
 			cout << "Linea #" << i << ": " << endl;
 			cout << "ID: " << aux->getLineaProducto()->getIdLineaProducto() << endl;
 			cout << "Categoria: " << aux->getLineaProducto()->getDescripcion() << endl;
-			cout << "============================================" << endl;
+			cout << "=====================================================================" << endl;
 
 			aux = aux->getSgte();
 			i++;
@@ -400,7 +400,7 @@ void LstLineaProductos::desplegarSubLineasDeLinea(int _idLineaProducto)
 	NLineaProducto * aux = dirNodo(_idLineaProducto);
 	if (aux != NULL)
 	{
-		cout << "=======================================================" << endl;
+		cout << "=====================================================================" << endl;
 		cout << "ID: " << aux->getLineaProducto()->getIdLineaProducto() << endl;
 		cout << "Descripcion: " << aux->getLineaProducto()->getDescripcion() << endl;
 
@@ -426,14 +426,14 @@ void LstLineaProductos::desplegarLineasConSubLineas()
 	{
 		NLineaProducto * aux = getCab();
 		int i = 1;
-		cout << "============================================" << endl;
+		cout << "=====================================================================" << endl;
 
 		do
 		{
 			cout << "Linea #" << i << ": " << endl;
 			cout << "ID: " << aux->getLineaProducto()->getIdLineaProducto() << endl;
 			cout << "Descripcion: " << aux->getLineaProducto()->getDescripcion() << endl;
-			cout << "============================================" << endl;
+			cout << "=====================================================================" << endl;
 			aux->getLstSubLineaProductos()->desplegar();
 
 			aux = aux->getSgte();
