@@ -7,13 +7,15 @@
       <Entity type="Class">
         <Name>Producto</Name>
         <Access>Public</Access>
-        <Location left="2187" top="2581" />
-        <Size width="548" height="332" />
+        <Location left="2161" top="4446" />
+        <Size width="548" height="434" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">int id</Member>
+        <Member type="Field">int idProducto</Member>
         <Member type="Field">char[ ] descripcion</Member>
         <Member type="Field">double talla</Member>
         <Member type="Field">double precio</Member>
+        <Member type="Field">int linea</Member>
+        <Member type="Field">int sublinea</Member>
         <Member type="Constructor">public Producto()</Member>
         <Member type="Destructor">~Producto()</Member>
         <Member type="Constructor">public Producto(char _id, char _descripcion, double _talla, double _precio, char _linea, char _sublinea)</Member>
@@ -23,14 +25,18 @@
         <Member type="Method">public void setDescripcion(char _descripcion)</Member>
         <Member type="Method">public double getTalla()</Member>
         <Member type="Method">public void setTalla(double _talla)</Member>
-        <Member type="Method">public char getPrecio()</Member>
+        <Member type="Method">public double getPrecio()</Member>
         <Member type="Method">public void setPrecio(double _precio)</Member>
+        <Member type="Method">public int getLinea()</Member>
+        <Member type="Method">public void setLinea(int _idLinea)</Member>
+        <Member type="Method">public int getSubLinea()</Member>
+        <Member type="Method">public void setSubLinea(int _subLinea)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>NodoProducto</Name>
         <Access>Public</Access>
-        <Location left="2869" top="2581" />
+        <Location left="2844" top="4446" />
         <Size width="437" height="293" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Producto producto</Member>
@@ -50,8 +56,8 @@
       <Entity type="Class">
         <Name>LstProductos</Name>
         <Access>Public</Access>
-        <Location left="3430" top="2581" />
-        <Size width="447" height="400" />
+        <Location left="3405" top="4446" />
+        <Size width="447" height="434" />
         <Collapsed>False</Collapsed>
         <Member type="Field">NodoProducto cab</Member>
         <Member type="Field">int size</Member>
@@ -68,41 +74,46 @@
         <Member type="Method">private NodoProducto dirAnteriorIndexOf(int _index)</Member>
         <Member type="Method">private void agregaNodoAntesDe(NodoProducto _ref, NodoProducto _nuevo)</Member>
         <Member type="Method">private void agregaNodoDespuesDe(NodoProducto _ref, NodoProducto _nuevo)</Member>
+        <Member type="Method">public bool vacia()</Member>
         <Member type="Method">public bool agregar(Producto _producto)</Member>
         <Member type="Method">public bool eliminar(char _id)</Member>
-        <Member type="Method">public bool modificar(char _id, Producto _producto)</Member>
+        <Member type="Method">public bool modificarProducto(char _id, Producto _producto)</Member>
         <Member type="Method">public Producto buscar(char _id)</Member>
+        <Member type="Method">public void desplegarLista()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Factura</Name>
         <Access>Public</Access>
-        <Location left="10" top="719" />
-        <Size width="293" height="299" />
+        <Location left="10" top="1389" />
+        <Size width="293" height="349" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">int id</Member>
+        <Member type="Field">int idFactura</Member>
         <Member type="Field">char[ ] fecha</Member>
         <Member type="Field">char[ ] cliente</Member>
+        <Member type="Field">bool anular</Member>
         <Member type="Constructor">public Factura()</Member>
         <Member type="Destructor">~Factura()</Member>
+        <Member type="Constructor">public Factura(int _idFactura, char _fecha, char cliente)</Member>
         <Member type="Constructor">public Factura(int _id, char _fecha, char cliente)</Member>
-        <Member type="Method">public int getId()</Member>
-        <Member type="Method">public void setId(int _id)</Member>
+        <Member type="Method">public int getIdFactura()</Member>
+        <Member type="Method">public void setIdFactura(int _idFactura)</Member>
         <Member type="Method">public char getFecha()</Member>
         <Member type="Method">public void setFecha(char _fecha)</Member>
         <Member type="Method">public char getCliente()</Member>
         <Member type="Method">public void setCliente(char _cliente)</Member>
+        <Member type="Method">public bool getAnular()</Member>
+        <Member type="Method">public void setAnular(bool _anular)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>NodoFactura</Name>
         <Access>Public</Access>
-        <Location left="514" top="719" />
+        <Location left="514" top="1389" />
         <Size width="396" height="332" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Producto producto</Member>
         <Member type="Field">NodoFactura sgte</Member>
-        <Member type="Field">NodoFactura ante</Member>
         <Member type="Field">LstLineaFactura listaFacturas</Member>
         <Member type="Constructor">public NodoFactura()</Member>
         <Member type="Destructor">~NodoFactura()</Member>
@@ -111,8 +122,6 @@
         <Member type="Method">public void setFactura(Fatura _factura)</Member>
         <Member type="Method">public NodoFactura getSgte()</Member>
         <Member type="Method">public void setSgte(NodoFactura _ptr)</Member>
-        <Member type="Method">public NodoFactura getAnte()</Member>
-        <Member type="Method">public void setAnte(NodoFactura _ptr)</Member>
         <Member type="Method">public void setListaLineaFactura(LstLineaFactura _listaLineaFacturas)</Member>
         <Member type="Method">public LstLineaFactura getListaLineaFacturas()</Member>
         <Modifier>None</Modifier>
@@ -120,8 +129,8 @@
       <Entity type="Class">
         <Name>LstFacturas</Name>
         <Access>Public</Access>
-        <Location left="999" top="719" />
-        <Size width="514" height="451" />
+        <Location left="999" top="1389" />
+        <Size width="514" height="502" />
         <Collapsed>False</Collapsed>
         <Member type="Field">NodoFactura cab</Member>
         <Member type="Field">int size</Member>
@@ -142,24 +151,27 @@
         <Member type="Method">public bool eliminar(int _id)</Member>
         <Member type="Method">public bool modificar(int _id, Factura _factura)</Member>
         <Member type="Method">public Factura buscar(int _id)</Member>
-        <Member type="Method">public int agregarUnaLineaFacturaEnUnaFactura(int _idFactura, Factura _lineaFactura)</Member>
-        <Member type="Method">public int eliminarUnaLineaFacturaDeUnaFactura(int _idFactura, int _idLineaFactura)</Member>
-        <Member type="Method">public void desplegarTodosLineasFacturaDeTodosFacturas()</Member>
+        <Member type="Method">public void desplegarLista()</Member>
+        <Member type="Method">public int agregarUnaLineaFactura(int _idFactura, Factura _lineaFactura)</Member>
+        <Member type="Method">public int eliminarUnaLineaFactura(int _idFactura, int _idLineaFactura)</Member>
+        <Member type="Method">public int ultimaFactura()</Member>
+        <Member type="Method">public void desplegarFacturasConLineas(LstLineaProductos _listaLineaProductos)</Member>
+        <Member type="Method">public NFactura anularFactura(int _idFactura)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Almacen</Name>
         <Access>Public</Access>
-        <Location left="2324" top="145" />
+        <Location left="2594" top="185" />
         <Size width="246" height="256" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">int id</Member>
+        <Member type="Field">int idAlmacen</Member>
         <Member type="Field">char [ ] ubicacion</Member>
         <Member type="Constructor">public Almacen()</Member>
         <Member type="Destructor">~Almacen()</Member>
         <Member type="Constructor">public Almacen(int _id, char _ubicacion)</Member>
-        <Member type="Method">public int getId()</Member>
-        <Member type="Method">public void setId(int _id)</Member>
+        <Member type="Method">public int getIdAlmacen()</Member>
+        <Member type="Method">public void setIdAlmacen(int _idAlmacen)</Member>
         <Member type="Method">public char getUbicacion()</Member>
         <Member type="Method">public void setUbicacion(char _ubicaion)</Member>
         <Modifier>None</Modifier>
@@ -167,7 +179,7 @@
       <Entity type="Class">
         <Name>NodoAlmacen</Name>
         <Access>Public</Access>
-        <Location left="2824" top="145" />
+        <Location left="3144" top="115" />
         <Size width="334" height="434" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Almacen almacen</Member>
@@ -196,8 +208,8 @@
       <Entity type="Class">
         <Name>LstAlmacenes</Name>
         <Access>Public</Access>
-        <Location left="3345" top="145" />
-        <Size width="436" height="553" />
+        <Location left="3985" top="45" />
+        <Size width="436" height="812" />
         <Collapsed>False</Collapsed>
         <Member type="Field">NodoAlmacen cab</Member>
         <Member type="Field">int size</Member>
@@ -208,41 +220,63 @@
         <Member type="Method">public int getSize()</Member>
         <Member type="Method">public void setSize(int _size)</Member>
         <Member type="Method">private NodoAlmacen dirNodo(int _id)</Member>
-        <Member type="Method">private NodoAlmacen dirNodoIndexOf(int _index)</Member>
         <Member type="Method">private NodoAlmacen dirUltimo()</Member>
         <Member type="Method">private NodoAlmacen dirAntrior(int _id)</Member>
-        <Member type="Method">private NodoAlmacen dirAnteriorIndexOf(int _index)</Member>
         <Member type="Method">private void agregaNodoAntesDe(NodoAlmacen _ref, NodoAlmacen _nuevo)</Member>
         <Member type="Method">private void agregaNodoDespuesDe(NodoAlmacen _ref, NodoAlmacen _nuevo)</Member>
-        <Member type="Method">public bool agregar(Almacen _almacen)</Member>
+        <Member type="Method">public bool agregaAsc(Almacen _almacen, LstLineaProductos _listaLineaProductos)</Member>
         <Member type="Method">public bool eliminar(int _id)</Member>
-        <Member type="Method">public bool modificar(int _id, Almacen _almacen)</Member>
+        <Member type="Method">public bool modificarAlmacen(int _id, Almacen _almacen)</Member>
         <Member type="Method">public Almacen buscar(int _id)</Member>
+        <Member type="Method">public Almacen obtenerAlmacen(int _idAlmacen)</Member>
+        <Member type="Method">public void desplegarLista()</Member>
         <Member type="Method">public int agregarUnInventarioEnUnAlmacen(int _idAlmacen, Inventario _inventario)</Member>
         <Member type="Method">public int eliminarUnInventarioDeUnAlmacen(int _idAlmacen, int _idInventario)</Member>
-        <Member type="Method">public void desplegarTodosInventariosDeTodosAlmacenes()</Member>
         <Member type="Method">public int agregarUnaFacturaEnUnAlmacen(int _idAlmacen, Factura _factura)</Member>
-        <Member type="Method">public int eliminarUnaFacturaDeUnAlmacen(int _idAlmacen, int _idFactura)</Member>
-        <Member type="Method">public void desplegarTodosFacturasDeTodosAlmacenes()</Member>
-        <Member type="Method">public int agregarUnaEntradaEnUnAlmacen(int _idAlmacen, Entrada _entrada)</Member>
-        <Member type="Method">public int eliminarUnaEntradaDeUnAlmacen(int _idAlmacen, int _idEntrada)</Member>
-        <Member type="Method">public void desplegarTodosEntradasDeTodosAlmacenes()</Member>
+        <Member type="Method">public void desplegarTodosInventariosDeUnAlmacen(int _idAlmacen)</Member>
+        <Member type="Method">public void desplegarUnInventariosDeUnAlmacen(int _idAlmacen, int _idProducto)</Member>
+        <Member type="Method">public void autoAgregar(int _idAlmacen, LstLineaProductos _listaLineaProductos)</Member>
+        <Member type="Method">public Inventario buscarArticulo(int _idAlmacen, int _idLinea, int _idSubLinea, int _idProducto)</Member>
+        <Member type="Method">public bool sumarExistencia(int _idAlmacen, int _idLinea, int _idSubLinea, int _idProducto)</Member>
+        <Member type="Method">public bool restarExistencia(int _idAlmacen, int _idLinea, int _idSubLinea, int _idProducto)</Member>
+        <Member type="Method">public bool agregarEntrada(int _idAlmacen, Entrada _entrada)</Member>
+        <Member type="Method">public int agregarUnaEntradaEnUnAlmacen(int _idAlmacen, int _idLinea, int _SubLinea, int _idProducto)</Member>
+        <Member type="Method">public int anularUnaEntradaDeUnAlmacen(int _idAlmacen, int _idProducto)</Member>
+        <Member type="Method">public void desplegarTodosEntradasDeUnAlmacen(int _idAlmacen)</Member>
+        <Member type="Method">public void desplegarUnaEntradaDeUnAlmacen(int _idAlmacen, int _idProducto)</Member>
+        <Member type="Method">public void desplegarTodosEntradaDeTodosAlmacen()</Member>
+        <Member type="Method">public int agregarFactura(int _idFactura, Factura _factura)</Member>
+        <Member type="Method">public int eliminarFactura(int _idAlmacen, int _idFactura)</Member>
+        <Member type="Method">public LineaFactura buscarLineaFactura(int _idAlmacen, int _idFactura, int _idLineaFactura)</Member>
+        <Member type="Method">public void imprimirFactura(int _idAlmacen, int _idFactura, LstLineaProductos _listaLineaProductos)</Member>
+        <Member type="Method">public void desplegarFacturasConLineas(int _idFactura, LstLineaProducto _listaLineaProducto)</Member>
+        <Member type="Method">public void ultimaLinea(int _idALmacen, int _idFactura)</Member>
+        <Member type="Method">public void sustraerExistencia(int _idAlmacen, int _Producto)</Member>
+        <Member type="Method">public bool actualizarExistenciaInventariosDeUnAlmacen(int _idAlmacen, int _idProducto, Entrada _entrada)</Member>
+        <Member type="Method">public void actualizarInventariosEliminandoDeTodosAlmacenAuto(int _idLinea, int _idSublinea, int _idProducto)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Inventario</Name>
         <Access>Public</Access>
-        <Location left="3754" top="734" />
-        <Size width="364" height="281" />
+        <Location left="4581" top="1434" />
+        <Size width="477" height="400" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">int codAlmacen</Member>
         <Member type="Field">int codArticulo</Member>
+        <Member type="Field">int codLinea</Member>
+        <Member type="Field">int codSublinea</Member>
+        <Member type="Field">int codAlmacen</Member>
         <Member type="Field">int existencia</Member>
         <Member type="Constructor">public Inventario()</Member>
         <Member type="Destructor">~Inventario()</Member>
+        <Member type="Constructor">public Inventario(int _idAlmacen, int _idLinea, int idSubLinea, int _idArticulo, int existencia)</Member>
         <Member type="Constructor">public Inventario(int _codAlmacen, int _codArticulo, int _existencia)</Member>
         <Member type="Method">public int getCodAlmacen()</Member>
         <Member type="Method">public void setCodAlmacen(int _codAlmacen)</Member>
+        <Member type="Method">public int getCodLinea()</Member>
+        <Member type="Method">public void setCodLinea(int _codLinea)</Member>
+        <Member type="Method">public int getCodSubLinea()</Member>
+        <Member type="Method">public void setCodSubLinea(int _codSubLinea)</Member>
         <Member type="Method">public int getCodArticulo()</Member>
         <Member type="Method">public void setCodArticulo(int _codArticulo)</Member>
         <Member type="Method">public int getExistencia()</Member>
@@ -252,13 +286,13 @@
       <Entity type="Class">
         <Name>NodoInventario</Name>
         <Access>Public</Access>
-        <Location left="4282" top="734" />
+        <Location left="5152" top="1434" />
         <Size width="315" height="332" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Inventario inventario</Member>
         <Member type="Field">NodoInventario sgte</Member>
         <Member type="Field">NodoInventario ante</Member>
-        <Member type="Field">LstProductos listaProducto</Member>
+        <Member type="Field">Producto productoRef</Member>
         <Member type="Constructor">public NodoInventario()</Member>
         <Member type="Destructor">~NodoInventario()</Member>
         <Member type="Constructor">public NodoInventario(Inventario _inventario)</Member>
@@ -268,15 +302,15 @@
         <Member type="Method">public void setSgte(NodoInventario _ptr)</Member>
         <Member type="Method">public NodoInventario getAnte()</Member>
         <Member type="Method">public void setAnte(NodoInventario _ptr)</Member>
-        <Member type="Method">public LstProductos getListaProductos()</Member>
-        <Member type="Method">public void setListaProductos(LstProductos _listaProductos)</Member>
+        <Member type="Method">public Producto getProductoRef()</Member>
+        <Member type="Method">public void setProductoRef(Producto _productoRef)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>LstInventarios</Name>
         <Access>Public</Access>
-        <Location left="4812" top="734" />
-        <Size width="451" height="451" />
+        <Location left="5682" top="1434" />
+        <Size width="451" height="519" />
         <Collapsed>False</Collapsed>
         <Member type="Field">NodoInventario cab</Member>
         <Member type="Field">int size</Member>
@@ -297,15 +331,19 @@
         <Member type="Method">public bool eliminar(int _codArticulo)</Member>
         <Member type="Method">public bool modificar(int _codArticulo, Inventario _inventario)</Member>
         <Member type="Method">public Inventario buscar(intr _codArticulo)</Member>
-        <Member type="Method">public int agregarUnProductoEnUnInventario(int _idInventario, Producto _producto)</Member>
-        <Member type="Method">public int eliminarUnProductoDeUnInventario(int _idInventario, int _idProducto)</Member>
-        <Member type="Method">public void desplegarTodosProductosDeTodosInventarios()</Member>
+        <Member type="Method">public void desplegarLista()</Member>
+        <Member type="Method">public Inventario obtenerInventario(int _idProducto)</Member>
+        <Member type="Method">public bool dirNodoGlobal(int _idLinea, int _idSubLinea, int _idProducto)</Member>
+        <Member type="Method">public int actualizarInventario(int _idProducto, int _cantidadEntrada)</Member>
+        <Member type="Method">public bool sumarExistencia(int _idLinea, int _idSublinea, int _idProducto, int existencia)</Member>
+        <Member type="Method">public bool restarExistencia(int _idLinea, int _idSublinea, int _idProducto, int existencia)</Member>
+        <Member type="Method">public NInventario buscarNodoArticulo(int _idLinea, int _idSublinea, int _idProducto)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>LineaProducto</Name>
         <Access>Public</Access>
-        <Location left="2074" top="1581" />
+        <Location left="2274" top="2384" />
         <Size width="282" height="247" />
         <Collapsed>False</Collapsed>
         <Member type="Field">int idProducto</Member>
@@ -323,28 +361,31 @@
       <Entity type="Class">
         <Name>NodoLineaProducto</Name>
         <Access>Public</Access>
-        <Location left="2517" top="1581" />
-        <Size width="446" height="281" />
+        <Location left="2716" top="2384" />
+        <Size width="446" height="332" />
         <Collapsed>False</Collapsed>
         <Member type="Field">LineaProdcuto lineaProdcuto</Member>
-        <Member type="Field">nodoLineaProdcuto sgte</Member>
         <Member type="Field">LstSubLineaProductos listaSubLineaProductos</Member>
+        <Member type="Field">nodoLineaProdcuto sgte</Member>
+        <Member type="Field">nodoLineaProdcuto ante</Member>
         <Member type="Constructor">public NodoLineaProducto()</Member>
         <Member type="Destructor">~NodoLineaProducto()</Member>
         <Member type="Constructor">public NodoLineaProducto(LineaProducto _lineaProducto)</Member>
         <Member type="Method">public LineaProducto getLineaProducto()</Member>
         <Member type="Method">public void setLineaProducto(LineaProducto _lineaProducto)</Member>
-        <Member type="Method">public NodoLineaProducto getSgte()</Member>
-        <Member type="Method">public void setSgte(LineaProdcuto _lineaProdcuto)</Member>
         <Member type="Method">public LstSubLineaProductos getListaSubLineaProductos()</Member>
         <Member type="Method">public void setListaSubLineaProductos(LstSubLineaProductos _listaSubLineaProductos)</Member>
+        <Member type="Method">public NodoLineaProducto getSgte()</Member>
+        <Member type="Method">public void setSgte(LineaProdcuto _lineaProdcuto)</Member>
+        <Member type="Method">public NodoLineaProducto getAnte()</Member>
+        <Member type="Method">public void setAnte(LineaProdcuto _lineaProdcuto)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>LstLineaProductos</Name>
         <Access>Public</Access>
-        <Location left="3078" top="1581" />
-        <Size width="554" height="417" />
+        <Location left="3278" top="2384" />
+        <Size width="554" height="570" />
         <Collapsed>False</Collapsed>
         <Member type="Field">NodoLineaProducto cab</Member>
         <Member type="Field">int size</Member>
@@ -363,15 +404,24 @@
         <Member type="Method">public bool modificar(int _idProdcuto, LineaProdcuto _lineaProdcuto)</Member>
         <Member type="Method">public bool eliminar(int _idProducto)</Member>
         <Member type="Method">public LineaProducto buscar(int _idProdcuto)</Member>
-        <Member type="Method">public int agregarUnSubLineaEnUnLineaProducto(int _idLineaProducto, SubLineaProducto _sublineaProducto)</Member>
-        <Member type="Method">public int eliminarUnSubLineaDeUnLineaProducto(int _idLineaProductot, int _idSubLineaProducto)</Member>
-        <Member type="Method">public void desplegarTodosSublineasDeTodosLineaProductos()</Member>
+        <Member type="Method">public void desplegar()</Member>
+        <Member type="Method">public NProducto dirNodoSLP(int _idLinea, int _idSubLinea, int _idProducto)</Member>
+        <Member type="Method">public bool dirNodoGlobal(int _idLinea, int _idSublinea, int _idProducto)</Member>
+        <Member type="Method">public int agregarUnSubLinea(int _idLineaProducto, SubLineaProducto _sublineaProducto)</Member>
+        <Member type="Method">public int eliminarUnSubLinea(int _idLineaProductot, int _idSubLineaProducto)</Member>
+        <Member type="Method">public void desplegarSublineasDeLinea(int _idLinea)</Member>
+        <Member type="Method">public void desplegarLineasConSubLineas()</Member>
+        <Member type="Method">public int agregarProducto(int _idLinea, int _idSubLinea, Producto _producto)</Member>
+        <Member type="Method">public int eliminarProducto(int _idLinea, int _idSubLinea, int _idProducto)</Member>
+        <Member type="Method">public Producto buscarProducto(int _idLinea, int _idSubLinea, int _idProducto)</Member>
+        <Member type="Method">public void desplegarProductosDeSubLineas(int _idLinea, int _idSubLinea)</Member>
+        <Member type="Method">public void desplegarSubLineasProductos(int _idLinea)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>SubLineaProducto</Name>
         <Access>Public</Access>
-        <Location left="2065" top="2102" />
+        <Location left="2085" top="3492" />
         <Size width="368" height="281" />
         <Collapsed>False</Collapsed>
         <Member type="Field">int idSubLinea</Member>
@@ -391,7 +441,7 @@
       <Entity type="Class">
         <Name>NodoSubLineaProducto</Name>
         <Access>Public</Access>
-        <Location left="2553" top="2102" />
+        <Location left="2573" top="3492" />
         <Size width="372" height="332" />
         <Collapsed>False</Collapsed>
         <Member type="Field">SubLineaProducto subLineaProducto</Member>
@@ -414,8 +464,8 @@
       <Entity type="Class">
         <Name>LstSubLineaProductos</Name>
         <Access>Public</Access>
-        <Location left="3089" top="2102" />
-        <Size width="592" height="400" />
+        <Location left="3109" top="3492" />
+        <Size width="592" height="451" />
         <Collapsed>False</Collapsed>
         <Member type="Field">NodoSubLineaProducto cab</Member>
         <Member type="Field">int size</Member>
@@ -429,45 +479,57 @@
         <Member type="Method">private NodoSubLineaProducto dirAnterior(int _idSubLinea)</Member>
         <Member type="Method">public NodoSubLineaProducto agregarNodoAntesDe(NodoSubLineaProducto _nuevo, NodoSubLineaProducto _aux)</Member>
         <Member type="Method">public NodoSubLineaProducto agregarNodoDespuesDe(NodoSubLineaProducto _nuevo, NodoSubLineaProducto _aux)</Member>
+        <Member type="Method">public bool vacia()</Member>
         <Member type="Method">public bool agregar(SubLineaProducto _subLineaProducto)</Member>
         <Member type="Method">public bool modificar(int _idSubLinea, SubLineaProducto _subLineaProducto)</Member>
         <Member type="Method">public bool eliminar(int _idSubLinea)</Member>
         <Member type="Method">public SubLineaProducto buscar(int _idSubLinea)</Member>
-        <Member type="Method">public int agregarUnProductoEnUnSubLineaProducto(int _idSubLineaProducto, Producto _producto)</Member>
-        <Member type="Method">public int eliminarUnSubLineaDeUnLineaProducto(int _idSubLineaProducto, int _idProducto)</Member>
-        <Member type="Method">public void desplegarTodosSublineasDeTodosLineaProductos()</Member>
+        <Member type="Method">public void desplegar()</Member>
+        <Member type="Method">public int agregarProducto(int _idSubLineaProducto, Producto _producto)</Member>
+        <Member type="Method">public int eliminarProducto(int _idSubLineaProducto, int _idProducto)</Member>
+        <Member type="Method">public void desplegarProductosDeSubLinea(int _idLinea)</Member>
+        <Member type="Method">public void desplegarSubLineasConProductos()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>LineaFactura</Name>
         <Access>Public</Access>
-        <Location left="10" top="1338" />
-        <Size width="291" height="281" />
+        <Location left="10" top="3102" />
+        <Size width="367" height="434" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">int numero</Member>
-        <Member type="Field">char codigoProducto</Member>
-        <Member type="Field">int cantidadVendida</Member>
+        <Member type="Field">int idFactura</Member>
+        <Member type="Field">int numFLinea</Member>
+        <Member type="Field">int idLinea</Member>
+        <Member type="Field">int idSubLinea</Member>
+        <Member type="Field">int idProducto</Member>
+        <Member type="Field">int cantidad</Member>
         <Member type="Constructor">public LineaFactura()</Member>
         <Member type="Destructor">~LineaFactura()</Member>
         <Member type="Constructor">public LineaFactura(int _numero, char _codigo, int _cantidadVendida)</Member>
-        <Member type="Method">public int getNumero()</Member>
-        <Member type="Method">public void setNumero(int _numero)</Member>
-        <Member type="Method">public char getCodigoProducto()</Member>
-        <Member type="Method">public void setCodigoProducto(char _codigoProdcuto)</Member>
-        <Member type="Method">public int getCantidadVendida()</Member>
-        <Member type="Method">public void setCantidadVendida(int _cantidadVendida)</Member>
+        <Member type="Method">public int getIdFactura()</Member>
+        <Member type="Method">public void setIdFactura()</Member>
+        <Member type="Method">public int getNumFLinea()</Member>
+        <Member type="Method">public void setNumFLinea(int _numFLinea)</Member>
+        <Member type="Method">public int getIdLinea()</Member>
+        <Member type="Method">public void setIdLinea(int _idLinea)</Member>
+        <Member type="Method">public int getIdSubLinea()</Member>
+        <Member type="Method">public void setIdSubLinea()</Member>
+        <Member type="Method">public int getIdProducto()</Member>
+        <Member type="Method">public void setIdProducto(int _idProducto)</Member>
+        <Member type="Method">public int getCantidad()</Member>
+        <Member type="Method">public void setCantidad(int _cantidad)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>NodoLineaFactura</Name>
         <Access>Public</Access>
-        <Location left="484" top="1327" />
+        <Location left="484" top="3091" />
         <Size width="317" height="332" />
         <Collapsed>False</Collapsed>
         <Member type="Field">LineaFactura lineaFactura</Member>
         <Member type="Field">NodoLineaFactura sgte</Member>
         <Member type="Field">NodoLineaFactura ante</Member>
-        <Member type="Field">LstProductos listaProductos</Member>
+        <Member type="Field">LstLineaProductos listaLineaProductos</Member>
         <Member type="Constructor">public NodoLineaFactura()</Member>
         <Member type="Destructor">~NodoLineaFactura()</Member>
         <Member type="Constructor">public NodoLineaFactura(LineaFactura _lineaFactura)</Member>
@@ -477,15 +539,15 @@
         <Member type="Method">public void setSgte(NodoLineaFactura _sgte)</Member>
         <Member type="Method">public NodoLineaFactura getAnte()</Member>
         <Member type="Method">public void setAnte(NodoLineaFactura _ante)</Member>
-        <Member type="Method">public LstProductos getListaProductos()</Member>
-        <Member type="Method">public void setListaProductos(LstProductos _listaProductos)</Member>
+        <Member type="Method">public LstLineaProductos getListaLineaProducto()</Member>
+        <Member type="Method">public void setListaLineaProducto(LstLineaProductos _listaLineaProductos)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>LstLineaFacturas</Name>
         <Access>Public</Access>
-        <Location left="943" top="1327" />
-        <Size width="513" height="400" />
+        <Location left="943" top="3091" />
+        <Size width="513" height="434" />
         <Collapsed>False</Collapsed>
         <Member type="Field">NodoLineaFactura cab</Member>
         <Member type="Field">int size</Member>
@@ -499,25 +561,32 @@
         <Member type="Method">private NodoLineaFactura dirAnterior(int _numero)</Member>
         <Member type="Method">private NodoLineaFactura agregarNodoAntesDe(NodoLineaFactura _nuevo, NodoLineaFactura _aux)</Member>
         <Member type="Method">private NodoLineaFactura agregarNodoDespuesDe(NodoLineaFactura _nuevo, NodoLineaFactura _aux)</Member>
+        <Member type="Method">public bool vacia()</Member>
         <Member type="Method">public bool agregar(LineaFactura _lineaFactura)</Member>
         <Member type="Method">public bool modificar(int _numero, LineaFactura _lineaFactura)</Member>
         <Member type="Method">public bool eliminar(int _numero)</Member>
         <Member type="Method">public LineaFactura buscar(int _numero)</Member>
-        <Member type="Method">public int agregarUnProductoEnUnaLineaFactura(int _idLineaFactura, Producto _producto)</Member>
-        <Member type="Method">public int eliminarUnProductoDeUnaLineaFactura(int _idLineaFactura, int _idProducto)</Member>
-        <Member type="Method">public void desplegarTodosProductosDeTodosLineasFactura()</Member>
+        <Member type="Method">public void desplegar(LstLineaProductos _listaLineaProductos)</Member>
+        <Member type="Method">public int ultimaLinea()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>Entrada</Name>
         <Access>Public</Access>
-        <Location left="1747" top="696" />
-        <Size width="286" height="216" />
+        <Location left="2004" top="1521" />
+        <Size width="393" height="332" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">int idLinea</Member>
+        <Member type="Field">int idSublinea</Member>
         <Member type="Field">int idProducto</Member>
         <Member type="Field">int cantidadProducto</Member>
         <Member type="Constructor">public Entrada()</Member>
         <Member type="Destructor">~Entrada()</Member>
+        <Member type="Constructor">public Entrada(int _idLinea, int _idSublinea, int _idProducto, int _cantidad)</Member>
+        <Member type="Method">public int geIdLinea(int _idLinea)</Member>
+        <Member type="Method">public void setIdLinea(int _idSubLinea)</Member>
+        <Member type="Method">public int getIdSubLinea()</Member>
+        <Member type="Method">public void setIdSubLinea(int _idSubLinea)</Member>
         <Member type="Method">public int getIdProducto()</Member>
         <Member type="Method">public void setIdProducto(int _idProducto)</Member>
         <Member type="Method">public int getCantidadProducto(int _cantidadProducto)</Member>
@@ -527,30 +596,27 @@
       <Entity type="Class">
         <Name>NodoEntrada</Name>
         <Access>Public</Access>
-        <Location left="2161" top="670" />
+        <Location left="2570" top="1521" />
         <Size width="360" height="315" />
         <Collapsed>False</Collapsed>
         <Member type="Field">Entrada entrada</Member>
         <Member type="Field">NodoEntrada sgte</Member>
-        <Member type="Field">NodoEntrada ante</Member>
-        <Member type="Field">LstProducto listaProductos</Member>
+        <Member type="Field">Producto productoRef</Member>
         <Member type="Constructor">public NodoEntrada()</Member>
         <Member type="Destructor">~NodoEntrada()</Member>
         <Member type="Method">public Entrada getEntrada()</Member>
         <Member type="Method">public void setEntrada(Entrada _entrada)</Member>
         <Member type="Method">public NodoEntrada getSgte()</Member>
         <Member type="Method">public void setSgte(NodoEntrada _sgte)</Member>
-        <Member type="Method">public NodoEntrada getAnte()</Member>
-        <Member type="Method">public void setAnte(NodoEntrada _ante)</Member>
-        <Member type="Method">public LstProductos getListaProductos()</Member>
-        <Member type="Method">public void setListaProductos(LstProductos _listaProductos)</Member>
+        <Member type="Method">public Producto getProductoRef()</Member>
+        <Member type="Method">public void setProductoRef(Producto _productoRef)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>LstEntradas</Name>
         <Access>Public</Access>
-        <Location left="2749" top="740" />
-        <Size width="458" height="400" />
+        <Location left="3149" top="1490" />
+        <Size width="458" height="468" />
         <Collapsed>False</Collapsed>
         <Member type="Field">NodoEntrada cab</Member>
         <Member type="Field">int size</Member>
@@ -561,77 +627,80 @@
         <Member type="Method">public int getSize()</Member>
         <Member type="Method">public void setSize(int _size)</Member>
         <Member type="Method">public NodoEntrada dirNodo(int _idProducto)</Member>
-        <Member type="Method">public NodoEntrada dirAnterior(int _idProducto)</Member>
+        <Member type="Method">private NodoEntrada dirAnterior(int _idProducto)</Member>
+        <Member type="Method">public NEntrada dirUltimo(int _idProducto)</Member>
         <Member type="Method">public NodoEntrada agregarNodoAntesDe(NodoEntrada _nuevo, NodoEntrada _aux)</Member>
         <Member type="Method">public NodoEntrada agregarNodoDespuesDe(NodoEntrada _nuevo, NodoEntrada _aux)</Member>
+        <Member type="Method">public bool vacia()</Member>
         <Member type="Method">public bool agregar(Entrada _entrada)</Member>
         <Member type="Method">public bool modificar(int _idProducto, Entrada _entrada)</Member>
         <Member type="Method">public bool eliminar(int _idProducto)</Member>
         <Member type="Method">public Entrada buscar(int _idProducto)</Member>
-        <Member type="Method">public int agregarUnProductoEnUnaEntrada(int _idEntrada, Producto _producto)</Member>
-        <Member type="Method">public int eliminarUnProductoDeUnaEntrada(int _idEntrada, int _idProducto)</Member>
-        <Member type="Method">public void desplegarTodosProductosDeTodosEntradas()</Member>
+        <Member type="Method">public void desplegar()</Member>
+        <Member type="Method">public Entrada obtenerEntrada()</Member>
+        <Member type="Method">public int agregarUnaCantidadProductoEnUnaEntrada(int _idEntrada, Producto _producto)</Member>
+        <Member type="Method">public int anularUnaEntrada(int _idEntrada)</Member>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
     <Relationships>
       <Relationship type="Association" first="2" second="1">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
       <Relationship type="Association" first="1" second="0">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="4" second="3">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="5" second="4">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
       <Relationship type="Association" first="7" second="6">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="8" second="7">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
       <Relationship type="Association" first="10" second="9">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="11" second="10">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="16" second="15">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="17" second="16">
         <Label>
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
@@ -639,63 +708,105 @@
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="16" second="15">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-      </Relationship>
-      <Relationship type="Association" first="17" second="16">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Composition</AssociationType>
-      </Relationship>
       <Relationship type="Association" first="13" second="12">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="14" second="13">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
       <Relationship type="Association" first="19" second="18">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="20" second="19">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
       <Relationship type="Dependency" first="13" second="17">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Dependency" first="16" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Dependency" first="7" second="5">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Dependency" first="4" second="20">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Dependency" first="7" second="11">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Dependency" first="7" second="23">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="23" second="22">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="22" second="21">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Dependency" first="10" second="13">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="22" second="13">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Dependency" first="19" second="13">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
