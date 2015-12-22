@@ -550,15 +550,10 @@ void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 
 				while (auxS != NULL)
 				{
+					NProducto * auxP = auxS->getLstProductos()->getCab();
 
-					if (vacia())
+					if (auxP != NULL)
 					{
-						cout << "La lista Almacen esta vacia" << endl;
-					}
-					else
-					{
-						NProducto * auxP = auxS->getLstProductos()->getCab();
-
 						do
 						{
 							Producto * producto = auxP->getProducto();
@@ -572,8 +567,11 @@ void LstAlmacenes::autoAgregar(int idAlmacen, LstLineaProductos * lstLinea)
 							auxP = auxP->getSgte();
 						} while (auxP != auxS->getLstProductos()->getCab());
 
-						auxS = auxS->getSgte();
+						
 					}
+					else
+						auxS = auxS->getSgte();
+				
 				}
 
 				auxL = auxL->getSgte();
@@ -897,8 +895,10 @@ void LstAlmacenes::desplegarAlamacenConFacturas()
 int LstAlmacenes::ultimaFactura(int _idAlmacen)
 {
 	NAlmacen * aux = dirNodo(_idAlmacen);
-
-	return aux->getListaFacturas()->ultimaFactura();
+	if (aux != NULL)
+		return aux->getListaFacturas()->ultimaFactura();
+	else
+		return 0;
 }
 
 bool LstAlmacenes::anularFactura(int _idAlmacen, int _idFactura)

@@ -326,6 +326,7 @@ void menuFacturacion(LstAlmacenes * lstAlmacenes, LstLineaProductos * lstLineas)
 			cout << "=====================================================================" << endl << endl;
 			cout << "Digite el ID del Almacen: "; cin >> idAlmacen;
 			idFactura = lstAlmacenes->ultimaFactura(idAlmacen) + 1;
+			
 			cout << "Digite el nombre del cliente: "; cin >> cliente;
 
 			Factura * factura = new Factura(idFactura, date, cliente);
